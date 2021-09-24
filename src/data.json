@@ -1,0 +1,52 @@
+{
+  "bikes": [
+    {
+      "_id": "bike1",
+      "tittle": "Bike Canondale MTB",
+      "image": "https://www.pasaz24cdn.pl/web3086/productimages/22563173_2507.jpg",
+      "description": "Description Bike Canondale MTB",
+      "price": 99.99,
+      "avaibleSizesz": ["XL", "L"]
+    },
+    {
+      "_id": "bike2",
+      "tittle": "Bianchi Devil Cyclist",
+      "image": "https://zdjecia.bikeworld.pl/produkty/medium/rowery_szosowe_race_klasyczne_bianchi_oltre_xr3_shimano_ultegra_241f2.jpg",
+      "description": "Description Bianchi Devil Cyclist",
+      "price": 75.0,
+      "avaibleSizesz": ["S", "L", "M"]
+    },
+    {
+      "_id": "bike3",
+      "tittle": "Fixed Gear",
+      "image": "https://iwobike.pl/14349-large_default/rower-ostre-kolo-unisex-28-wolnobieg-bialy-kolarka.jpg",
+      "description": "Description Fixed Gear",
+      "price": 151.99,
+      "avaibleSizesz": ["XL", "L", "M"]
+    },
+    {
+      "_id": "bike4",
+      "tittle": "City Bike Pretty Woman",
+      "image": "https://cdn.webshopapp.com/shops/212063/files/126309038/6ku-odessa-8spd-city-bike-pershing-gold.jpg",
+      "description": "Description City Bike Pretty Woman",
+      "price": 399.99,
+      "avaibleSizesz": ["XL", "L", "S"]
+    },
+    {
+      "_id": "bike5",
+      "tittle": "Electric Bike Bolt Bang",
+      "image": "https://cdn.inceptivemind.com/wp-content/uploads/2021/04/Biktrix-Moto-white-1024x586.jpg",
+      "description": "Description Electric Bike Bolt Bang",
+      "price": 1000,
+      "avaibleSizesz": ["L"]
+    },
+    {
+      "_id": "bike6",
+      "tittle": "Crazy Bumping Jupiter Suff",
+      "image": "https://p.vitalmtb.com/photos/press_releases/3379/title_image/s1600_s1600_Mondraker_Foxy_XR_29_838032.jpg?1580946117",
+      "description": "Description Crazy Bumping Jupiter Suff",
+      "price": 745.5,
+      "avaibleSizesz": ["XL"]
+    }
+  ]
+}
