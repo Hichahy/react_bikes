@@ -1,5 +1,5 @@
 //Feature 1
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Bikes from "./components/Bikes/Bikes";
 import data from "./data.json";
 // import FilterSearch from "./components/Filter Search/FilterSearch";
@@ -28,7 +28,7 @@ const App = () => {
       setSort("none");
     }
   };
-
+//jaka
   const sortBikes = (e) => {
     const sort = e.target.value;
     setSort(e.target.value);
