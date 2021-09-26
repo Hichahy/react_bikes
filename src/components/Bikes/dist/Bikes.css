@@ -33,7 +33,6 @@
   align-items: center;
 }
 
-//button
 .btn-1,
 .btn-2 {
   display: flex;
@@ -41,6 +40,7 @@
   align-items: center;
   flex-direction: column;
 }
+
 /* Created by http://grohit.com/  */
 footer a,
 .btn-1 a,
@@ -62,7 +62,6 @@ span {
 }
 
 /* Button 1 styles */
-
 .btn-1 a::before {
   content: "";
   position: absolute;
@@ -93,8 +92,8 @@ span {
   transition: all 0.5s ease-in-out;
   transform: scaleX(1);
 }
-/* Created by http://grohit.com/  */
 
+/* Created by http://grohit.com/  */
 .btn-1 a:hover::after,
 .btn-2 a:hover::after {
   transform: scaleX(0);
