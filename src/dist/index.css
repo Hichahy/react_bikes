@@ -57,6 +57,7 @@ a:hover {
   justify-content: space-around;
   align-items: center;
   border-right: solid #ffcc00;
+  min-height: 33ch;
 }
 
 .content {
@@ -69,4 +70,8 @@ footer {
   display: flex;
   align-items: center;
   height: 16%;
+}
+
+.not-found {
+  font-size: small;
 }

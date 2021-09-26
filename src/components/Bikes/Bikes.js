@@ -1,5 +1,5 @@
 import React from "react";
-import formatCurrency from "../../livehacks";
+import formatCurrency, { AvaibleCurrency } from "../../livehacks";
 import "./Bikes.scss";
 
 const Bikes = (props) => {
@@ -13,6 +13,7 @@ const Bikes = (props) => {
       </div>
       <div className="description-box">
         <p>{bike.description}</p>
+        <p>Sizes: {AvaibleCurrency(bike.avaibleSizesz)}</p>
       </div>
       <div className="price-box">
         <h4>{formatCurrency(bike.price)}</h4>

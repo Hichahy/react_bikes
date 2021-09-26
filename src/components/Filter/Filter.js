@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Filter.scss";
-import { BiSearchAlt } from 'react-icons/bi';
+import { BiSearchAlt } from "react-icons/bi";
 
 const Filter = (props) => {
   return (
@@ -9,7 +9,7 @@ const Filter = (props) => {
         <span>Available bikes: {props.bike}</span>
       </div>
       <div className="filter-search">
-       <BiSearchAlt />
+        <BiSearchAlt />
         <input
           className="input_search"
           value={props.search}
@@ -26,7 +26,9 @@ const Filter = (props) => {
           value={props.sort}
           onChange={(e) => props.sortBikes(e)}
         >
+          <option value="none">--</option>
           <option>Latest</option>
+          <option value="alphabet">A-Z</option>
           <option value="highest">Highest price</option>
           <option value="lowest">Lowest price</option>
         </select>
