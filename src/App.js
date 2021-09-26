@@ -11,7 +11,6 @@ const App = () => {
   const [sort, setSort] = useState("");
   const [search, setSearch] = useState("");
 
-  console.log(`sort`, sort);
   console.log(`size`, size);
 
   const filterBikes = (e) => {
