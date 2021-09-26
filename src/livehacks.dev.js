@@ -6,5 +6,5 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = formatCurrency;
 
 function formatCurrency(num) {
-  return "$" + Number(num.toFixed(1)).toLocaleString() + " ";
+  return "$" + Number(num.toFixed(2)).toLocaleString() + " ";
 }
