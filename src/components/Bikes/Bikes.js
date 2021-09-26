@@ -13,7 +13,7 @@ const Bikes = (props) => {
       </div>
       <div className="description-box">
         <p>{bike.description}</p>
-        <p>Sizes: {AvaibleCurrency(bike.avaibleSizesz)}</p>
+        <p>sizes: {AvaibleCurrency(bike.avaibleSizesz)}</p>
       </div>
       <div className="price-box">
         <h4>{formatCurrency(bike.price)}</h4>
