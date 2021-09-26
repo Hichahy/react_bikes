@@ -1,8 +1,6 @@
-//Feature 1
 import React, { useState } from "react";
 import Bikes from "./components/Bikes/Bikes";
 import data from "./data.json";
-// import FilterSearch from "./components/Filter Search/FilterSearch";
 import Filter from "./components/Filter/Filter";
 
 const App = () => {
@@ -24,10 +22,9 @@ const App = () => {
           (bike) => bike.avaibleSizesz.indexOf(e.target.value) >= 0
         )
       );
-      setSort("none");
     }
   };
-//jaka
+
   const sortBikes = (e) => {
     const sort = e.target.value;
     setSort(e.target.value);
