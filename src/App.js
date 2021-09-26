@@ -9,8 +9,6 @@ const App = () => {
   const [sort, setSort] = useState("none");
   const [search, setSearch] = useState("");
 
-  console.log(`size`, size);
-
   const filterBikes = (e) => {
     if (e.target.value === "") {
       setBikes(data.bikes);
@@ -63,6 +61,8 @@ const App = () => {
           bike.tittle.toLowerCase().includes(search.toLowerCase())
         )
       );
+      setSize("")
+      setSort("none")
     }
   };
 
