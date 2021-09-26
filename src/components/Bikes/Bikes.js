@@ -11,7 +11,9 @@ const Bikes = (props) => {
           <img src={bike.image} alt={bike.tittle}></img>
         </a>
       </div>
-      <div className="description-box">{bike.description}</div>
+      <div className="description-box">
+        <p>{bike.description}</p>
+      </div>
       <div className="price-box">
         <h4>{formatCurrency(bike.price)}</h4>
         <div class="btn-1">
