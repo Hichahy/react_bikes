@@ -6,7 +6,7 @@ import Filter from "./components/Filter/Filter";
 const App = () => {
   const [bikes, setBikes] = useState(data.bikes);
   const [size, setSize] = useState("");
-  const [sort, setSort] = useState("");
+  const [sort, setSort] = useState("none");
   const [search, setSearch] = useState("");
 
   console.log(`size`, size);
@@ -22,6 +22,7 @@ const App = () => {
           (bike) => bike.avaibleSizesz.indexOf(e.target.value) >= 0
         )
       );
+      setSort("none")
     }
   };
 
