@@ -2,12 +2,36 @@ import React, { useState } from "react";
 import Bikes from "./components/Bikes/Bikes";
 import data from "./data.json";
 import Filter from "./components/Filter/Filter";
+import Basket from "./components/Baket.js/Basket";
 
 const App = () => {
   const [bikes, setBikes] = useState(data.bikes);
   const [size, setSize] = useState("");
   const [sort, setSort] = useState("none");
   const [search, setSearch] = useState("");
+  const [basketItems, setBasketItems] = useState([]);
+
+  console.log(`basketItems`, basketItems);
+
+  const removeFromBasket = (bike) => {
+  const cartItems = basketItems.slice();
+  setBasketItems(cartItems.filter(i => i._id !== bike._id))
+  }
+ 
+  const addToBasket = (bike) => {
+    const cartItems = basketItems.slice();
+    let alreadyInCart = false;
+    cartItems.forEach((i) => {
+      if (i._id === bike._id) {
+        i.count++;
+        alreadyInCart = true;
+      }
+    });
+    if (!alreadyInCart) {
+      cartItems.push({ ...bike, count: 1 });
+    }
+    setBasketItems(cartItems);
+  };
 
   const filterBikes = (e) => {
     if (e.target.value === "") {
@@ -20,7 +44,7 @@ const App = () => {
           (bike) => bike.avaibleSizesz.indexOf(e.target.value) >= 0
         )
       );
-      setSort("none")
+      setSort("none");
     }
   };
 
@@ -61,8 +85,8 @@ const App = () => {
           bike.tittle.toLowerCase().includes(search.toLowerCase())
         )
       );
-      setSize("")
-      setSort("none")
+      setSize("");
+      setSort("none");
     }
   };
 
@@ -72,25 +96,35 @@ const App = () => {
         <a href="/">🚲Bikes rental</a>
       </header>
       <main className="main">
-        <Filter
-          size={size}
-          sort={sort}
-          search={search}
-          bike={bikes.length}
-          filterBikes={filterBikes}
-          sortBikes={sortBikes}
-          setSearch={setSearch}
-          searchBikes={searchBikes}
-        />
         <div className="content">
-          <div className="main-content">
-            {bikes.length === 0 ? (
-              <span className="not-found">sorry not found...</span>
-            ) : (
-              <Bikes bikes={bikes} search={search} />
-            )}
+          <div className="content-bikes">
+           
+              <Filter
+                size={size}
+                sort={sort}
+                search={search}
+                bike={bikes.length}
+                filterBikes={filterBikes}
+                sortBikes={sortBikes}
+                setSearch={setSearch}
+                searchBikes={searchBikes}
+              />
+         
+            <div className="main-content">
+              {bikes.length === 0 ? (
+                <span className="not-found">sorry not found...</span>
+              ) : (
+                <Bikes
+                  bikes={bikes}
+                  search={search}
+                  addToBasket={addToBasket}
+                />
+              )}
+            </div>
           </div>
-          <div className="sidebar">pasek boczny</div>
+          <div className="sidebar">
+            <Basket basketItems={basketItems} removeFromBasket={removeFromBasket}/>
+          </div>
         </div>
       </main>
       <footer>information footer</footer>
