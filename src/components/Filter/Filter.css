@@ -1,0 +1,74 @@
+.filter-container {
+  width: 80%;
+  border-right: solid #ffcc00;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 1%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  height: 6%;
+}
+
+.filter-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.filter-container span {
+  font-size: 17px;
+}
+
+.sort-select {
+  margin-left: 10px;
+  border: none;
+  border-radius: 7px;
+  outline: none;
+  -webkit-box-shadow: #ccdbe8 3px 3px 6px 0px inset, #f1f1ef -3px -3px 6px 1px inset;
+          box-shadow: #ccdbe8 3px 3px 6px 0px inset, #f1f1ef -3px -3px 6px 1px inset;
+  font-size: 17px;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.filter-sort span {
+  font-size: 17px;
+}
+
+.size-select {
+  margin-left: 10px;
+  border: none;
+  border-radius: 7px;
+  outline: none;
+  -webkit-box-shadow: #ccdbe8 3px 3px 6px 0px inset, #f1f1ef -3px -3px 6px 1px inset;
+          box-shadow: #ccdbe8 3px 3px 6px 0px inset, #f1f1ef -3px -3px 6px 1px inset;
+  font-size: 17px;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.filter-size span {
+  font-size: 17px;
+}
+
+.input_search {
+  margin-left: 10px;
+  border: none;
+  border-radius: 7px;
+  outline: none;
+  -webkit-box-shadow: #ccdbe8 3px 3px 6px 0px inset, #f1f1ef -3px -3px 6px 1px inset;
+          box-shadow: #ccdbe8 3px 3px 6px 0px inset, #f1f1ef -3px -3px 6px 1px inset;
+  font-size: 17px;
+  padding: 4px;
+}
+
+.filter-search {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+/*# sourceMappingURL=Filter.css.map */

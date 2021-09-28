@@ -1,5 +1,6 @@
 import React from "react";
 import formatCurrency, { AvaibleCurrency } from "../../livehacks";
+import { RiShoppingBag2Line } from "react-icons/ri";
 import "./Bikes.scss";
 
 const Bikes = (props) => {
@@ -17,11 +18,10 @@ const Bikes = (props) => {
       </div>
       <div className="price-box">
         <h4>{formatCurrency(bike.price)}</h4>
-        <div class="btn-1">
-          <a href="">
-            <span>BUY</span>
-          </a>
-        </div>
+        <button className="btn-3" onClick={() => props.addToBasket(bike)} >
+          <RiShoppingBag2Line />
+          Add
+        </button>
       </div>
     </div>
   ));

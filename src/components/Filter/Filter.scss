@@ -1,14 +1,15 @@
 .filter-container {
-  width: 80%;
-  border-right: solid #ffcc00;
+  width: 100%;
   display: flex;
-  margin-top: 1%;
   justify-content: space-around;
   height: 6%;
+  margin: 0 0 10px 0;
 }
 
 .filter-container {
   display: flex;
+  align-items: center;
+  height: 40px;
 }
 
 .filter-container span {
@@ -58,6 +59,11 @@
 }
 
 .filter-search {
+  display: flex;
+  align-items: center;
+}
+
+.filter-count {
   display: flex;
   align-items: center;
 }
