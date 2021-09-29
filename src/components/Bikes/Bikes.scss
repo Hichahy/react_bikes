@@ -40,21 +40,20 @@ $main-color: rgb(255, 204, 0);
 }
 
 .btn-3 {
-  border: solid 1px rgb(0, 0, 0);
-  background: white;
+  border: solid 1px rgb(255, 255, 255);
+  background: #ffffff;
+  border-radius: 7px;
   font-weight: 300;
   letter-spacing: 1px;
   display: flex;
-  transition: all 150ms linear;
   cursor: pointer;
   align-items: center;
 }
 
 .btn-3:hover {
-  background: rgb(255, 255, 255);
-  border: 1px solid rgb(0, 0, 0);
-  box-shadow: $main-color 2.4px 2.4px 3.2px;
-  color: black;
+  border-radius: 7px;
+  background: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   text-decoration: none;
   transition: all 150ms linear;
 }

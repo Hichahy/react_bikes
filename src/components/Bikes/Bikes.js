@@ -18,7 +18,7 @@ const Bikes = (props) => {
       </div>
       <div className="price-box">
         <h4>{formatCurrency(bike.price)}</h4>
-        <button className="btn-3" onClick={() => props.addToBasket(bike)} >
+        <button className="btn-3" onClick={() => props.addToBasket(bike)}>
           <RiShoppingBag2Line />
           Add
         </button>
