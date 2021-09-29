@@ -9,15 +9,26 @@ const App = () => {
   const [size, setSize] = useState("");
   const [sort, setSort] = useState("none");
   const [search, setSearch] = useState("");
-  const [basketItems, setBasketItems] = useState([]);
+  const [basketItems, setBasketItems] = useState(
+    localStorage.getItem("basketItems")
+      ? JSON.parse(localStorage.getItem("basketItems"))
+      : []
+  );
 
-  console.log(`basketItems`, basketItems);
+  const createOrder = (order) => {
+    alert("need to save order for " + order.name);
+  };
 
   const removeFromBasket = (bike) => {
-  const cartItems = basketItems.slice();
-  setBasketItems(cartItems.filter(i => i._id !== bike._id))
-  }
- 
+    const cartItems = basketItems.slice();
+    setBasketItems(cartItems.filter((i) => i._id !== bike._id));
+    //localStorage
+    localStorage.setItem(
+      "basketItems",
+      JSON.stringify(basketItems.filter((i) => i._id !== bike._id))
+    );
+  };
+
   const addToBasket = (bike) => {
     const cartItems = basketItems.slice();
     let alreadyInCart = false;
@@ -31,6 +42,8 @@ const App = () => {
       cartItems.push({ ...bike, count: 1 });
     }
     setBasketItems(cartItems);
+    //localStorage
+    localStorage.setItem("basketItems", JSON.stringify(cartItems));
   };
 
   const filterBikes = (e) => {
@@ -98,18 +111,17 @@ const App = () => {
       <main className="main">
         <div className="content">
           <div className="content-bikes">
-           
-              <Filter
-                size={size}
-                sort={sort}
-                search={search}
-                bike={bikes.length}
-                filterBikes={filterBikes}
-                sortBikes={sortBikes}
-                setSearch={setSearch}
-                searchBikes={searchBikes}
-              />
-         
+            <Filter
+              size={size}
+              sort={sort}
+              search={search}
+              bike={bikes.length}
+              filterBikes={filterBikes}
+              sortBikes={sortBikes}
+              setSearch={setSearch}
+              searchBikes={searchBikes}
+            />
+
             <div className="main-content">
               {bikes.length === 0 ? (
                 <span className="not-found">sorry not found...</span>
@@ -123,7 +135,11 @@ const App = () => {
             </div>
           </div>
           <div className="sidebar">
-            <Basket basketItems={basketItems} removeFromBasket={removeFromBasket}/>
+            <Basket
+              basketItems={basketItems}
+              removeFromBasket={removeFromBasket}
+              createOrder={createOrder}
+            />
           </div>
         </div>
       </main>

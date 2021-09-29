@@ -1,10 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Basket.scss";
 import { IoIosClose } from "react-icons/io";
 import formatCurrency from "../../livehacks";
 import ButtonSidebar from "../../layout/ButtonSidebar/ButtonSidebar";
+import ButtonSidebarCheck from "../../layout/ButtonSidebarCheck/ButtonSidebarCheck";
 
 const Basket = (props) => {
+  const [showCheckout, setShowCheckout] = useState(false);
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    adress: "",
+  });
+
+  const handleInput = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value }); //name nazwa inputa nie stanu name
+  };
+
+  const createOrder = (e) => {
+    e.preventDefault();
+    const order = {
+      email: form.email,
+      name: form.name,
+      adress: form.adress,
+      basketItems: props.basketItems,
+    };
+    props.createOrder(order);
+  };
+
   return (
     <div>
       <div className="basket-header">
@@ -52,8 +75,62 @@ const Basket = (props) => {
             )}
           </p>
           <div className="basket-btn-box">
-            <ButtonSidebar />
+            {showCheckout === false && (
+              <ButtonSidebar setShowCheckout={setShowCheckout} />
+            )}
           </div>
+        </div>
+      )}
+      {showCheckout && (
+        //Form
+        <div className="form-container">
+          <form onSubmit={createOrder}>
+            <ul className="form-box">
+              <div class="form__group field">
+                <input
+                  type="email"
+                  className="form__field"
+                  placeholder="eamail"
+                  name="email"
+                  id="email"
+                  required
+                  onChange={handleInput}
+                />
+                <label for="email" class="form__label">
+                  Email
+                </label>
+              </div>
+              <div class="form__group field">
+                <input
+                  type="text"
+                  className="form__field"
+                  placeholder="name"
+                  name="name"
+                  id="name"
+                  required
+                  onChange={handleInput}
+                />
+                <label for="name" class="form__label">
+                  Name
+                </label>
+              </div>
+              <div class="form__group field">
+                <input
+                  type="text"
+                  className="form__field"
+                  placeholder="adress"
+                  name="adress"
+                  id="adress"
+                  required
+                  onChange={handleInput}
+                />
+                <label for="adress" class="form__label">
+                  Adress
+                </label>
+              </div>
+            </ul>
+            <ButtonSidebarCheck />
+          </form>
         </div>
       )}
     </div>

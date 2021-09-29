@@ -4,8 +4,8 @@ import "./ButtonSidebar.scss";
 const ButtonSidebar = (props) => {
   return (
     <div className="wrapper">
-      <button onClick={() => props.setShowCheckout(true)} className="cta">
-        <span>FINALIZE</span>
+      <button type="sumbit" className="cta">
+        <span>CHECKOUT</span>
         <span>
           <svg
             width="66px"
