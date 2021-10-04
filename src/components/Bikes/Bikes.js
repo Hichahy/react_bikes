@@ -1,16 +1,18 @@
 import React from "react";
 import formatCurrency, { AvaibleCurrency } from "../../livehacks";
 import { RiShoppingBag2Line } from "react-icons/ri";
+import { Link } from "react-router-dom";
 import "./Bikes.scss";
 
 const Bikes = (props) => {
+
   return props.bikes.map((bike) => (
-    <div className="card">
+    <div key={bike._id} className="card animate__animated animate__fadeIn">
       <div className="tittle-box">
         <h4 className="tittle">{bike.tittle}</h4>
-        <a href={"#" + bike._id}>
+        <Link to={`/bike/${bike._id}`} >
           <img src={bike.image} alt={bike.tittle}></img>
-        </a>
+        </Link>
       </div>
       <div className="description-box">
         <p>{bike.description}</p>

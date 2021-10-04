@@ -3,6 +3,8 @@ $secondary: #38ef7d;
 $white: #fff;
 $gray: #9b9b9b;
 
+
+
 .basket img {
   width: 80%;
 }
@@ -11,6 +13,12 @@ $gray: #9b9b9b;
   list-style: none;
   margin: 6% 0 0 0;
   padding: 0;
+}
+
+.basket-title {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis;
 }
 
 .basket-header {
@@ -30,6 +38,9 @@ $gray: #9b9b9b;
   padding: 10px;
   min-height: 90px;
   background-color: white;
+  --animate-duration: 700ms;
+  --animate-delay: 3s;
+  
 }
 
 .basket-content {
@@ -55,6 +66,8 @@ $gray: #9b9b9b;
 
 .form-container {
   width: 100%;
+  --animate-duration: 600ms;
+
 }
 
 .form-box {
@@ -83,6 +96,7 @@ $gray: #9b9b9b;
   padding: 7px 0;
   background: transparent;
   transition: border-color 0.2s;
+
 
   &::placeholder {
     color: transparent;

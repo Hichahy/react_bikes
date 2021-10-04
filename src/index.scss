@@ -22,54 +22,32 @@ textarea {
   height: 100%;
 }
 
-header {
+.main-nav {
   background-color: rgb(255, 204, 0);
   color: rgb(0, 0, 0);
   display: flex;
   align-items: center;
   padding: 1%;
   height: 5%;
+  position: sticky;
+  z-index: 5;
+  position: -webkit-sticky;
+  top: 0; /* required */
+  box-shadow: 0 4px 16px -1px grey;
 }
 
-header a {
+.main-nav a {
   color: rgb(91, 91, 91);
   text-decoration: none;
+  margin: 30px;
+}
+.NavLink.active {
+  color: white;
+  text-decoration: underline;
 }
 
 a:hover {
   color: rgb(0, 0, 0);
-}
-.content {
-  display: flex;
-  justify-content: space-between;
-  display: flex;
-  min-height: 92vh;
-}
-
-.content-bikes {
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  border-right: inset;
-  padding: 10px;
-}
-
-.main {
-  min-height: 92%;
-}
-
-.main-content {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: flex-start;
-}
-
-.content {
-  display: flex;
-  justify-content: space-between;
 }
 
 footer {
@@ -80,11 +58,3 @@ footer {
   height: 16%;
 }
 
-.not-found {
-  font-size: small;
-}
-
-.sidebar {
-  width: 20%;
-  padding: 10px;
-}

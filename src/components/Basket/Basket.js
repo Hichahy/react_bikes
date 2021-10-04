@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Basket.scss";
 import { IoIosClose } from "react-icons/io";
 import formatCurrency from "../../livehacks";
@@ -12,6 +12,13 @@ const Basket = (props) => {
     email: "",
     adress: "",
   });
+
+  //bo po usunieciu zostawał formularz 
+  useEffect(() => {
+    if (props.basketItems.length === 0 ) {
+      setShowCheckout(false)
+    }
+  }, [props.basketItems])
 
   const handleInput = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value }); //name nazwa inputa nie stanu name
@@ -43,9 +50,9 @@ const Basket = (props) => {
         <ul className="basket-item">
           {props.basketItems.map((i) => (
             <li key={i._id}>
-              <div className="bike-box">
+              <div className="bike-box animate__animated animate__bounceIn">
                 <div className="title-box">
-                  <div>{i.tittle}</div>
+                  <div className="basket-title">{i.tittle}</div>
                   <div>
                     <IoIosClose
                       className="close-btn"
@@ -83,10 +90,10 @@ const Basket = (props) => {
       )}
       {showCheckout && (
         //Form
-        <div className="form-container">
+        <div className="form-container animate__animated animate__flipInY">
           <form onSubmit={createOrder}>
             <ul className="form-box">
-              <div class="form__group field">
+              <div className="form__group field">
                 <input
                   type="email"
                   className="form__field"
@@ -96,11 +103,11 @@ const Basket = (props) => {
                   required
                   onChange={handleInput}
                 />
-                <label for="email" class="form__label">
+                <label htmlFor="email" className="form__label">
                   Email
                 </label>
               </div>
-              <div class="form__group field">
+              <div className="form__group field">
                 <input
                   type="text"
                   className="form__field"
@@ -110,11 +117,11 @@ const Basket = (props) => {
                   required
                   onChange={handleInput}
                 />
-                <label for="name" class="form__label">
+                <label htmlFor="name" className="form__label">
                   Name
                 </label>
               </div>
-              <div class="form__group field">
+              <div className="form__group field">
                 <input
                   type="text"
                   className="form__field"
@@ -124,7 +131,7 @@ const Basket = (props) => {
                   required
                   onChange={handleInput}
                 />
-                <label for="adress" class="form__label">
+                <label htmlFor="adress" className="form__label">
                   Adress
                 </label>
               </div>

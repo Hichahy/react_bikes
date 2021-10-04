@@ -1,0 +1,75 @@
+.product-containter {
+    display: flex;
+    padding: 10px;
+    min-height: 90vh;
+    display: grid;
+}
+
+.bike-cart-box {
+  display: flex;
+}
+
+.left-side {
+  width: 50%;
+}
+
+.right-side {
+  width: 50%;
+  background-color: rgb(205, 205, 205);
+  clip-path: ellipse(300% 100% at 257.5% 0%);
+}
+
+.blump {
+  border-radius: 30% 70% 46% 54% / 30% 30% 70% 70%;
+  background: rgb(255, 0, 230);
+  background: linear-gradient(
+    295deg,
+    rgba(255, 0, 230, 1) 7%,
+    rgba(255, 204, 1, 1) 57%
+  );
+  height: 70%;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px,
+    rgba(0, 0, 0, 0.05) 0px 5px 10px;
+    position: absolute;
+    z-index: -1;
+}
+
+.blump-box {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-content {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.info-box {
+  width: 100%;
+}
+
+.content-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        width: 50%;
+        height: auto;
+    }
+}
+
