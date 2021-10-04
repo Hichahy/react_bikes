@@ -3,7 +3,7 @@
     {
       "_id": "bike1",
       "tittle": "Bike Canondale MTB",
-      "image": "https://www.pasaz24cdn.pl/web3086/productimages/22563173_2507.jpg",
+      "image": "/Images/bike1.png",
       "description": "If You like be free, this bike meet your expectations",
       "price": 99.99,
       "avaibleSizesz": ["XL", "L"]
@@ -11,7 +11,7 @@
     {
       "_id": "bike2",
       "tittle": "Bianchi Devil Cyclist",
-      "image": "https://zdjecia.bikeworld.pl/produkty/medium/rowery_szosowe_race_klasyczne_bianchi_oltre_xr3_shimano_ultegra_241f2.jpg",
+      "image": "/Images/bike2.png",
       "description": "Como, Giro d' Italia, Pizza? Mamma Mia this bike is Italy devil",
       "price": 75.0,
       "avaibleSizesz": ["S", "L", "M"]
@@ -19,7 +19,7 @@
     {
       "_id": "bike3",
       "tittle": "Fixed Gear",
-      "image": "https://iwobike.pl/14349-large_default/rower-ostre-kolo-unisex-28-wolnobieg-bialy-kolarka.jpg",
+      "image": "/Images/bike3.png",
       "description": "Fastest in city, with this bike your deliveries will be faster than before",
       "price": 151.99,
       "avaibleSizesz": ["XL", "L", "M"]
@@ -27,7 +27,7 @@
     {
       "_id": "bike4",
       "tittle": "City Bike Pretty Woman",
-      "image": "https://i.pinimg.com/originals/df/a2/b4/dfa2b48b56d7b77f2944f1c5bd3f1d5a.jpg",
+      "image": "/Images/bike4.png",
       "description": "You are sweet candy on sweet unicorn, make rainbow trails",
       "price": 399.99,
       "avaibleSizesz": ["XL", "L", "S"]
@@ -35,7 +35,7 @@
     {
       "_id": "bike5",
       "tittle": "Electric Bike Bolt Gang",
-      "image": "https://cdn.inceptivemind.com/wp-content/uploads/2021/04/Biktrix-Moto-white-1024x586.jpg",
+      "image": "/Images/bike5.png",
       "description": "Don't be fooled by the appearance, this Chihuahua is capable of sweeping real pit bulls",
       "price": 1000,
       "avaibleSizesz": ["L"]
@@ -43,7 +43,7 @@
     {
       "_id": "bike6",
       "tittle": "Crazy Bumping Jupiter Suff",
-      "image": "https://p.vitalmtb.com/photos/press_releases/3379/title_image/s1600_s1600_Mondraker_Foxy_XR_29_838032.jpg?1580946117",
+      "image": "/Images/bike6.png",
       "description": "Mud, rain, thrill? Please wear a helmet",
       "price": 745.5,
       "avaibleSizesz": ["XL"]

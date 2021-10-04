@@ -3,5 +3,5 @@ export default function formatCurrency(num) {
 }
 
 export function AvaibleCurrency(str) {
-  return String(str) + "";
+  return String(str) + " ";
 }

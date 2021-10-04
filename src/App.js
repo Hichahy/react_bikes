@@ -1,148 +1,28 @@
-import React, { useState } from "react";
-import Bikes from "./components/Bikes/Bikes";
-import data from "./data.json";
-import Filter from "./components/Filter/Filter";
-import Basket from "./components/Baket.js/Basket";
+import React from "react";
+import { NavLink, Switch, Route } from "react-router-dom";
+import Home from "./components/Home/Home";
+import "animate.css";
+import Shop from "./components/Shop/Shop";
+import BikeCard from "./components/BikeCard/BikeCard";
+
+//Animation and Card
 
 const App = () => {
-  const [bikes, setBikes] = useState(data.bikes);
-  const [size, setSize] = useState("");
-  const [sort, setSort] = useState("none");
-  const [search, setSearch] = useState("");
-  const [basketItems, setBasketItems] = useState(
-    localStorage.getItem("basketItems")
-      ? JSON.parse(localStorage.getItem("basketItems"))
-      : []
-  );
-
-  const createOrder = (order) => {
-    alert("need to save order for " + order.name);
-  };
-
-  const removeFromBasket = (bike) => {
-    const cartItems = basketItems.slice();
-    setBasketItems(cartItems.filter((i) => i._id !== bike._id));
-    //localStorage
-    localStorage.setItem(
-      "basketItems",
-      JSON.stringify(basketItems.filter((i) => i._id !== bike._id))
-    );
-  };
-
-  const addToBasket = (bike) => {
-    const cartItems = basketItems.slice();
-    let alreadyInCart = false;
-    cartItems.forEach((i) => {
-      if (i._id === bike._id) {
-        i.count++;
-        alreadyInCart = true;
-      }
-    });
-    if (!alreadyInCart) {
-      cartItems.push({ ...bike, count: 1 });
-    }
-    setBasketItems(cartItems);
-    //localStorage
-    localStorage.setItem("basketItems", JSON.stringify(cartItems));
-  };
-
-  const filterBikes = (e) => {
-    if (e.target.value === "") {
-      setBikes(data.bikes);
-      setSize(e.target.value);
-    } else {
-      setSize(e.target.value);
-      setBikes(
-        data.bikes.filter(
-          (bike) => bike.avaibleSizesz.indexOf(e.target.value) >= 0
-        )
-      );
-      setSort("none");
-    }
-  };
-
-  const sortBikes = (e) => {
-    const sort = e.target.value;
-    setSort(e.target.value);
-    setBikes(
-      bikes
-        .slice()
-        .sort((a, b) =>
-          sort === "lowest"
-            ? a.price > b.price
-              ? 1
-              : -1
-            : sort === "highest"
-            ? a.price < b.price
-              ? 1
-              : -1
-            : sort === "alphabet"
-            ? a.tittle < b.tittle
-              ? -1
-              : 1
-            : a._id < b._id
-            ? 1
-            : -1
-        )
-    );
-  };
-
-  const searchBikes = (e) => {
-    setSearch(e.target.value);
-    if (e.target.value === "") {
-      setBikes(data.bikes);
-      setSearch(e.target.value);
-    } else {
-      setBikes(
-        data.bikes.filter((bike) =>
-          bike.tittle.toLowerCase().includes(search.toLowerCase())
-        )
-      );
-      setSize("");
-      setSort("none");
-    }
-  };
-
   return (
     <div className="app-container">
-      <header>
-        <a href="/">🚲Bikes rental</a>
-      </header>
-      <main className="main">
-        <div className="content">
-          <div className="content-bikes">
-            <Filter
-              size={size}
-              sort={sort}
-              search={search}
-              bike={bikes.length}
-              filterBikes={filterBikes}
-              sortBikes={sortBikes}
-              setSearch={setSearch}
-              searchBikes={searchBikes}
-            />
-
-            <div className="main-content">
-              {bikes.length === 0 ? (
-                <span className="not-found">sorry not found...</span>
-              ) : (
-                <Bikes
-                  bikes={bikes}
-                  search={search}
-                  addToBasket={addToBasket}
-                />
-              )}
-            </div>
-          </div>
-          <div className="sidebar">
-            <Basket
-              basketItems={basketItems}
-              removeFromBasket={removeFromBasket}
-              createOrder={createOrder}
-            />
-          </div>
-        </div>
-      </main>
+      <nav className="main-nav">
+        <NavLink className="NavLink" to="/home">
+          Home
+        </NavLink>
+        <NavLink className="NavLink" to="/shop">
+          Shop
+        </NavLink>
+      </nav>
+      <Switch>
+        <Route path="/home" exact component={Home} />
+        <Route path="/shop" component={Shop} />
+        <Route path="/bike/:id" component={BikeCard} />
+      </Switch>
       <footer>information footer</footer>
     </div>
   );

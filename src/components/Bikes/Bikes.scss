@@ -4,7 +4,7 @@ $main-color: rgb(255, 204, 0);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  min-height: 29rem;
+  min-height: 30rem;
   width: 19rem;
   display: flex;
   align-items: center;
@@ -12,6 +12,8 @@ $main-color: rgb(255, 204, 0);
   margin: 10px;
   padding: 2%;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  --animate-duration: 1500ms;
+  animation-duration: 2s; /* don't forget to set a duration! */
 }
 
 .tittle {
@@ -33,6 +35,7 @@ $main-color: rgb(255, 204, 0);
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 .description-box {
@@ -57,3 +60,4 @@ $main-color: rgb(255, 204, 0);
   text-decoration: none;
   transition: all 150ms linear;
 }
+
