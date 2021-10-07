@@ -6,6 +6,8 @@ import "./Bikes.scss";
 
 const Bikes = (props) => {
 
+//  if (props.bikes < 0) return <img src="/Images/wheel.png" alt="wheel loading"/>
+
   return props.bikes.map((bike) => (
     <div key={bike._id} className="card animate__animated animate__fadeIn">
       <div className="tittle-box">
