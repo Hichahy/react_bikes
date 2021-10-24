@@ -1,10 +1,15 @@
 import React from "react";
 import "./ButtonSidebar.scss";
+import { connect } from "react-redux";
+import { toggleCheckOut } from "../../bikes/duck/index";
 
 const ButtonSidebar = (props) => {
   return (
     <div className="wrapper">
-      <button onClick={() => props.setShowCheckout(true)} className="cta">
+      <button
+        className="cta"
+        onClick={() => props.toggleCheckOut(!props.openForm)}
+      >
         <span>FINALIZE</span>
         <span>
           <svg
@@ -44,4 +49,9 @@ const ButtonSidebar = (props) => {
   );
 };
 
-export default ButtonSidebar;
+export default connect(
+  (state) => ({
+    openForm: state.products.openForm,
+  }),
+  { toggleCheckOut }
+)(ButtonSidebar);

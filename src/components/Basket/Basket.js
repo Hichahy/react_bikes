@@ -1,54 +1,77 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import "./Basket.scss";
 import { IoIosClose } from "react-icons/io";
-import formatCurrency from "../../livehacks";
+import formatCurrency from "../../unitl";
 import ButtonSidebar from "../../layout/ButtonSidebar/ButtonSidebar";
 import ButtonSidebarCheck from "../../layout/ButtonSidebarCheck/ButtonSidebarCheck";
+import { connect } from "react-redux";
+import {
+  removeBike,
+  toggleOpenModal,
+  toggleCheckOut,
+  basketForm,
+} from "../../bikes/duck/index";
+import Modal from "../Modal/Modal";
 
 const Basket = (props) => {
-  const [showCheckout, setShowCheckout] = useState(false);
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    adress: "",
-  });
+  const delay = 0.5;
 
-  //bo po usunieciu zostawał formularz 
+  const closeFormAnimation = () => {
+    document.getElementById("basketForm").className =
+      "form-container animate__animated animate__flipOutY";
+  };
+
+  //bo po usunieciu zostawał formularz
+  const cartItems = props.cartItems;
+  const openForm = props.openForm;
+  const toggleCheckOut = props.toggleCheckOut;
+
   useEffect(() => {
-    if (props.basketItems.length === 0 ) {
-      setShowCheckout(false)
+    if (cartItems.length === 0 && openForm === true) {
+      let timer1 = setTimeout(() => toggleCheckOut(!openForm), delay * 1000);
+      toggleCheckOut(timer1);
+      closeFormAnimation();
     }
-  }, [props.basketItems])
+  }, [cartItems, openForm, toggleCheckOut]);
 
   const handleInput = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value }); //name nazwa inputa nie stanu name
+    props.basketForm({ ...props.value, [e.target.name]: e.target.value }); //name nazwa inputa nie stanu name
   };
 
-  const createOrder = (e) => {
+  // const createOrder = () => {
+
+  //   const order = {
+  //     email: form.email,
+  //     name: form.name,
+  //     adress: form.adress,
+  //     cartItems: props.cartItems,
+  //     total: props.cartItems.reduce((a, c) => a + c.price * c.count, 0),
+  //   };
+  //   props.createOrder(order);
+  // };
+
+  const finalizeOrder = (e) => {
     e.preventDefault();
-    const order = {
-      email: form.email,
-      name: form.name,
-      adress: form.adress,
-      basketItems: props.basketItems,
-    };
-    props.createOrder(order);
+    props.toggleOpenModal();
   };
+
+  const totalCount = props.cartItems.reduce((accumulator, currentValue) => {
+    //funkcja akumulująca
+    return accumulator + currentValue.count;
+  }, 0);
 
   return (
     <div>
       <div className="basket-header">
-        {props.basketItems.length === 0 ? (
-          <div className="cart cart-header">You don't have any items.</div>
+        {props.cartItems.length === 0 ? (
+          <div className="cart cart-header">You don't have any items. </div>
         ) : (
-          <div className="cart cart-header">
-            Your basket {props.basketItems.length}.
-          </div>
+          <div className="cart cart-header">Your basket {totalCount}.</div>
         )}
       </div>
       <div className="basket">
         <ul className="basket-item">
-          {props.basketItems.map((i) => (
+          {props.cartItems.map((i) => (
             <li key={i._id}>
               <div className="bike-box animate__animated animate__bounceIn">
                 <div className="title-box">
@@ -56,7 +79,7 @@ const Basket = (props) => {
                   <div>
                     <IoIosClose
                       className="close-btn"
-                      onClick={() => props.removeFromBasket(i)}
+                      onClick={() => props.removeBike(i)}
                     />
                   </div>
                 </div>
@@ -73,25 +96,26 @@ const Basket = (props) => {
           ))}
         </ul>
       </div>
-      {props.basketItems.length !== 0 && (
+      {props.cartItems.length !== 0 && (
         <div className="basket-total">
           <p style={{ fontWeight: "bold" }}>
             Total:{" "}
             {formatCurrency(
-              props.basketItems.reduce((a, c) => a + c.price * c.count, 0)
+              props.cartItems.reduce((a, c) => a + c.price * c.count, 0)
             )}
           </p>
           <div className="basket-btn-box">
-            {showCheckout === false && (
-              <ButtonSidebar setShowCheckout={setShowCheckout} />
-            )}
+            {props.openForm === false && <ButtonSidebar />}
           </div>
         </div>
       )}
-      {showCheckout && (
+      {props.openForm && (
         //Form
-        <div className="form-container animate__animated animate__flipInY">
-          <form onSubmit={createOrder}>
+        <div
+          id="basketForm"
+          className="form-container animate__animated animate__flipInY"
+        >
+          <form onSubmit={finalizeOrder}>
             <ul className="form-box">
               <div className="form__group field">
                 <input
@@ -140,8 +164,17 @@ const Basket = (props) => {
           </form>
         </div>
       )}
+      <Modal />
     </div>
   );
 };
 
-export default Basket;
+export default connect(
+  (state) => ({
+    cartItems: state.products.cartItems,
+    openModal: state.products.openModal,
+    openForm: state.products.openForm,
+    value: state.products.value,
+  }),
+  { removeBike, toggleOpenModal, toggleCheckOut, basketForm }
+)(Basket);

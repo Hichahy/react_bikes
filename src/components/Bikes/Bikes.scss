@@ -4,7 +4,7 @@ $main-color: rgb(255, 204, 0);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  min-height: 30rem;
+  min-height: 31rem;
   width: 19rem;
   display: flex;
   align-items: center;
@@ -26,9 +26,14 @@ $main-color: rgb(255, 204, 0);
 
 .price-box {
   width: 100%;
+  height: 1rem;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+}
+
+.image-box {
+  height: 10rem;
 }
 
 .tittle-box {
@@ -40,6 +45,8 @@ $main-color: rgb(255, 204, 0);
 
 .description-box {
   font-size: 12px;
+  display: flex;
+  flex-direction: column;
 }
 
 .btn-3 {
@@ -61,3 +68,96 @@ $main-color: rgb(255, 204, 0);
   transition: all 150ms linear;
 }
 
+.whell-load {
+  height: 100px;
+}
+
+@-webkit-keyframes rotating /* Safari and Chrome */ {
+  from {
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotating {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.whell-load {
+  -webkit-animation: rotating 2s linear infinite;
+  -moz-animation: rotating 2s linear infinite;
+  -ms-animation: rotating 2s linear infinite;
+  -o-animation: rotating 2s linear infinite;
+  animation: rotating 2s linear infinite;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  justify-content: center;
+  p {
+    font-size: 17px;
+  }
+}
+
+.p-not-found {
+  font-size: 17px;
+}
+
+.size_box {
+  display: flex;
+  align-items: baseline;
+}
+
+.option {
+  font-size: 14px;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
+
+.btn-3-disabled {
+  pointer-events: none;
+}
+
+.color-box {
+  display: flex;
+  align-items: center;
+}
+
+.colors-select {
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  height: 15px;
+  width: 12px;
+  border-radius: 50%;
+  margin: 10px;
+  cursor: pointer;
+}
+.c-selected {
+  border: solid 2px rgb(167, 166, 166);
+  height: 15px;
+  width: 12px;
+  border-radius: 50%;
+  margin: 10px;
+  cursor: pointer;
+}
