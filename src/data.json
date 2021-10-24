@@ -6,7 +6,11 @@
       "image": "/Images/bike1.png",
       "description": "If You like be free, this bike meet your expectations",
       "price": 99.99,
-      "avaibleSizesz": ["XL", "L"]
+      "avaibleSizesz": ["XL", "L"],
+      "count": 0,
+      "selectedSize": "",
+      "avaibleColors": ["yellow", "black"],
+      "selectedColor": ""
     },
     {
       "_id": "bike2",
@@ -14,7 +18,11 @@
       "image": "/Images/bike2.png",
       "description": "Como, Giro d' Italia, Pizza? Mamma Mia this bike is Italy devil",
       "price": 75.0,
-      "avaibleSizesz": ["S", "L", "M"]
+      "avaibleSizesz": ["S", "L", "M"],
+      "count": 0,
+      "selectedSize": "",
+      "avaibleColors": ["aqua", "black"],
+      "selectedColor": ""
     },
     {
       "_id": "bike3",
@@ -22,7 +30,11 @@
       "image": "/Images/bike3.png",
       "description": "Fastest in city, with this bike your deliveries will be faster than before",
       "price": 151.99,
-      "avaibleSizesz": ["XL", "L", "M"]
+      "avaibleSizesz": ["XL", "L", "M"],
+      "count": 0,
+      "selectedSize": "",
+      "avaibleColors": ["salmon"],
+      "selectedColor": ""
     },
     {
       "_id": "bike4",
@@ -30,7 +42,11 @@
       "image": "/Images/bike4.png",
       "description": "You are sweet candy on sweet unicorn, make rainbow trails",
       "price": 399.99,
-      "avaibleSizesz": ["XL", "L", "S"]
+      "avaibleSizesz": ["XL", "L", "S"],
+      "count": 0,
+      "selectedSize": "",
+      "avaibleColors": ["pink", "white"],
+      "selectedColor": ""
     },
     {
       "_id": "bike5",
@@ -38,15 +54,23 @@
       "image": "/Images/bike5.png",
       "description": "Don't be fooled by the appearance, this Chihuahua is capable of sweeping real pit bulls",
       "price": 1000,
-      "avaibleSizesz": ["L"]
+      "avaibleSizesz": ["L"],
+      "count": 0,
+      "selectedSize": "",
+      "avaibleColors": ["silver"],
+      "selectedColor": ""
     },
     {
       "_id": "bike6",
       "tittle": "Crazy Bumping Jupiter Suff",
       "image": "/Images/bike6.png",
-      "description": "Mud, rain, thrill? Please wear a helmet",
+      "description": "Mud, rain, thrill? Your mom will be worried... Please wear a helmet",
       "price": 745.5,
-      "avaibleSizesz": ["XL"]
+      "avaibleSizesz": ["XL"],
+      "count": 0,
+      "selectedSize": "",
+      "avaibleColors": ["lightgreen  ", "gold"],
+      "selectedColor": ""
     }
   ]
 }

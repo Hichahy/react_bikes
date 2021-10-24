@@ -4,6 +4,7 @@ import Home from "./components/Home/Home";
 import "animate.css";
 import Shop from "./components/Shop/Shop";
 import BikeCard from "./components/BikeCard/BikeCard";
+import Footer from "./components/Footer/Footer"
 
 //Animation and Card
 
@@ -23,7 +24,7 @@ const App = () => {
         <Route path="/shop" component={Shop} />
         <Route path="/bike/:id" component={BikeCard} />
       </Switch>
-      <footer>information footer</footer>
+      <Footer />
     </div>
   );
 };

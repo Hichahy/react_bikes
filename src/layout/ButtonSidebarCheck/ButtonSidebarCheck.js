@@ -1,10 +1,10 @@
 import React from "react";
 import "./ButtonSidebar.scss";
 
-const ButtonSidebar = (props) => {
+const ButtonSidebar = () => {
   return (
     <div className="wrapper">
-      <button type="sumbit" className="cta">
+      <button type="sumbit" className="cta" >
         <span>CHECKOUT</span>
         <span>
           <svg
