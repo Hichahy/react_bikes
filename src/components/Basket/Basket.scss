@@ -24,8 +24,9 @@ $gray: #9b9b9b;
 .basket-header {
   display: flex;
   align-items: center;
-  height: 40px;
+  // height: 40px;
   font-size: 17px;
+  justify-content: center;
 }
 
 .bike-box {
@@ -147,4 +148,19 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+.empy-bag {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 80vh;
+}
+
+.empy-icon {
+  color: rgba(128, 128, 128, 0.199);
+}
+
+.cart-header {
+  padding: 10px;
 }

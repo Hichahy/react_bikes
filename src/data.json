@@ -2,7 +2,7 @@
   "bikes": [
     {
       "_id": "bike1",
-      "tittle": "Bike Canondale MTB",
+      "tittle": "Bike Supa MTB",
       "image": "/Images/bike1.png",
       "description": "If You like be free, this bike meet your expectations",
       "price": 99.99,
@@ -14,7 +14,7 @@
     },
     {
       "_id": "bike2",
-      "tittle": "Bianchi Devil Cyclist",
+      "tittle": "Speedy Devil Cyclist",
       "image": "/Images/bike2.png",
       "description": "Como, Giro d' Italia, Pizza? Mamma Mia this bike is Italy devil",
       "price": 75.0,

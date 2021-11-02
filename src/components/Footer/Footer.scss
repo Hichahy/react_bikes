@@ -2,10 +2,10 @@ footer {
   width: 100%;
   background-color: #ffcc00;
   display: flex;
-  align-items: center;
   height: fit-content;
   justify-content: space-around;
   padding: 20px 0 20px 0px;
+  position: absolute;
   button {
     font-size: 15px;
     border: none;
@@ -22,7 +22,7 @@ footer {
       background-color: #00000021;
     }
     &:hover .rocket {
-      --animate-duration: 1s;
+      --animate-duration: 2s;
     }
   }
 }
