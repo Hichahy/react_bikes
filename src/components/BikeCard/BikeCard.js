@@ -40,11 +40,21 @@ const BikeCard = () => {
         <div style={{ width: "100%" }}>
           <h2>{bike.description}.</h2>
           <p>
-            sizes:
+            Sizes:
             {bike.avaibleSizesz.map((x) => (
               <span> {x}, </span>
             ))}
           </p>
+          <p className="color-box">
+            Colors:
+          {bike.avaibleColors.map((x) => (
+               <option
+               className="colors-select-cart"
+               style={{ background: `${x}` }}
+             ></option>
+            ))}
+          </p>
+         
           <h4>{formatCurrency(bike.price)}</h4>
         </div>
       </div>

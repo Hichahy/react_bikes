@@ -10,7 +10,7 @@ import {
   BASKET_FORM,
   SELECT_SIZE,
   ADD_CHECKOUT,
-  SELECT_COLOR
+  SELECT_COLOR,
 } from "./types";
 import { bikes } from "../../data.json";
 

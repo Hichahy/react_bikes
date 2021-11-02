@@ -52,15 +52,14 @@
   li {
     font-size: 15px;
   }
-  .siezeP{
+  .siezeP {
     margin: 0px;
     font-size: 15px;
   }
   div {
     font-size: 15px;
-    
+
     display: flex;
-    
   }
   label {
     margin-right: 10px;
@@ -71,8 +70,29 @@
   width: 100%;
 }
 
-.totalP{
+.totalP {
   font-weight: 600;
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.summary-box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.color-select-modal {
+  background: salmon;
+  margin: 0 0 0 10px;
+  width: 15px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  border-radius: 50%;
+}
+
+.x-modal {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
 }

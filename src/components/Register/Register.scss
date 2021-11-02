@@ -1,0 +1,131 @@
+.register-containter {
+  height: 92vh;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+}
+
+.background-img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+}
+
+.register-content {
+  width: 60%;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 7%;
+  div {
+    width: 75%;
+    margin-left: 10%;
+    height: fit-content;
+  }
+}
+
+.register-panel {
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.468);
+  width: 35%;
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  justify-content: center;
+  align-items: center;
+}
+
+.input-box {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+
+  input {
+    outline: none;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #cdcdcdad;
+    width: 100%;
+    color: white;
+    margin-bottom: 5%;
+    height: 3%;
+  }
+  button {
+    padding: 10px;
+    height: 50px;
+    width: 40%;
+    background: #f1f1ef33;
+    outline: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: large;
+  }
+
+  button:hover {
+    background-color: #cdcdcdad;
+  }
+
+  label {
+    font-size: medium;
+    color: #cdcdcdc4;
+  }
+  h1 {
+    color: white;
+    margin: 0px 0 30px -2px;
+  }
+  .checkbox-box {
+    display: flex;
+    align-items: center;
+    height: 30px;
+  }
+  .checkbox-register {
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    background: rgba(40, 40, 40, 0.2);
+    color: black;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    border: 1px solid #cdcdcdc4;
+    position: relative;
+    margin: 0px 18px 0px 0px;
+  }
+
+  .checkbox-register:checked {
+    background: #cdcdcdc4;
+    transform-origin: bottom left;
+    border: 1px solid #cdcdcdc4;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  }
+}
+
+.button-box {
+  display: flex;
+  margin-top: 10px;
+  display: flex;
+  margin-top: 10px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.link-register {
+  list-style: none;
+  text-decoration: none;
+  color: #cdcdcdad;
+  font-size: small;
+  border-bottom: 1px solid;
+}
+.link-register:hover {
+  color: white;
+}
+
+.error_register  {
+  font-size: small !important;
+  color: red !important;
+}

@@ -67,6 +67,14 @@ const footer = () => {
           Shop{" "}
           <RiArrowDropRightLine className="arrow animate__animated animate__heartBeat  animate__infinite" />
         </NavLink>
+        <NavLink className="NavLink-fotter" to="/register">
+          Register{" "}
+          <RiArrowDropRightLine className="arrow animate__animated animate__heartBeat  animate__infinite" />
+        </NavLink>
+        <NavLink className="NavLink-fotter" to="/login">
+          Login{" "}
+          <RiArrowDropRightLine className="arrow animate__animated animate__heartBeat  animate__infinite" />
+        </NavLink>
       </div>
     </footer>
   );

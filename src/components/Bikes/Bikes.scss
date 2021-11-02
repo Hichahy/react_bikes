@@ -58,14 +58,10 @@ $main-color: rgb(255, 204, 0);
   display: flex;
   cursor: pointer;
   align-items: center;
-}
-
-.btn-3:hover {
-  border-radius: 7px;
-  background: rgb(0, 0, 0);
-  color: rgb(255, 255, 255);
-  text-decoration: none;
-  transition: all 150ms linear;
+  --animate-duration: none;
+  &:hover {
+    --animate-duration: 1s;
+  }
 }
 
 .whell-load {

@@ -61,12 +61,14 @@ const Basket = (props) => {
   }, 0);
 
   return (
-    <div>
+    <div className="">
       <div className="basket-header">
         {props.cartItems.length === 0 ? (
-          <div className="cart cart-header">You don't have any items. </div>
+          <div style={{ padding: "10px" }} className="cart-header">
+            You don't have any items.{" "}
+          </div>
         ) : (
-          <div className="cart cart-header">Your basket {totalCount}.</div>
+          <div className="cart-header">Your basket {totalCount}.</div>
         )}
       </div>
       <div className="basket">

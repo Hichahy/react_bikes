@@ -13,10 +13,24 @@ import {
 import "./Bikes.scss";
 
 const Bikes = (props) => {
+  const [animationAdd, setAnimationAdd] = useState(false);
+
   const loadingBikes = props.loadBike;
+
   useEffect(() => {
     loadingBikes();
   }, [loadingBikes]);
+
+  //animation add-btn
+  const animationAddFlag = () => {
+    setAnimationAdd(true);
+  };
+  useEffect(() => {
+    if (animationAdd === true) {
+      let timer = setTimeout(() => setAnimationAdd(false), 1000);
+      setAnimationAdd(timer);
+    }
+  }, [props.addBike, animationAdd]);
 
   //loading data
   if (props.assortment.length < 1) {
@@ -96,8 +110,11 @@ const Bikes = (props) => {
       <div className="price-box">
         <h4>{formatCurrency(bike.price)}</h4>
         <button
-          className="btn-3"
+          className={`btn-3 animate__animated animate__pulse  animate__infinite ${
+            animationAdd ? "btn-3 animate__animated animate__tada" : ""
+          }`}
           onClick={() => {
+            animationAddFlag();
             props.addBike(bike);
             props.addToCheckout(bike);
           }}

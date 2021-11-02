@@ -5,7 +5,10 @@ import { toggleOpenModal } from "../../bikes/duck/index";
 import { connect } from "react-redux";
 import formatCurrency, { AvaibleCurrency } from "../../livehacks";
 import { v4 as uuidv4 } from "uuid";
+import { AiOutlineClose } from "react-icons/ai";
 import Bloop from "../../layout/Bloop/Bloop";
+import ButtonPurchase from "../../layout/ButtonPurchase/ButtonPurchase";
+import { typographyClasses } from "@mui/material";
 
 const Modal = (props) => {
   if (!props.openModal) return null;
@@ -17,11 +20,13 @@ const Modal = (props) => {
         onClick={() => props.toggleOpenModal(props.openModal)}
       />
       <div className="modal">
-        <p>
-          Great! {props.value.name}, now you must checkout your order and
-          personalize
-        </p>
-        <p style={{ fontSize: "18px" }}>Your order:</p>
+        <AiOutlineClose
+          className="x-modal"
+          onClick={() => props.toggleOpenModal(props.openModal)}
+        />
+
+        <p>Great! {props.value.name}, now you must checkout your order ...</p>
+        <p style={{ fontSize: "18px", fontWeight: "600" }}>Your order:</p>
         <ol className="label_container">
           {props.checkout.map((i) => (
             <div key={uuidv4()} className="label_box">
@@ -36,18 +41,25 @@ const Modal = (props) => {
                 <div>
                   <label>Color: </label>
                   <p className="siezeP">{i.selectedColor}</p>
+                  <option
+                    className="color-select-modal"
+                    style={{ background: `${i.selectedColor}` }}
+                  ></option>
                 </div>
                 <label className="siezeP">{formatCurrency(i.price)}</label>
               </div>
             </div>
           ))}
         </ol>
-        <p className="totalP">
-          Total:{" "}
-          {formatCurrency(
-            props.cartItems.reduce((a, c) => a + c.price * c.count, 0)
-          )}
-        </p>
+        <div className="summary-box">
+          <p className="totalP">
+            Total:{" "}
+            {formatCurrency(
+              props.cartItems.reduce((a, c) => a + c.price * c.count, 0)
+            )}
+          </p>
+          <ButtonPurchase />
+        </div>
         <Bloop />
       </div>
     </>,
