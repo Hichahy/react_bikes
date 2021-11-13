@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Breadcrumbs, Link, Typography } from "@mui/material";
 import formatCurrency, { AvaibleCurrency } from "../../livehacks";
+import { NavLink } from "react-router-dom";
 import { RiShoppingBag2Line } from "react-icons/ri";
 import data from "../../data.json";
 import "./BikeCard.scss";
@@ -20,9 +21,9 @@ const BikeCard = () => {
     <div className="product-containter ">
       <div style={{ position: "sticky", top: "10%" }}>
         <Breadcrumbs aria-label="breadcrumb">
-          <Link underline="hover" color="inherit" href="/shop">
+          <NavLink className="breadcrumbs_link" to="/shop">
             Shop
-          </Link>
+          </NavLink>
           <Typography color="text.primary">{bike.tittle}</Typography>
         </Breadcrumbs>
       </div>
@@ -47,14 +48,14 @@ const BikeCard = () => {
           </p>
           <p className="color-box">
             Colors:
-          {bike.avaibleColors.map((x) => (
-               <option
-               className="colors-select-cart"
-               style={{ background: `${x}` }}
-             ></option>
+            {bike.avaibleColors.map((x) => (
+              <option
+                className="colors-select-cart"
+                style={{ background: `${x}` }}
+              ></option>
             ))}
           </p>
-         
+
           <h4>{formatCurrency(bike.price)}</h4>
         </div>
       </div>

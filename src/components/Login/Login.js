@@ -1,5 +1,5 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useEffect } from "react";
+import { NavLink, useHistory } from "react-router-dom";
 import { AiOutlineRight } from "react-icons/ai";
 import { connect } from "react-redux";
 import "./Login.scss";
@@ -7,6 +7,8 @@ import {
   loginForm,
   errorsHandlerLogin,
   submitLogin,
+  currentUserLogin,
+  isLogged
 } from "../../accounts/duck/index";
 
 const Login = ({
@@ -15,10 +17,18 @@ const Login = ({
   loginErrors,
   errorsHandlerLogin,
   loginForm,
+  usersData,
+  loginSubmit,
+  isLogged,
+  currentUserLogin
 }) => {
+
+  const findUser = usersData.filter((i) => i.email === valueLogin.email);
+  const history = useHistory();
+  console.log(``, findUser)
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
     errorsHandlerLogin(validateInfo(valueLogin));
     submitLogin(true);
   };
@@ -30,18 +40,50 @@ const Login = ({
       loginErrors.email = "Email required";
     } else if (!/\S+@\S+\.\S+/.test(valueLogin.email)) {
       loginErrors.email = "Email address is invalid";
+    } else if (
+      usersData.find((i) => i.email === valueLogin.email) === undefined
+    ) {
+      loginErrors.email = "There is no that user";
     }
-    if (!valueLogin.password) {
-      loginErrors.password = "Password is required";
-    } else if (valueLogin.password.length < 6) {
-      loginErrors.password = "Password needs to be 6 characters or more";
+
+    if (!valueLogin.bike) {
+      loginErrors.bike = "Bike name is required";
+    } else if (valueLogin.bike.length < 6) {
+      loginErrors.bike = "Bike needs to be 6 characters or more";
+    } else if (
+      usersData.find((i) => i.bikeName === valueLogin.bike) === undefined
+    ) {
+      loginErrors.bike = "inccorenct bike name";
+    } else if (
+      findUser.length > 0 &&
+      valueLogin.bike !== findUser[0].bikeName  
+    ) {
+      loginErrors.bike = "inccorenct bike name";
     }
+
     return loginErrors;
   };
 
   const handleInput = (e) => {
     loginForm({ ...valueLogin, [e.target.name]: e.target.value });
   };
+  
+  const clearInput = () => {
+    valueLogin.email = "";
+    valueLogin.bike = "";
+  };
+
+
+  useEffect(() => {
+    if (Object.keys(loginErrors).length === 0 && loginSubmit) {
+      currentUserLogin()
+      submitLogin(false);
+      isLogged(true)
+      history.push("/dashboard");
+      clearInput()
+    }
+  }, [submitLogin, currentUserLogin, isLogged, loginErrors, loginSubmit, history]);
+
 
   return (
     <div className="login-containter">
@@ -69,11 +111,11 @@ const Login = ({
             <label className="error_login">{loginErrors.email}</label>
           )}
           <input type="email" name="email" onChange={handleInput} />
-          <label>Passowrd</label>
-          {loginErrors.password && (
-            <label className="error_login">{loginErrors.password}</label>
+          <label>Bike name</label>
+          {loginErrors.bike && (
+            <label className="error_login">{loginErrors.bike}</label>
           )}
-          <input type="password" name="password" onChange={handleInput} />
+          <input type="text" name="bike" onChange={handleInput} />
           <div className="button-box">
             <button type="submit">
               Sign up <AiOutlineRight />
@@ -93,6 +135,8 @@ export default connect(
     valueLogin: state.accounts.valueLogin,
     loginSubmit: state.accounts.loginSubmit,
     loginErrors: state.accounts.loginErrors,
+    usersData: state.accounts.usersData,
+   
   }),
-  { loginForm, errorsHandlerLogin, submitLogin }
+  { loginForm, errorsHandlerLogin, submitLogin, currentUserLogin , isLogged}
 )(Login);

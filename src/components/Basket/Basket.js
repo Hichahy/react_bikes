@@ -161,6 +161,20 @@ const Basket = (props) => {
                   Adress
                 </label>
               </div>
+              <div className="form__group field">
+                <input
+                  type="text"
+                  className="form__field"
+                  placeholder="city"
+                  name="city"
+                  id="city"
+                  required
+                  onChange={handleInput}
+                />
+                <label htmlFor="city" className="form__label">
+                City
+                </label>
+              </div>
             </ul>
             <ButtonSidebarCheck />
           </form>

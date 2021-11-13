@@ -157,3 +157,13 @@ $main-color: rgb(255, 204, 0);
   margin: 10px;
   cursor: pointer;
 }
+
+.excessive {
+  color: rgb(255, 67, 67);
+  font-size: x-small;
+}
+
+.btnDisabled {
+  color: rgb(154, 154, 154);
+  pointer-events: none;
+}
