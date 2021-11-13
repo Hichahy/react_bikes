@@ -14,6 +14,14 @@ import "./Bikes.scss";
 
 const Bikes = (props) => {
   const [animationAdd, setAnimationAdd] = useState(false);
+  const [excessiveBikes, setExcessiveBikes] = useState(false);
+
+  //blocking an excessive number of bikes - max 10 bikes in basket
+  if (props.checkout.length > 9 && excessiveBikes === false) {
+    setExcessiveBikes(true);
+  } else if (props.checkout.length < 9 && excessiveBikes === true) {
+    setExcessiveBikes(false);
+  }
 
   const loadingBikes = props.loadBike;
 
@@ -56,7 +64,6 @@ const Bikes = (props) => {
       </p>
     );
   }
-
   return props.filteredItems.map((bike) => (
     <div key={bike._id} className="card animate__animated animate__fadeIn">
       <div className="tittle-box">
@@ -112,17 +119,26 @@ const Bikes = (props) => {
         <button
           className={`btn-3 animate__animated animate__pulse  animate__infinite ${
             animationAdd ? "btn-3 animate__animated animate__tada" : ""
-          }`}
+          }
+          ${excessiveBikes ? "btnDisabled" : ""}`}
           onClick={() => {
-            animationAddFlag();
-            props.addBike(bike);
-            props.addToCheckout(bike);
+            if (excessiveBikes === false) {
+              animationAddFlag();
+              props.addBike(bike);
+              props.addToCheckout(bike);
+            }
           }}
         >
           <RiShoppingBag2Line />
           Add
         </button>
       </div>
+      {excessiveBikes && (
+        <p className="excessive">
+          Sorry! You can order only 10 bikes. For more orders please contact to
+          shop
+        </p>
+      )}
     </div>
   ));
 };
@@ -133,6 +149,7 @@ export default connect(
     filteredItems: state.products.filteredItems,
     letters: state.products.letters,
     checkout: state.products.checkout,
+    cartItems: state.products.cartItems,
   }),
   {
     addBike,

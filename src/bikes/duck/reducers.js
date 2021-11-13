@@ -11,6 +11,7 @@ import {
   SELECT_SIZE,
   ADD_CHECKOUT,
   SELECT_COLOR,
+  CLEAN_BASKET
 } from "./types";
 
 const INITIAL_STATE = {
@@ -28,6 +29,7 @@ const INITIAL_STATE = {
     name: "",
     email: "",
     adress: "",
+    city: "",
   },
 };
 
@@ -89,6 +91,7 @@ const bikesReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         cartItems: action.payload.cartItems,
+        checkout: action.payload.checkout,
       };
 
     case FILTER_PRODUCTS_BY_SIZE:
@@ -136,6 +139,13 @@ const bikesReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         checkout: [...state.checkout, action.payload],
+      };
+
+    case CLEAN_BASKET:
+      return {
+        ...state,
+        checkout: action.payload.checkout,
+        cartItems: action.payload.cartItems,
       };
 
     default:

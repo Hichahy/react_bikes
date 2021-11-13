@@ -6,6 +6,11 @@ import {
   LOGIN_FORM,
   VALIDATE_ERRORS_LOGIN,
   SUBMIT_LOGIN,
+  ADD_USER,
+  USER_IS_LOGGED,
+  CURRENT_USER,
+  LOG_OUT,
+  CURRENT_USER_LOGIN
 } from "./types";
 
 export const signUpForm = (value) => (dispatch) => {
@@ -77,6 +82,94 @@ export const errorsHandlerLogin = (errors) => (dispatch) => {
     dispatch({
       type: VALIDATE_ERRORS_LOGIN,
       payload: errors,
+    });
+  } catch (err) {
+    console.log(`err`, err);
+  }
+};
+
+export const addUser = () => (dispatch, getState) => {
+  const email = getState().accounts.valueRegister.email;
+  const bike = getState().accounts.valueRegister.bike;
+  const userName = getState().accounts.valueRegister.userName;
+  const userObject = {
+    email: email,
+    bikeName: bike,
+    userName: userName,
+  };
+  const usersData = getState().accounts.usersData;
+  usersData.push(userObject);
+  dispatch({
+    type: ADD_USER,
+    payload: { usersData },
+  });
+  // localStorage.setItem("cartItems", JSON.stringify(cartItems));
+};
+
+export const isLogged = (logged) => (dispatch) => {
+  try {
+    dispatch({
+      type: USER_IS_LOGGED,
+      payload: logged,
+    });
+  } catch (err) {
+    console.log(`err`, err);
+  }
+};
+
+export const currentUser = () => (dispatch, getState) => {
+  const lastIndex = getState().accounts.usersData.length - 1;
+  const userName = getState().accounts.usersData[lastIndex].userName;
+  const email = getState().accounts.usersData[lastIndex].email;
+
+  const currentUserData = {
+    currentUserName: userName,
+    currentUserEmail: email,
+  };
+  // const currentUser = getState().accounts.currentUser;
+  // currentUser.push(currentUserData);
+
+  try {
+    dispatch({
+      type: CURRENT_USER,
+      payload: { currentUserData },
+    });
+  } catch (err) {
+    console.log(`err`, err);
+  }
+};
+
+export const currentUserLogin = () => (dispatch, getState ) => {
+  const usersData = getState().accounts.usersData;
+  const email = getState().accounts.valueLogin.email;
+  const findUser = usersData.filter((i) => i.email === email)
+
+  const currentUserData = {
+    currentUserName: findUser[0].userName,
+    currentUserEmail: findUser[0].email,
+  };
+
+  
+  // currentUser.push(currentUserData) ;
+
+  try {
+    dispatch({
+      type: CURRENT_USER_LOGIN,
+      payload: {currentUserData},
+    });
+  } catch (err) {
+    console.log(`err`, err);
+    console.log(`object`, currentUserData)
+  }
+};
+
+export const logOut = () => (dispatch, getState) => {
+  const currentUser = (getState().accounts.currentUser = []);
+
+  try {
+    dispatch({
+      type: LOG_OUT,
+      payload: { currentUser },
     });
   } catch (err) {
     console.log(`err`, err);

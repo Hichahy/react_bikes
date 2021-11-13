@@ -11,6 +11,7 @@ import {
   SELECT_SIZE,
   ADD_CHECKOUT,
   SELECT_COLOR,
+  CLEAN_BASKET
 } from "./types";
 import { bikes } from "../../data.json";
 
@@ -41,12 +42,34 @@ export const addBike = (bike) => (dispatch, getState) => {
 };
 
 export const removeBike = (bike) => (dispatch, getState) => {
+//usuwanie w cartItems 
   const cartItems = getState()
     .products.cartItems.slice()
     .filter((x) => x._id !== bike._id);
-  dispatch({ type: REMOVE_BIKE, payload: { cartItems } });
-  localStorage.setItem("cartItems", JSON.stringify(cartItems));
+//usuwanie w checkout 
+  const checkout = getState()
+    .products.checkout.slice()
+    .filter((x) => x._id !== bike._id);
+
+  dispatch({ type: REMOVE_BIKE, payload: { cartItems, checkout } });
+  // localStorage.setItem("cartItems", JSON.stringify(cartItems));
 };
+
+export const cleanBasket = () => (dispatch, getState) => {
+  const checkout = getState()
+  .products.checkout = []
+  const cartItems = getState()
+  .products.cartItems = []
+  try {
+    dispatch({
+      type: CLEAN_BASKET,
+      payload: {checkout, cartItems},
+    });
+  } catch (err) {
+    console.log(`err`, err);
+  }
+};
+
 
 export const filterBySize = (products, size) => (dispatch) => {
   return dispatch({
@@ -175,3 +198,4 @@ export const addToCheckout = (orderedBike) => (dispatch) => {
     console.log(`err`, err);
   }
 };
+

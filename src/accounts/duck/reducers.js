@@ -6,24 +6,43 @@ import {
   LOGIN_FORM,
   VALIDATE_ERRORS_LOGIN,
   SUBMIT_LOGIN,
+  ADD_USER,
+  USER_IS_LOGGED,
+  CURRENT_USER,
+  LOG_OUT,
+  CURRENT_USER_LOGIN
 } from "./types";
 
 const INITIAL_STATE = {
   valueRegister: {
     userName: "",
     email: "",
-    password: "",
-    confirmPassword: "",
+    bike: "",
+    confirmBike: "",
   },
   valueLogin: {
     email: "",
-    password: "",
+    bike: "",
   },
   agreement: false,
   registerSubmit: false,
   loginSubmit: false,
   registerErrors: {},
   loginErrors: {},
+  usersData: [
+    {
+      email: "admin@admin.com",
+      bikeName: "123456",
+      userName: "admin",
+    },
+    {
+      email: "martynka@martynka.com",
+      bikeName: "karamba",
+      userName: "Martynka",
+    },
+  ],
+  logged: false,
+  currentUser: [],
 };
 
 const accountsReducer = (state = INITIAL_STATE, action) => {
@@ -68,6 +87,36 @@ const accountsReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         loginErrors: action.payload,
+      };
+
+    case ADD_USER:
+      return {
+        ...state,
+        usersData: action.payload.usersData,
+      };
+
+    case USER_IS_LOGGED:
+      return {
+        ...state,
+        logged: action.payload,
+      };
+
+    case CURRENT_USER:
+      return {
+        ...state, 
+        currentUser: action.payload.currentUserData,
+      };
+
+    case CURRENT_USER_LOGIN:
+      return {
+        ...state, 
+        currentUser: action.payload.currentUserData,
+      };
+
+    case LOG_OUT:
+      return {
+        ...state, 
+        currentUser: action.payload.currentUser,
       };
 
     default:

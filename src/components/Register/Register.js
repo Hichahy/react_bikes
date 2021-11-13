@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { AiOutlineRight } from "react-icons/ai";
 import { connect } from "react-redux";
 import {
@@ -7,6 +7,9 @@ import {
   agreementRegister,
   submitRegister,
   errorsHandlerRegister,
+  addUser,
+  isLogged,
+  currentUser
 } from "../../accounts/duck/index";
 import "./Register.scss";
 
@@ -19,21 +22,40 @@ const Register = ({
   registerSubmit,
   registerErrors,
   errorsHandlerRegister,
+  addUser,
+  usersData,
+  isLogged,
+  currentUser
 }) => {
+  const history = useHistory();
+
+  console.log(`usersData.lenght`, usersData.length)
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     errorsHandlerRegister(validateInfo(valueRegister));
     submitRegister(true);
   };
-  useEffect(
-    (callback) => {
-      if (Object.keys(registerErrors).length === 0 && registerSubmit) {
-        callback();
-      }
-    },
-    [registerErrors, registerSubmit]
-  );
+
+  useEffect(() => {
+    if (Object.keys(registerErrors).length === 0 && registerSubmit) {
+      addUser();
+      submitRegister(false);
+      clearInput();
+      isLogged(true)
+      history.push("/dashboard");
+      currentUser()
+    }
+  }, [registerSubmit, registerErrors, addUser, submitRegister]);
+
+  const clearInput = () => {
+    valueRegister.email = "";
+    valueRegister.bike = "";
+    valueRegister.confirmBike = "";
+    valueRegister.userName = "";
+    agreementRegister(false);
+  };
 
   const validateInfo = () => {
     let errors = {};
@@ -48,18 +70,22 @@ const Register = ({
       errors.email = "Email required";
     } else if (!/\S+@\S+\.\S+/.test(valueRegister.email)) {
       errors.email = "Email address is invalid";
-    }
-    if (!valueRegister.password) {
-      errors.password = "Password is required";
-    } else if (valueRegister.password.length < 6) {
-      errors.password = "Password needs to be 6 characters or more";
+    } else if (usersData.find((i) => i.email === valueRegister.email)) {
+      errors.email = "sorry such user already exists"
     }
 
-    if (!valueRegister.confirmPassword) {
-      errors.confirmPassword = "Password is required";
-    } else if (valueRegister.confirmPassword !== valueRegister.password) {
-      errors.confirmPassword = "Passwords do not match";
+    if (!valueRegister.bike) {
+      errors.bike = "Name bike is required";
+    } else if (valueRegister.bike.length < 6) {
+      errors.bike = "Name bike needs to be 6 characters or more";
     }
+
+    if (!valueRegister.confirmBike) {
+      errors.confirmBike = "Confirm bike is required";
+    } else if (valueRegister.confirmBike !== valueRegister.bike) {
+      errors.confirmBike = "Name bike do not match";
+    }
+
 
     if (agreement === false) {
       errors.agreement = "Accept the rules";
@@ -99,33 +125,50 @@ const Register = ({
           {registerErrors.userName && (
             <label className="error_register">{registerErrors.userName}</label>
           )}
-          <input type="text" name="userName" onChange={handleInput} />
+          <input
+            type="text"
+            name="userName"
+            value={valueRegister.userName}
+            onChange={handleInput}
+          />
           <label>E-mail</label>
           {registerErrors.email && (
             <label className="error_register">{registerErrors.email}</label>
           )}
-          <input type="email" name="email" onChange={handleInput} />
-          <label>Passowrd</label>
-          {registerErrors.password && (
-            <label className="error_register">{registerErrors.password}</label>
+          <input
+            type="email"
+            name="email"
+            value={valueRegister.email}
+            onChange={handleInput}
+          />
+          <label>Name your bike</label>
+          {registerErrors.bike && (
+            <label className="error_register">{registerErrors.bike}</label>
           )}
-          <input type="password" name="password" onChange={handleInput} />
-          <label>Confirm passowrd </label>
-          {registerErrors.confirmPassword && (
+          <input
+            type="text"
+            name="bike"
+            value={valueRegister.bike}
+            onChange={handleInput}
+          />
+          <label>Confirm name your bike </label>
+          {registerErrors.confirmBike && (
             <label className="error_register">
-              {registerErrors.confirmPassword}
+              {registerErrors.confirmBike}
             </label>
           )}
           <input
-            type="password"
-            name="confirmPassword"
+            type="text"
+            name="confirmBike"
+            value={valueRegister.confirmBike}
             onChange={handleInput}
           />
           <div className="checkbox-box">
             <input
               type="checkbox"
+              checked={agreement === false ? false : true}
               className="checkbox-register"
-              onClick={() => agreementRegister(!agreement)}
+              onChange={() => agreementRegister(!agreement)}
             />
             <label>I agree for all</label>
           </div>
@@ -152,6 +195,16 @@ export default connect(
     agreement: state.accounts.agreement,
     registerSubmit: state.accounts.registerSubmit,
     registerErrors: state.accounts.registerErrors,
+    usersData: state.accounts.usersData,
+    logged: state.accounts.logged,
   }),
-  { signUpForm, agreementRegister, submitRegister, errorsHandlerRegister }
+  {
+    signUpForm,
+    agreementRegister,
+    submitRegister,
+    errorsHandlerRegister,
+    addUser,
+    isLogged,
+    currentUser,
+  }
 )(Register);

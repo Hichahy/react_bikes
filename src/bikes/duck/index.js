@@ -11,7 +11,7 @@ export {
   BASKET_FORM,
   SELECT_SIZE,
   ADD_CHECKOUT,
-  SELECT_COLOR
+  SELECT_COLOR,
 } from "./types";
 export {
   loadBike,
@@ -25,6 +25,7 @@ export {
   basketForm,
   selectSize,
   selectColor,
-  addToCheckout
+  addToCheckout,
+  cleanBasket,
 } from "./actions";
 export default bikeReducer;

@@ -6,11 +6,12 @@ import {
   AiOutlineRocket,
 } from "react-icons/ai";
 import { RiTwitterLine } from "react-icons/ri";
+import { connect } from "react-redux";
 import { RiArrowDropRightLine } from "react-icons/ri";
 import { NavLink } from "react-router-dom";
 import "./Footer.scss";
 
-const footer = () => {
+const footer = ({ logged }) => {
   const goUp = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -67,10 +68,18 @@ const footer = () => {
           Shop{" "}
           <RiArrowDropRightLine className="arrow animate__animated animate__heartBeat  animate__infinite" />
         </NavLink>
+        {logged ? (
+          <NavLink className="NavLink-fotter" to="/dashboard">
+            Dashboard{" "}
+            <RiArrowDropRightLine className="arrow animate__animated animate__heartBeat  animate__infinite" />
+          </NavLink>
+        ) : null}
+
         <NavLink className="NavLink-fotter" to="/register">
           Register{" "}
           <RiArrowDropRightLine className="arrow animate__animated animate__heartBeat  animate__infinite" />
         </NavLink>
+
         <NavLink className="NavLink-fotter" to="/login">
           Login{" "}
           <RiArrowDropRightLine className="arrow animate__animated animate__heartBeat  animate__infinite" />
@@ -80,4 +89,9 @@ const footer = () => {
   );
 };
 
-export default footer;
+export default connect(
+  (state) => ({
+    logged: state.accounts.logged,
+  }),
+  {}
+)(footer);

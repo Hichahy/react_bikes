@@ -1,10 +1,10 @@
 import React from "react";
 import "./ButtonPurchase.scss";
 
-const ButtonPurchase = () => {
+const ButtonPurchase = ({ postData }) => {
   return (
     <div className="wrapper">
-      <button className="cta-purchase">
+      <button onClick={postData} className="cta-purchase">
         <span>PURCHASE</span>
         <span>
           <svg
