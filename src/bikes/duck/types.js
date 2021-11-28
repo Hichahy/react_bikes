@@ -11,5 +11,6 @@ export const SELECT_SIZE = "SELECT_SIZE";
 export const SELECT_COLOR = "SELECT_COLOR";
 export const ADD_CHECKOUT = "ADD_CHECKOUT";
 export const CLEAN_BASKET = "CLEAN_BASKET";
+export const FLY_UP_MY_SITE = "FLY_UP_MY_SITE";
 
 

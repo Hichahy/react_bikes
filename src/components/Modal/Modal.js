@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ReactDom from "react-dom";
 import "./Modal.scss";
 import { toggleOpenModal, cleanBasket } from "../../bikes/duck/index";
 import { connect } from "react-redux";
-import formatCurrency, { AvaibleCurrency } from "../../livehacks";
+// import formatCurrency, { AvaibleCurrency } from "../../livehacks";
 import { v4 as uuidv4 } from "uuid";
 import { AiOutlineClose } from "react-icons/ai";
 import Bloop from "../../layout/Bloop/Bloop";
@@ -17,31 +17,28 @@ const Modal = ({
   value,
   cartItems,
   cleanBasket,
+  idOrderClient,
 }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [idOrderClient, setIdOrderClient] = useState();
 
   const postData = () => {
     setIsSubmitting(true);
-
-    // const Data = {
-    //   bikes: {
-    //     checkout,
-    //   },
-    //   contact: {
-    //     name: value.name,
-    //     city: value.city,
-    //     street: value.adress,
-    //     email: value.email,
-    //     orderId: idOrderClient,
-    //   },
-    // };
-    // firebaseAxios.post("/orders.json", Data).then((response) => {
-    //   console.log(response);
-    // });
-
+    const Data = {
+      bikes: {
+        checkout,
+      },
+      contact: {
+        name: value.name,
+        city: value.city,
+        street: value.adress,
+        email: value.email,
+        orderId: idOrderClient,
+      },
+    };
+    firebaseAxios.post("/orders.json", Data).then((response) => {
+      console.log(response);
+    });
     cleanBasket();
-    setIdOrderClient(uuidv4());
   };
 
   if (!openModal) return null;
@@ -89,15 +86,13 @@ const Modal = ({
                       </div>
                       <div>
                         <label>Color: </label>
-                        <p className="siezeP">{i.selectedColor}</p>
+                      
                         <option
                           className="color-select-modal"
                           style={{ background: `${i.selectedColor}` }}
                         ></option>
                       </div>
-                      <label className="siezeP">
-                        {formatCurrency(i.price)}
-                      </label>
+                      <label className="siezeP">${i.price}</label>
                     </div>
                   </div>
                 ))}
@@ -126,10 +121,10 @@ const Modal = ({
 
             <div className="summary-box">
               <p className="totalP">
-                Total:{" "}
-                {formatCurrency(
-                  cartItems.reduce((a, c) => a + c.price * c.count, 0)
-                )}
+                Total: ${" "}
+                {cartItems
+                  .reduce((a, c) => a + c.price * c.count, 0)
+                  .toFixed(2)}
               </p>
               <ButtonPurchase postData={postData}>Purhase</ButtonPurchase>
             </div>

@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./Basket.scss";
 import { IoIosClose } from "react-icons/io";
-import formatCurrency from "../../unitl";
+// import formatCurrency from "../../unitl";
 import ButtonSidebar from "../../layout/ButtonSidebar/ButtonSidebar";
 import ButtonSidebarCheck from "../../layout/ButtonSidebarCheck/ButtonSidebarCheck";
 import { connect } from "react-redux";
+import { v4 as uuidv4 } from "uuid";
 import {
   removeBike,
   toggleOpenModal,
@@ -14,6 +15,8 @@ import {
 import Modal from "../Modal/Modal";
 
 const Basket = (props) => {
+  const [idOrderClient, setIdOrderClient] = useState();
+
   const delay = 0.5;
 
   const closeFormAnimation = () => {
@@ -53,6 +56,7 @@ const Basket = (props) => {
   const finalizeOrder = (e) => {
     e.preventDefault();
     props.toggleOpenModal();
+    setIdOrderClient(uuidv4());
   };
 
   const totalCount = props.cartItems.reduce((accumulator, currentValue) => {
@@ -90,7 +94,7 @@ const Basket = (props) => {
                     <img src={i.image} alt={i.tittle}></img>
                   </div>
                   <div className="basket-summary">
-                    {formatCurrency(i.price)} x{i.count}
+                    ${i.price} x{i.count}
                   </div>
                 </div>
               </div>
@@ -101,10 +105,10 @@ const Basket = (props) => {
       {props.cartItems.length !== 0 && (
         <div className="basket-total">
           <p style={{ fontWeight: "bold" }}>
-            Total:{" "}
-            {formatCurrency(
-              props.cartItems.reduce((a, c) => a + c.price * c.count, 0)
-            )}
+            Total: $
+            {props.cartItems
+              .reduce((a, c) => a + c.price * c.count, 0)
+              .toFixed(2)}
           </p>
           <div className="basket-btn-box">
             {props.openForm === false && <ButtonSidebar />}
@@ -172,7 +176,7 @@ const Basket = (props) => {
                   onChange={handleInput}
                 />
                 <label htmlFor="city" className="form__label">
-                City
+                  City
                 </label>
               </div>
             </ul>
@@ -180,7 +184,7 @@ const Basket = (props) => {
           </form>
         </div>
       )}
-      <Modal />
+      <Modal idOrderClient={idOrderClient} />
     </div>
   );
 };

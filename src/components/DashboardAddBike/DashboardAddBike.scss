@@ -1,0 +1,99 @@
+.AddBike-dashboard {
+  width: 65%;
+  background-color: rgba(255, 255, 255, 0.267);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  animation: slide-in-left 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  display: flex;
+  flex-direction: column;
+  h1 {
+    margin: 2% 0% 2% 3%;
+  }
+}
+
+.bikeCart-dashboard {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 37%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  padding: 2%;
+  background-color: rgba(0, 0, 0, 0.694);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.box-addBike {
+  height: 80%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+  label {
+    font-size: medium;
+    color: #cdcdcdc4;
+  }
+}
+
+.input-text {
+  outline: none;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #cdcdcdad;
+  // width: 98%;
+  color: white;
+  margin-bottom: 5%;
+  // height: 3%;
+}
+
+.addBike-siezes {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 10px 0 10px 0;
+  label {
+    display: flex;
+    align-items: center;
+    color: white;
+  }
+}
+
+.addBike-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: scroll;
+  width: 100%;
+}
+
+.addBike-btn {
+  padding: 10px;
+  height: 50px;
+  width: 100%;
+  background: #f1f1ef33;
+  outline: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: large;
+  margin: 10px 0;
+}
+
+.color-input {
+  width: 28%;
+  outline: none;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #cdcdcdad;
+  color: white;
+  margin-bottom: 5%;
+}

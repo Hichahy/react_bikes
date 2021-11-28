@@ -1,6 +1,7 @@
-import React from "react";
-import { NavLink, Switch, Route } from "react-router-dom";
+import React, { useEffect } from "react";
+import { NavLink, Switch, Route, useLocation } from "react-router-dom";
 import { connect } from "react-redux";
+import { goUp } from "./bikes/duck/index";
 import Home from "./components/Home/Home";
 import "animate.css";
 import Shop from "./components/Shop/Shop";
@@ -10,9 +11,16 @@ import Register from "./components/Register/Register";
 import Login from "./components/Login/Login";
 import Dashboard from "./components/Dashboard/Dashborad";
 
-//Animation and Card
+const App = ({ logged, goUp }) => {
 
-const App = ({ logged }) => {
+  //onChange path goUp site 
+  let location = useLocation();
+  useEffect(() => {
+    if (location) {
+      goUp();
+    }
+  }, [goUp, location]);
+
   return (
     <div className="app-container">
       <nav className="main-nav">
@@ -54,5 +62,5 @@ export default connect(
   (state) => ({
     logged: state.accounts.logged,
   }),
-  {}
+  { goUp }
 )(App);

@@ -22,6 +22,10 @@ textarea {
   height: 100%;
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
 .main-nav {
   background-color: rgb(255, 204, 0);
   color: rgb(0, 0, 0);

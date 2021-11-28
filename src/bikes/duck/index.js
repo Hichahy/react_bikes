@@ -12,6 +12,7 @@ export {
   SELECT_SIZE,
   ADD_CHECKOUT,
   SELECT_COLOR,
+  FLY_UP_MY_SITE,
 } from "./types";
 export {
   loadBike,
@@ -27,5 +28,6 @@ export {
   selectColor,
   addToCheckout,
   cleanBasket,
+  goUp,
 } from "./actions";
 export default bikeReducer;
