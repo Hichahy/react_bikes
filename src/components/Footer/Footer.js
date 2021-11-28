@@ -1,4 +1,5 @@
 import React from "react";
+import { goUp } from "../../bikes/duck/index";
 import {
   AiOutlineInstagram,
   AiOutlineFacebook,
@@ -11,11 +12,7 @@ import { RiArrowDropRightLine } from "react-icons/ri";
 import { NavLink } from "react-router-dom";
 import "./Footer.scss";
 
-const footer = ({ logged }) => {
-  const goUp = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
+const footer = ({ logged, goUp }) => {
   return (
     <footer>
       <div className="social-media">
@@ -49,7 +46,7 @@ const footer = ({ logged }) => {
         </a>
       </div>
       <div>
-        <button onClick={() => goUp()}>
+        <button onClick={goUp}>
           Go up!
           <AiOutlineRocket
             size="25px"
@@ -93,5 +90,5 @@ export default connect(
   (state) => ({
     logged: state.accounts.logged,
   }),
-  {}
+  { goUp }
 )(footer);

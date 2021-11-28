@@ -25,7 +25,6 @@ const Login = ({
 
   const findUser = usersData.filter((i) => i.email === valueLogin.email);
   const history = useHistory();
-  console.log(``, findUser)
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -98,7 +97,7 @@ const Login = ({
           <p>Login, have promotions and be notified on events!</p>
         </div>
       </div>
-      <div className="login-panel animate__animated animate__slideInRight">
+      <div className="login-panel">
         <form
           noValidate
           onSubmit={handleSubmit}

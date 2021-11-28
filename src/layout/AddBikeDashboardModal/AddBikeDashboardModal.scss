@@ -1,0 +1,27 @@
+.cart-section {
+  display: flex;
+  justify-content: center;
+}
+
+.h1-addB {
+  margin: 13px;
+  font-size: 27px;
+}
+
+.cart-add {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 27rem;
+  width: 19rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 10px;
+  padding: 2%;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}

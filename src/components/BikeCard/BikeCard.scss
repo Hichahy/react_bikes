@@ -1,3 +1,14 @@
+@keyframes slide-right-cart {
+  0% {
+    -webkit-transform: translateX(-2000px);
+    transform: translateX(-2000px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+
 .product-containter {
   display: flex;
   padding: 10px;
@@ -88,4 +99,8 @@
 }
 .breadcrumbs_link:hover {
   text-decoration: underline;
+}
+
+.bike-img-cart {
+  animation: slide-right-cart 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s both;
 }

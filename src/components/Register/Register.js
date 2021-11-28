@@ -113,7 +113,7 @@ const Register = ({
           </p>
         </div>
       </div>
-      <div className="register-panel animate__animated animate__slideInRight">
+      <div className="register-panel">
         <form
           noValidate
           onSubmit={handleSubmit}

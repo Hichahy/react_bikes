@@ -11,7 +11,8 @@ import {
   SELECT_SIZE,
   ADD_CHECKOUT,
   SELECT_COLOR,
-  CLEAN_BASKET
+  CLEAN_BASKET,
+  FLY_UP_MY_SITE
 } from "./types";
 import { bikes } from "../../data.json";
 
@@ -193,6 +194,18 @@ export const addToCheckout = (orderedBike) => (dispatch) => {
     dispatch({
       type: ADD_CHECKOUT,
       payload: orderedBike,
+    });
+  } catch (err) {
+    console.log(`err`, err);
+  }
+};
+
+export const goUp = () => (dispatch) => {
+  const goUp =  window.scrollTo({ top: 0, behavior: "smooth" });
+  try {
+    dispatch({
+      type: FLY_UP_MY_SITE,
+      payload: goUp,
     });
   } catch (err) {
     console.log(`err`, err);

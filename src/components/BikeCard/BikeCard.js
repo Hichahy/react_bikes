@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { Breadcrumbs, Link, Typography } from "@mui/material";
-import formatCurrency, { AvaibleCurrency } from "../../livehacks";
+import { connect } from "react-redux";
+import { Breadcrumbs, Typography } from "@mui/material";
+import { v4 as uuidv4 } from "uuid";
+// import formatCurrency, { AvaibleCurrency } from "../../livehacks";
 import { NavLink } from "react-router-dom";
-import { RiShoppingBag2Line } from "react-icons/ri";
 import data from "../../data.json";
 import "./BikeCard.scss";
 
-const BikeCard = () => {
+const BikeCard = ({ assortment }) => {
   const [bikes, setBikes] = useState(data.bikes);
 
   const { id } = useParams();
@@ -32,7 +33,7 @@ const BikeCard = () => {
         <div className="content-header">
           <h1>{bike.tittle}</h1>
           <img
-            className="animate__animated animate__slideInLeft"
+            className="bike-img-cart"
             src={bike.image}
             alt={bike.tittle}
           ></img>
@@ -43,24 +44,30 @@ const BikeCard = () => {
           <p>
             Sizes:
             {bike.avaibleSizesz.map((x) => (
-              <span> {x}, </span>
+              <span key={uuidv4()}> {x}, </span>
             ))}
           </p>
           <p className="color-box">
             Colors:
             {bike.avaibleColors.map((x) => (
               <option
+                key={uuidv4()}
                 className="colors-select-cart"
                 style={{ background: `${x}` }}
               ></option>
             ))}
           </p>
 
-          <h4>{formatCurrency(bike.price)}</h4>
+          <h4>${bike.price}</h4>
         </div>
       </div>
     </div>
   );
 };
 
-export default BikeCard;
+export default connect(
+  (state) => ({
+    assortment: state.products.assortment,
+  }),
+  {}
+)(BikeCard);

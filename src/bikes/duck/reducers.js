@@ -11,7 +11,8 @@ import {
   SELECT_SIZE,
   ADD_CHECKOUT,
   SELECT_COLOR,
-  CLEAN_BASKET
+  CLEAN_BASKET,
+  FLY_UP_MY_SITE
 } from "./types";
 
 const INITIAL_STATE = {
@@ -146,6 +147,11 @@ const bikesReducer = (state = INITIAL_STATE, action) => {
         ...state,
         checkout: action.payload.checkout,
         cartItems: action.payload.cartItems,
+      };
+
+    case FLY_UP_MY_SITE:
+      return {
+        ...state,
       };
 
     default:

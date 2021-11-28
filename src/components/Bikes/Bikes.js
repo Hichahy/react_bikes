@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import formatCurrency, { AvaibleCurrency } from "../../livehacks";
+import { CircularProgress } from "@mui/material";
+// import formatCurrency, { AvaibleCurrency } from "../../livehacks";
 import { RiShoppingBag2Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
@@ -9,6 +10,7 @@ import {
   selectSize,
   addToCheckout,
   selectColor,
+  goUp,
 } from "../../bikes/duck/index";
 import "./Bikes.scss";
 
@@ -44,28 +46,20 @@ const Bikes = (props) => {
   if (props.assortment.length < 1) {
     return (
       <div className="loading">
-        <img
-          className="whell-load"
-          src="/Images/wheel.png"
-          alt="wheel loading"
+        <CircularProgress
+          style={{ color: "black", width: "100px", height: "100px" }}
         />
-        <p className="animate__animated animate__pulse animate__infinite">
-          Loading ...
-        </p>
+        <p>loading...</p>
       </div>
     );
   }
 
   //no found for search
   if (props.filteredItems.length < 1) {
-    return (
-      <p className="p-not-found animate__animated animate__pulse animate__infinite">
-        sorry, not found {props.letters}{" "}
-      </p>
-    );
+    return <p className="p-not-found">sorry, not found {props.letters} </p>;
   }
   return props.filteredItems.map((bike) => (
-    <div key={bike._id} className="card animate__animated animate__fadeIn">
+    <div key={bike._id} className="card">
       <div className="tittle-box">
         <h4 className="tittle">{bike.tittle}</h4>
       </div>
@@ -115,9 +109,9 @@ const Bikes = (props) => {
       </div>
 
       <div className="price-box">
-        <h4>{formatCurrency(bike.price)}</h4>
+        <h4>${bike.price}</h4>
         <button
-          className={`btn-3 animate__animated animate__pulse  animate__infinite ${
+          className={`btn-3 animate__animated animate__pulse animate__infinite ${
             animationAdd ? "btn-3 animate__animated animate__tada" : ""
           }
           ${excessiveBikes ? "btnDisabled" : ""}`}
@@ -150,6 +144,7 @@ export default connect(
     letters: state.products.letters,
     checkout: state.products.checkout,
     cartItems: state.products.cartItems,
+    currentUser: state.accounts.currentUser,
   }),
   {
     addBike,
@@ -157,5 +152,6 @@ export default connect(
     selectSize,
     selectColor,
     addToCheckout,
+    goUp,
   }
 )(Bikes);

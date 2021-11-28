@@ -18,6 +18,7 @@
   backdrop-filter: blur(20px);
   justify-content: center;
   align-items: center;
+  animation: slide-left 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
 .link-login {
