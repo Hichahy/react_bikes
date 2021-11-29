@@ -12,7 +12,8 @@ import {
   ADD_CHECKOUT,
   SELECT_COLOR,
   CLEAN_BASKET,
-  FLY_UP_MY_SITE
+  FLY_UP_MY_SITE,
+  DELETE_CART,
 } from "./types";
 import { bikes } from "../../data.json";
 
@@ -43,11 +44,11 @@ export const addBike = (bike) => (dispatch, getState) => {
 };
 
 export const removeBike = (bike) => (dispatch, getState) => {
-//usuwanie w cartItems 
+  //usuwanie w cartItems
   const cartItems = getState()
     .products.cartItems.slice()
     .filter((x) => x._id !== bike._id);
-//usuwanie w checkout 
+  //usuwanie w checkout
   const checkout = getState()
     .products.checkout.slice()
     .filter((x) => x._id !== bike._id);
@@ -57,20 +58,17 @@ export const removeBike = (bike) => (dispatch, getState) => {
 };
 
 export const cleanBasket = () => (dispatch, getState) => {
-  const checkout = getState()
-  .products.checkout = []
-  const cartItems = getState()
-  .products.cartItems = []
+  const checkout = (getState().products.checkout = []);
+  const cartItems = (getState().products.cartItems = []);
   try {
     dispatch({
       type: CLEAN_BASKET,
-      payload: {checkout, cartItems},
+      payload: { checkout, cartItems },
     });
   } catch (err) {
     console.log(`err`, err);
   }
 };
-
 
 export const filterBySize = (products, size) => (dispatch) => {
   return dispatch({
@@ -201,7 +199,7 @@ export const addToCheckout = (orderedBike) => (dispatch) => {
 };
 
 export const goUp = () => (dispatch) => {
-  const goUp =  window.scrollTo({ top: 0, behavior: "smooth" });
+  const goUp = window.scrollTo({ top: 0, behavior: "smooth" });
   try {
     dispatch({
       type: FLY_UP_MY_SITE,
@@ -212,3 +210,15 @@ export const goUp = () => (dispatch) => {
   }
 };
 
+export const deleteCart = (bike) => (dispatch) => {
+  const indexData = bikes.findIndex((i) => i._id === bike._id);
+  if (indexData !== -1) bikes.splice(indexData, 1);
+  try {
+    dispatch({
+      type: DELETE_CART,
+      payload: {bikes}
+    });
+  } catch (err) {
+    console.log(`err`, err);
+  }
+};

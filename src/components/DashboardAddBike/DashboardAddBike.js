@@ -3,7 +3,8 @@ import "./DashboardAddBike.scss";
 import { AiOutlineClose } from "react-icons/ai";
 import { connect } from "react-redux";
 import { bikes } from "../../data.json";
-import { NavLink, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 import AddBikeDashboardModal from "../../layout/AddBikeDashboardModal/AddBikeDashboardModal";
 
 const DashboardAddBike = ({ showAddBikeHandler, assortment }) => {
@@ -21,7 +22,8 @@ const DashboardAddBike = ({ showAddBikeHandler, assortment }) => {
     count: 0,
     selectedSize: "",
     selectedColor: "",
-    _id: "bike" + (bikes.length + 1),
+    // _id: "bike" + (bikes.length + 1),
+    _id: uuidv4(),
     price: 0,
   });
 
