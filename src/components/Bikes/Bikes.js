@@ -4,6 +4,7 @@ import { CircularProgress } from "@mui/material";
 import { RiShoppingBag2Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { MdDelete } from "react-icons/md";
 import {
   addBike,
   loadBike,
@@ -11,21 +12,34 @@ import {
   addToCheckout,
   selectColor,
   goUp,
+  deleteCart,
 } from "../../bikes/duck/index";
 import "./Bikes.scss";
 
-const Bikes = (props) => {
+const Bikes = ({
+  addBike,
+  filteredItems,
+  checkout,
+  assortment,
+  loadBike,
+  selectSize,
+  addToCheckout,
+  currentUser,
+  selectColor,
+  letters,
+  handleOpenModal,
+}) => {
   const [animationAdd, setAnimationAdd] = useState(false);
   const [excessiveBikes, setExcessiveBikes] = useState(false);
 
   //blocking an excessive number of bikes - max 10 bikes in basket
-  if (props.checkout.length > 9 && excessiveBikes === false) {
+  if (checkout.length > 9 && excessiveBikes === false) {
     setExcessiveBikes(true);
-  } else if (props.checkout.length < 9 && excessiveBikes === true) {
+  } else if (checkout.length < 9 && excessiveBikes === true) {
     setExcessiveBikes(false);
   }
 
-  const loadingBikes = props.loadBike;
+  const loadingBikes = loadBike;
 
   useEffect(() => {
     loadingBikes();
@@ -40,10 +54,10 @@ const Bikes = (props) => {
       let timer = setTimeout(() => setAnimationAdd(false), 1000);
       setAnimationAdd(timer);
     }
-  }, [props.addBike, animationAdd]);
+  }, [addBike, animationAdd]);
 
   //loading data
-  if (props.assortment.length < 1) {
+  if (assortment.length < 1) {
     return (
       <div className="loading">
         <CircularProgress
@@ -55,11 +69,17 @@ const Bikes = (props) => {
   }
 
   //no found for search
-  if (props.filteredItems.length < 1) {
-    return <p className="p-not-found">sorry, not found {props.letters} </p>;
+  if (filteredItems.length < 1) {
+    return <p className="p-not-found">sorry, not found {letters} </p>;
   }
-  return props.filteredItems.map((bike) => (
+  return filteredItems.map((bike) => (
     <div key={bike._id} className="card">
+      {currentUser.currentUserEmail === "admin@admin.com" ? (
+        <MdDelete
+          className="delete-cart"
+          onClick={() => handleOpenModal(bike)}
+        />
+      ) : null}
       <div className="tittle-box">
         <h4 className="tittle">{bike.tittle}</h4>
       </div>
@@ -77,9 +97,7 @@ const Bikes = (props) => {
             <div key={index} className="option">
               <input
                 value={size[index]}
-                onClick={() =>
-                  props.selectSize(bike.avaibleSizesz[index], bike._id)
-                }
+                onClick={() => selectSize(bike.avaibleSizesz[index], bike._id)}
                 name={bike._id}
                 id={size}
                 type="radio"
@@ -95,7 +113,7 @@ const Bikes = (props) => {
             <li style={{ listStyle: "none" }} key={index}>
               <option
                 onClick={() => {
-                  props.selectColor(bike.avaibleColors[index], bike._id);
+                  selectColor(bike.avaibleColors[index], bike._id);
                 }}
                 className={`colors-select ${
                   color === bike.selectedColor ? "c-selected" : ""
@@ -118,8 +136,8 @@ const Bikes = (props) => {
           onClick={() => {
             if (excessiveBikes === false) {
               animationAddFlag();
-              props.addBike(bike);
-              props.addToCheckout(bike);
+              addBike(bike);
+              addToCheckout(bike);
             }
           }}
         >
@@ -153,5 +171,6 @@ export default connect(
     selectColor,
     addToCheckout,
     goUp,
+    deleteCart,
   }
 )(Bikes);

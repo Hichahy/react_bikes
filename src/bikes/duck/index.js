@@ -13,6 +13,7 @@ export {
   ADD_CHECKOUT,
   SELECT_COLOR,
   FLY_UP_MY_SITE,
+  DELETE_CART,
 } from "./types";
 export {
   loadBike,
@@ -29,5 +30,6 @@ export {
   addToCheckout,
   cleanBasket,
   goUp,
+  deleteCart,
 } from "./actions";
 export default bikeReducer;

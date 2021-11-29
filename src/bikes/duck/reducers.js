@@ -12,7 +12,8 @@ import {
   ADD_CHECKOUT,
   SELECT_COLOR,
   CLEAN_BASKET,
-  FLY_UP_MY_SITE
+  FLY_UP_MY_SITE,
+  DELETE_CART,
 } from "./types";
 
 const INITIAL_STATE = {
@@ -150,6 +151,11 @@ const bikesReducer = (state = INITIAL_STATE, action) => {
       };
 
     case FLY_UP_MY_SITE:
+      return {
+        ...state,
+      };
+
+    case DELETE_CART:
       return {
         ...state,
       };

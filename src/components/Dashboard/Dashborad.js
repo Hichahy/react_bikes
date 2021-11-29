@@ -21,6 +21,7 @@ const Dashboard = ({ currentUser, logged, isLogged, logOut }) => {
     isLogged(false);
     history.push("/home");
   };
+  
 
   const showOrdersHandler = () => {
     setCommandCenter(!commandCenter);
@@ -49,7 +50,7 @@ const Dashboard = ({ currentUser, logged, isLogged, logOut }) => {
           <DashboardAddBike showAddBikeHandler={showAddBikeHandler} />
         ) : null}
         <div className="dashboard-box">
-          <h1>Welcome {currentUser.currentUserName}</h1>
+          <h2>Welcome {currentUser.currentUserName}</h2>
           <p>{currentUser.currentUserEmail}</p>
           {currentUser.currentUserEmail === "admin@admin.com" ? (
             <>

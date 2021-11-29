@@ -221,3 +221,15 @@ $main-color: rgb(255, 204, 0);
   color: rgb(154, 154, 154);
   pointer-events: none;
 }
+
+.delete-cart {
+  position: relative;
+  left: 125px;
+  bottom: 16px;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.267);
+}
+
+.delete-cart:hover {
+  color: black;
+}
