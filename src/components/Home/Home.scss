@@ -1,44 +1,103 @@
-.home-container {
-    padding: 10px;
-    height: 90vh;
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@700&display=swap");
+
+.title-section {
+  height: 92vh;
+  width: 100%;
+  background: #000000
+    url("https://images.pexels.com/photos/163848/road-mountains-sunset-path-163848.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  display: flex;
+  h1 {
+    margin: 0;
+    font-family: "Sora", sans-serif;
+    font-size: 12vw;
+    color: #ff9900;
+  }
+  .box-title {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
 }
 
-.whell-load {
-    height: 140px;  
+.info-section {
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: rgb(195, 34, 34);
+  background: linear-gradient(
+    0deg,
+    rgba(195, 34, 34, 1) 0%,
+    rgba(214, 72, 23, 1) 28%,
+    rgba(255, 153, 0, 1) 100%
+  );
+
+  .box-info {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+  }
+  p {
+    margin: 0;
+    font-size: 2vh;
+  }
+  h2 {
+    margin-bottom: 10px;
+  }
+  img {
+    height: 85%;
+    border-radius: 20px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+      rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  }
 }
 
-@-webkit-keyframes rotating /* Safari and Chrome */ {
-    from {
-      -webkit-transform: rotate(0deg);
-      -o-transform: rotate(0deg);
-      transform: rotate(0deg);
-    }
-    to {
-      -webkit-transform: rotate(360deg);
-      -o-transform: rotate(360deg);
-      transform: rotate(360deg);
-    }
+.technology-section {
+  height: 20vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  .icon-container {
+    display: flex;
+    width: 54%;
+    justify-content: space-around;
   }
-  @keyframes rotating {
-    from {
-      -ms-transform: rotate(0deg);
-      -moz-transform: rotate(0deg);
-      -webkit-transform: rotate(0deg);
-      -o-transform: rotate(0deg);
-      transform: rotate(0deg);
-    }
-    to {
-      -ms-transform: rotate(360deg);
-      -moz-transform: rotate(360deg);
-      -webkit-transform: rotate(360deg);
-      -o-transform: rotate(360deg);
-      transform: rotate(360deg);
-    }
+  .icon-tehchnology {
+    font-size: 9vh;
   }
-  .whell-load {
-    -webkit-animation: rotating 2s linear infinite;
-    -moz-animation: rotating 2s linear infinite;
-    -ms-animation: rotating 2s linear infinite;
-    -o-animation: rotating 2s linear infinite;
-    animation: rotating 2s linear infinite;
+  h6 {
+    margin: 0;
   }
+  .icon-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.appInfo-section {
+  height: 15vh;
+  background: rgb(195, 34, 34);
+  background: linear-gradient(
+    0deg,
+    rgba(255, 153, 0, 1) 0%,
+    rgba(214, 72, 23, 1) 82%,
+    rgba(195, 34, 34, 1) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  p {
+    margin: 0;
+    font-size: 2vh;
+  }
+}

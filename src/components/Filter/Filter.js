@@ -12,7 +12,7 @@ const Filter = (props) => {
   const assortment = props.assortment;
 
   return (
-    <div className="filter-container">
+    <section className="filter-container">
       <div className="filter-count">
         <span>Available bikes: {props.filteredItems.length}</span>
       </div>
@@ -55,7 +55,7 @@ const Filter = (props) => {
           <option value="XL">XL</option>
         </select>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -41,26 +41,14 @@ const Basket = (props) => {
     props.basketForm({ ...props.value, [e.target.name]: e.target.value }); //name nazwa inputa nie stanu name
   };
 
-  // const createOrder = () => {
-
-  //   const order = {
-  //     email: form.email,
-  //     name: form.name,
-  //     adress: form.adress,
-  //     cartItems: props.cartItems,
-  //     total: props.cartItems.reduce((a, c) => a + c.price * c.count, 0),
-  //   };
-  //   props.createOrder(order);
-  // };
-
   const finalizeOrder = (e) => {
     e.preventDefault();
     props.toggleOpenModal();
     setIdOrderClient(uuidv4());
   };
 
+  //funkcja akumulująca
   const totalCount = props.cartItems.reduce((accumulator, currentValue) => {
-    //funkcja akumulująca
     return accumulator + currentValue.count;
   }, 0);
 
@@ -104,7 +92,7 @@ const Basket = (props) => {
       </div>
       {props.cartItems.length !== 0 && (
         <div className="basket-total">
-          <p style={{ fontWeight: "bold" }}>
+          <p style={{ fontWeight: "bold", color: "white" }}>
             Total: $
             {props.cartItems
               .reduce((a, c) => a + c.price * c.count, 0)

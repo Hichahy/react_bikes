@@ -3,8 +3,6 @@ $secondary: #38ef7d;
 $white: #fff;
 $gray: #9b9b9b;
 
-
-
 .basket img {
   width: 80%;
 }
@@ -18,7 +16,7 @@ $gray: #9b9b9b;
 .basket-title {
   overflow: hidden;
   white-space: nowrap;
-  text-overflow:ellipsis;
+  text-overflow: ellipsis;
 }
 
 .basket-header {
@@ -30,6 +28,9 @@ $gray: #9b9b9b;
 }
 
 .bike-box {
+  background: rgba(255, 255, 255, 0.269);
+  -webkit-backdrop-filter: blur(30px);
+  backdrop-filter: blur(20px);
   display: flex;
   flex-direction: column;
   display: flex;
@@ -38,10 +39,8 @@ $gray: #9b9b9b;
   margin: 20px 20px 20px 10px;
   padding: 10px;
   min-height: 90px;
-  background-color: white;
   --animate-duration: 700ms;
   --animate-delay: 3s;
-  
 }
 
 .basket-content {
@@ -89,14 +88,13 @@ $gray: #9b9b9b;
   font-family: inherit;
   width: 100%;
   border: 0;
-  border-bottom: 2px solid grey;
+  border-bottom: 2px solid rgb(255, 255, 255);
   outline: 0;
   font-size: 15px;
-  color: black;
+  color: rgb(255, 255, 255);
   padding: 7px 0;
   background: transparent;
   transition: border-color 0.2s;
-
 
   &::placeholder {
     color: transparent;
@@ -115,7 +113,7 @@ $gray: #9b9b9b;
   display: block;
   transition: 0.2s;
   font-size: 1rem;
-  color: grey;
+  color: rgb(255, 255, 255);
 }
 
 .form__field:focus {

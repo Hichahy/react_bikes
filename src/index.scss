@@ -46,12 +46,10 @@ body::-webkit-scrollbar {
   margin: 30px;
 }
 .NavLink.active {
-  color: white;
+  color: rgb(0, 0, 0);
   text-decoration: underline;
 }
 
 a:hover {
   color: rgb(0, 0, 0);
 }
-
-

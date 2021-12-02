@@ -94,6 +94,7 @@ $main-color: rgb(255, 204, 0);
 }
 
 .card {
+  background: rgba(255, 255, 255, 0.269);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -106,6 +107,13 @@ $main-color: rgb(255, 204, 0);
   padding: 2%;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   animation: scale-in-center 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  -webkit-backdrop-filter: blur(30px);
+  backdrop-filter: blur(20px);
+  // background-image: url("https://images.pexels.com/photos/7367190/pexels-photo-7367190.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260") ;
+  // -webkit-background-size: cover;
+  // -moz-background-size: cover;
+  // -o-background-size: cover;
+  // background-size: cover;
 }
 
 .tittle {
@@ -143,8 +151,8 @@ $main-color: rgb(255, 204, 0);
 }
 
 .btn-3 {
-  border: solid 1px rgb(255, 255, 255);
-  background: #ffffff;
+  border: none;
+  background: none;
   border-radius: 7px;
   font-weight: 300;
   letter-spacing: 1px;
