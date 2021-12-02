@@ -1,8 +1,14 @@
 .content {
   display: flex;
   justify-content: space-between;
+  background: black;
   display: flex;
   min-height: 92vh;
+  background-image: url("https://images.pexels.com/photos/163848/road-mountains-sunset-path-163848.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .content-bikes {
