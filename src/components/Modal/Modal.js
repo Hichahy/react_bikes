@@ -3,7 +3,6 @@ import ReactDom from "react-dom";
 import "./Modal.scss";
 import { toggleOpenModal, cleanBasket } from "../../bikes/duck/index";
 import { connect } from "react-redux";
-// import formatCurrency, { AvaibleCurrency } from "../../livehacks";
 import { v4 as uuidv4 } from "uuid";
 import { AiOutlineClose } from "react-icons/ai";
 import Bloop from "../../layout/Bloop/Bloop";
@@ -53,15 +52,17 @@ const Modal = ({
         }}
       />
       <div className="modal">
-        <AiOutlineClose
-          className="x-modal"
-          onClick={() => {
-            toggleOpenModal(openModal);
-            setIsSubmitting(false);
-          }}
-        />
+        <div className="x-box">
+          <AiOutlineClose
+            className="x-modal"
+            onClick={() => {
+              toggleOpenModal(openModal);
+              setIsSubmitting(false);
+            }}
+          />
+        </div>
         {isSubmitting ? (
-          <div>
+          <div className="succes-box">
             <h1>Excellently! your order is now ready to be shipped.</h1>
             <h4>Your order Id: {idOrderClient}</h4>
           </div>
@@ -86,11 +87,10 @@ const Modal = ({
                       </div>
                       <div>
                         <label>Color: </label>
-                      
-                        <option
+                        <div
                           className="color-select-modal"
                           style={{ background: `${i.selectedColor}` }}
-                        ></option>
+                        ></div>
                       </div>
                       <label className="siezeP">${i.price}</label>
                     </div>
@@ -118,7 +118,6 @@ const Modal = ({
                 </ul>
               </div>
             </div>
-
             <div className="summary-box">
               <p className="totalP">
                 Total: ${" "}

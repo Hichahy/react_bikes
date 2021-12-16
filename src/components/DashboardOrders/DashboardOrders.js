@@ -62,8 +62,10 @@ const DashboardOrders = ({ showOrdersHandler }) => {
 
   return (
     <div className="command-box">
-      <AiOutlineClose className="x-dash" onClick={showOrdersHandler} />
-
+  
+        <AiOutlineClose className="x-dash" onClick={showOrdersHandler} />
+      
+      
       {loading ? (
         <div className="spinner-box">
           <CircularProgress

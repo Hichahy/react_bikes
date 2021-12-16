@@ -8,7 +8,7 @@ import ModalBikeDeleteCart from "../../layout/ModalBikeDeleteCart/ModalBikeDelet
 import "./Shop.scss";
 import { bikes } from "../../data.json";
 
-const Shop = ({ deleteCart,loadBike }) => {
+const Shop = ({ deleteCart,loadBike, mobileMode }) => {
   const [open, setOpen] = useState(false);
   const [idDel, setIdDel] = useState();
 
@@ -43,6 +43,7 @@ const Shop = ({ deleteCart,loadBike }) => {
           handleDelCart={handleDelCart}
         />
       </div>
+      
     </main>
   );
 };

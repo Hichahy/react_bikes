@@ -22,7 +22,6 @@ const DashboardAddBike = ({ showAddBikeHandler, assortment }) => {
     count: 0,
     selectedSize: "",
     selectedColor: "",
-    // _id: "bike" + (bikes.length + 1),
     _id: uuidv4(),
     price: 0,
   });
@@ -225,14 +224,14 @@ const DashboardAddBike = ({ showAddBikeHandler, assortment }) => {
                   />
                 </label>
               </div>
-              <label>Color Hex</label>
+              <label>Color</label>
               {errorsAddBike.colors && (
                 <label className="error_register">{errorsAddBike.colors}</label>
               )}
               <div className="addBike-siezes">
                 <input
                   className="color-input"
-                  type="text"
+                  type="color"
                   placeholder="color 1"
                   name="color1"
                   value={colors.color1}
@@ -240,7 +239,7 @@ const DashboardAddBike = ({ showAddBikeHandler, assortment }) => {
                 />
                 <input
                   className="color-input"
-                  type="text"
+                  type="color"
                   name="color2"
                   placeholder="color 2"
                   value={colors.color2}
@@ -248,7 +247,7 @@ const DashboardAddBike = ({ showAddBikeHandler, assortment }) => {
                 />
                 <input
                   className="color-input"
-                  type="text"
+                  type="color"
                   placeholder="color 3"
                   name="color3"
                   value={colors.color3}

@@ -14,6 +14,7 @@ import {
   CLEAN_BASKET,
   FLY_UP_MY_SITE,
   DELETE_CART,
+  MOBILE_MODE,
 } from "./types";
 import { bikes } from "../../data.json";
 
@@ -216,7 +217,18 @@ export const deleteCart = (bike) => (dispatch) => {
   try {
     dispatch({
       type: DELETE_CART,
-      payload: {bikes}
+      payload: { bikes },
+    });
+  } catch (err) {
+    console.log(`err`, err);
+  }
+};
+
+export const toggleMobileMode = (mobileMode) => (dispatch) => {
+  try {
+    dispatch({
+      type: MOBILE_MODE,
+      payload: { mobileMode: !mobileMode },
     });
   } catch (err) {
     console.log(`err`, err);

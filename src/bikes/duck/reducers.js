@@ -14,6 +14,7 @@ import {
   CLEAN_BASKET,
   FLY_UP_MY_SITE,
   DELETE_CART,
+  MOBILE_MODE,
 } from "./types";
 
 const INITIAL_STATE = {
@@ -33,6 +34,7 @@ const INITIAL_STATE = {
     adress: "",
     city: "",
   },
+  mobileMode: false,
 };
 
 const bikesReducer = (state = INITIAL_STATE, action) => {
@@ -159,6 +161,12 @@ const bikesReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
       };
+
+      case MOBILE_MODE:
+        return {
+          ...state,
+          mobileMode: action.payload.mobileMode,
+        };
 
     default:
       return state;

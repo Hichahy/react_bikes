@@ -9,7 +9,7 @@ import {
   errorsHandlerRegister,
   addUser,
   isLogged,
-  currentUser
+  currentUser,
 } from "../../accounts/duck/index";
 import "./Register.scss";
 
@@ -25,11 +25,11 @@ const Register = ({
   addUser,
   usersData,
   isLogged,
-  currentUser
+  currentUser,
 }) => {
   const history = useHistory();
 
-  console.log(`usersData.lenght`, usersData.length)
+  console.log(`usersData.lenght`, usersData.length);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -43,9 +43,9 @@ const Register = ({
       addUser();
       submitRegister(false);
       clearInput();
-      isLogged(true)
+      isLogged(true);
       history.push("/dashboard");
-      currentUser()
+      currentUser();
     }
   }, [registerSubmit, registerErrors, addUser, submitRegister]);
 
@@ -71,7 +71,7 @@ const Register = ({
     } else if (!/\S+@\S+\.\S+/.test(valueRegister.email)) {
       errors.email = "Email address is invalid";
     } else if (usersData.find((i) => i.email === valueRegister.email)) {
-      errors.email = "sorry such user already exists"
+      errors.email = "sorry such user already exists";
     }
 
     if (!valueRegister.bike) {
@@ -85,7 +85,6 @@ const Register = ({
     } else if (valueRegister.confirmBike !== valueRegister.bike) {
       errors.confirmBike = "Name bike do not match";
     }
-
 
     if (agreement === false) {
       errors.agreement = "Accept the rules";
@@ -121,60 +120,64 @@ const Register = ({
           className="input-box"
         >
           <h1 className="title-register">Sign up</h1>
-          <label>User Name</label>{" "}
-          {registerErrors.userName && (
-            <label className="error_register">{registerErrors.userName}</label>
-          )}
-          <input
-            type="text"
-            name="userName"
-            value={valueRegister.userName}
-            onChange={handleInput}
-          />
-          <label>E-mail</label>
-          {registerErrors.email && (
-            <label className="error_register">{registerErrors.email}</label>
-          )}
-          <input
-            type="email"
-            name="email"
-            value={valueRegister.email}
-            onChange={handleInput}
-          />
-          <label>Name your bike</label>
-          {registerErrors.bike && (
-            <label className="error_register">{registerErrors.bike}</label>
-          )}
-          <input
-            type="text"
-            name="bike"
-            value={valueRegister.bike}
-            onChange={handleInput}
-          />
-          <label>Confirm name your bike </label>
-          {registerErrors.confirmBike && (
-            <label className="error_register">
-              {registerErrors.confirmBike}
-            </label>
-          )}
-          <input
-            type="text"
-            name="confirmBike"
-            value={valueRegister.confirmBike}
-            onChange={handleInput}
-          />
-          <div className="checkbox-box">
+            <label>User Name</label>{" "}
+            {registerErrors.userName && (
+              <label className="error_register">
+                {registerErrors.userName}
+              </label>
+            )}
             <input
-              type="checkbox"
-              checked={agreement === false ? false : true}
-              className="checkbox-register"
-              onChange={() => agreementRegister(!agreement)}
+              type="text"
+              name="userName"
+              value={valueRegister.userName}
+              onChange={handleInput}
             />
-            <label>I agree for all</label>
-          </div>
-          {registerErrors.agreement && (
-            <label className="error_register">{registerErrors.agreement}</label>
-          )}
+            <label>E-mail</label>
+            {registerErrors.email && (
+              <label className="error_register">{registerErrors.email}</label>
+            )}
+            <input
+              type="email"
+              name="email"
+              value={valueRegister.email}
+              onChange={handleInput}
+            />
+            <label>Name your bike</label>
+            {registerErrors.bike && (
+              <label className="error_register">{registerErrors.bike}</label>
+            )}
+            <input
+              type="text"
+              name="bike"
+              value={valueRegister.bike}
+              onChange={handleInput}
+            />
+            <label>Confirm name your bike </label>
+            {registerErrors.confirmBike && (
+              <label className="error_register">
+                {registerErrors.confirmBike}
+              </label>
+            )}
+            <input
+              type="text"
+              name="confirmBike"
+              value={valueRegister.confirmBike}
+              onChange={handleInput}
+            />
+            <div className="checkbox-box">
+              <input
+                type="checkbox"
+                checked={agreement === false ? false : true}
+                className="checkbox-register"
+                onChange={() => agreementRegister(!agreement)}
+              />
+              <label>I agree for all</label>
+            </div>
+            {registerErrors.agreement && (
+              <label className="error_register">
+                {registerErrors.agreement}
+              </label>
+            )}
           <div className="button-box">
             <button type="submit">
               Sign up <AiOutlineRight />

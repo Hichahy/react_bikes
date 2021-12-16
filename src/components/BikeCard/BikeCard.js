@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { Breadcrumbs, Typography } from "@mui/material";
 import { v4 as uuidv4 } from "uuid";
-// import formatCurrency, { AvaibleCurrency } from "../../livehacks";
 import { NavLink } from "react-router-dom";
 import data from "../../data.json";
 import "./BikeCard.scss";
@@ -50,11 +49,11 @@ const BikeCard = ({ assortment }) => {
           <p className="color-box">
             Colors:
             {bike.avaibleColors.map((x) => (
-              <option
+              <div
                 key={uuidv4()}
                 className="colors-select-cart"
                 style={{ background: `${x}` }}
-              ></option>
+              ></div>
             ))}
           </p>
 

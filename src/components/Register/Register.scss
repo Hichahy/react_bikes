@@ -1,3 +1,12 @@
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .register-containter {
   height: 92vh;
   color: white;
@@ -32,13 +41,16 @@
   backdrop-filter: blur(20px);
   justify-content: center;
   align-items: center;
-  animation: slide-left 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: slide-left 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 .input-box {
   display: flex;
   flex-direction: column;
   width: 70%;
+  height: 100%;
+  justify-content: center;
+  // margin: 20px 0px 20px 0;
 
   input {
     outline: none;
@@ -47,8 +59,9 @@
     border-bottom: 1px solid #cdcdcdad;
     width: 100%;
     color: white;
-    margin-bottom: 5%;
-    height: 3%;
+    margin-bottom: 10px;
+    height: 30px;
+    border-radius: 0;
   }
   button {
     padding: 10px;
@@ -126,7 +139,52 @@
   color: white;
 }
 
-.error_register  {
+.error_register {
   font-size: small !important;
   color: red !important;
+}
+
+@media screen and (max-width: 765px) {
+  .register-content {
+    display: none;
+  }
+  .register-panel {
+    width: 100%;
+    height: auto;
+    backdrop-filter: blur(0px);
+    animation: fade-in 2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+    background-color: rgba(0, 0, 0, 0.673);
+    padding: 30px 0 30px 0;
+    label {
+      color: white;
+    }
+    input {
+      color: white;
+    }
+    .link-register {
+      color: white;
+      font-size: x-small;
+    }
+  }
+  .background-img {
+    height: 90%;
+  }
+
+  .register-containter {
+    background: #000000 url("./register-background.jpeg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: auto;
+  }
+  .input-box {
+    height: 100%;
+    width: 70%;
+    overflow: hidden;
+    button {
+      background-color: rgba(255, 255, 255, 0.68);
+      color: black;
+    }
+  }
 }
