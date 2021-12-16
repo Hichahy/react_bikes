@@ -95,6 +95,9 @@
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   animation: slide-in-left 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   h1 {
     margin: 2% 0% 2% 3%;
   }
@@ -200,4 +203,66 @@
 .icons-box {
   display: flex;
   align-items: center;
+}
+
+@media screen and (max-width: 765px) {
+  .dashboard-box {
+    width: 100%;
+    backdrop-filter: blur(0px);
+    animation: fade-in 2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  }
+
+  .dashboard_container {
+    background: #000000 url("./dashboard-backgroun.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    h1 {
+      font-size: 35px;
+    }
+    .dash-btn {
+      background-color: rgba(255, 255, 255, 0.68);
+      color: black;
+    }
+  }
+  .command-box {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 92vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    h1 {
+      font-size: 100%;
+      margin: 10px 0 20px 20px;
+    }
+    .order-container {
+      overflow: scroll;
+    }
+    .order {
+      display: grid;
+    }
+  }
+  .table-box {
+    flex-direction: column;
+  }
+  .contact-table {
+    width: 100%;
+  }
+  .div-close {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .x-dash {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    margin: 10px 10px 10px 0;
+  }
+  .order-box {
+    width: 100%;
+  }
 }

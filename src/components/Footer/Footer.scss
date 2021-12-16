@@ -68,3 +68,17 @@ footer {
     }
   }
 }
+
+@media screen and (max-width: 765px) {
+  footer {
+    flex-direction: column;
+    align-items: center;
+    // height: 42%;
+    min-height: 370px;
+  }
+  .navigation-footer-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+}

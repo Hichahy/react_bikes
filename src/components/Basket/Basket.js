@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./Basket.scss";
 import { IoIosClose } from "react-icons/io";
-// import formatCurrency from "../../unitl";
 import ButtonSidebar from "../../layout/ButtonSidebar/ButtonSidebar";
 import ButtonSidebarCheck from "../../layout/ButtonSidebarCheck/ButtonSidebarCheck";
 import { connect } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
+import { Breadcrumbs, Typography } from "@mui/material";
 import {
   removeBike,
   toggleOpenModal,
@@ -13,6 +13,7 @@ import {
   basketForm,
 } from "../../bikes/duck/index";
 import Modal from "../Modal/Modal";
+import { NavLink } from "react-router-dom";
 
 const Basket = (props) => {
   const [idOrderClient, setIdOrderClient] = useState();
@@ -53,7 +54,15 @@ const Basket = (props) => {
   }, 0);
 
   return (
-    <div className="">
+    <div className="basket-container">
+      <div className="breadcrumbs-basket">
+        <Breadcrumbs aria-label="breadcrumb">
+          <NavLink className="breadcrumbs_link" to="/shop">
+            Shop
+          </NavLink>
+          <Typography color="text.primary">basket</Typography>
+        </Breadcrumbs>
+      </div>
       <div className="basket-header">
         {props.cartItems.length === 0 ? (
           <div style={{ padding: "10px" }} className="cart-header">
@@ -92,7 +101,7 @@ const Basket = (props) => {
       </div>
       {props.cartItems.length !== 0 && (
         <div className="basket-total">
-          <p style={{ fontWeight: "bold", color: "white" }}>
+          <p>
             Total: $
             {props.cartItems
               .reduce((a, c) => a + c.price * c.count, 0)
@@ -183,6 +192,7 @@ export default connect(
     openModal: state.products.openModal,
     openForm: state.products.openForm,
     value: state.products.value,
+    mobileMode: state.products.mobileMode,
   }),
   { removeBike, toggleOpenModal, toggleCheckOut, basketForm }
 )(Basket);

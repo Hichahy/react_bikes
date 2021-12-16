@@ -14,3 +14,9 @@
   width: 100%;
   justify-content: space-evenly;
 }
+
+@media screen and (max-width: 765px) {
+  .modal-dash-box {
+    width: 40vh;
+  }
+}

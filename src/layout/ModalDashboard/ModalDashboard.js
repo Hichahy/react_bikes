@@ -11,7 +11,6 @@ const ModalDashboard = ({
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: 400,
     bgcolor: "background.paper",
     boxShadow: 24,
     p: 4,
@@ -22,6 +21,11 @@ const ModalDashboard = ({
     justifyContent: "space-evenly",
     marginTop: "10px",
   };
+
+  const btn = {
+    margin: "0px 10px 0px 10px"
+  }
+
 
   return (
     <Modal
@@ -44,6 +48,7 @@ const ModalDashboard = ({
         </Typography>
         <Box sx={box}>
           <Button
+            sx={btn}
             onClick={handleRemoveOrder}
             variant="contained"
             href="#contained-buttons"
@@ -51,6 +56,7 @@ const ModalDashboard = ({
             Yes
           </Button>
           <Button
+           sx={btn}
             onClick={handleOpenModal}
             variant="contained"
             href="#contained-buttons"

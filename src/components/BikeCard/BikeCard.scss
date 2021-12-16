@@ -87,7 +87,7 @@
 .colors-select-cart {
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
     rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-  height: 15px;
+  height: 27px;
   width: 27px;
   border-radius: 50%;
   margin: 10px;
@@ -103,4 +103,34 @@
 
 .bike-img-cart {
   animation: slide-right-cart 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s both;
+}
+
+@media screen and (max-width: 765px) {
+  .product-containter {
+    background: #000000 url("./background-bikeCart.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: rgba(255, 255, 255, 0.838);
+    h2 {
+      font-size: 100%;
+    }
+  }
+  .content-header {
+    flex-direction: column;
+    h1 {
+      font-size: 100%;
+      color: rgba(0, 0, 0, 0.664);
+    }
+    img {
+      width: 90%;
+    }
+  }
+  .product-content {
+    justify-content: space-around;
+  }
+  .blump {
+    display: none;
+  }
 }

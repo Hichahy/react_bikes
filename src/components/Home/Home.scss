@@ -2,7 +2,6 @@
 
 .title-section {
   height: 92vh;
-  width: 100%;
   background: #000000
     url("https://images.pexels.com/photos/163848/road-mountains-sunset-path-163848.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
   -webkit-background-size: cover;
@@ -10,6 +9,10 @@
   -o-background-size: cover;
   background-size: cover;
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 1vh;
   h1 {
     margin: 0;
     font-family: "Sora", sans-serif;
@@ -20,7 +23,25 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+   
   }
+  .more-inf {
+    display: flex;
+    color: white;
+    align-items: center;
+    label {
+      font-size: 16px;
+      width: 90px;
+    }
+  }
+}
+
+.box-imgHome {
+  height: 85%;
+  width: 45%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .info-section {
@@ -42,6 +63,7 @@
     flex-direction: column;
     justify-content: center;
     color: white;
+    
   }
   p {
     margin: 0;
@@ -49,6 +71,7 @@
   }
   h2 {
     margin-bottom: 10px;
+    margin-top: 0;
   }
   img {
     height: 85%;
@@ -59,10 +82,10 @@
 }
 
 .technology-section {
-  height: 20vh;
   display: flex;
   align-items: center;
   justify-content: space-around;
+  padding: 3%;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
     rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
@@ -70,6 +93,7 @@
     display: flex;
     width: 54%;
     justify-content: space-around;
+    flex-wrap: wrap;
   }
   .icon-tehchnology {
     font-size: 9vh;
@@ -99,5 +123,63 @@
   p {
     margin: 0;
     font-size: 2vh;
+  }
+}
+
+@media screen and (max-width: 765px) {
+  .info-section {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background: rgb(195, 34, 34);
+    background: linear-gradient(
+      0deg,
+      rgba(195, 34, 34, 1) 0%,
+      rgba(214, 72, 23, 1) 28%,
+      rgba(255, 153, 0, 1) 100%
+    );
+    .box-info {
+      width: 90%;
+      margin-top: 10%;
+    }
+    img {
+      width: 90%;
+      margin: 4%;
+    }
+    .box-imgHome {
+     justify-content: center;
+     margin-bottom: 10%;
+     margin-top: 10%;
+    }
+  }
+
+  .technology-section {
+    height: auto;
+    flex-direction: column;
+    .icon-container {
+      display: flex;
+      width: 90%;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      margin-bottom: 10%;
+    }
+    .icon-box {
+      margin-top: 5%;
+    }
+    h2 {
+      margin-top: 10%;
+      margin-bottom: 5px;
+    }
+  }
+
+  .box-title {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
   }
 }

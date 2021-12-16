@@ -67,3 +67,39 @@
   display: flex;
   align-items: center;
 }
+
+@media screen and (max-width: 765px) {
+  .filter-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: auto;
+    width: 95%;
+    margin-top: 10px;
+    span {
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+  }
+  .filter-search {
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .filter-sort {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .filter-size {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding-bottom: 3vh;
+    border-bottom: solid 1px black;
+  }
+}

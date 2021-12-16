@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { CircularProgress } from "@mui/material";
-// import formatCurrency, { AvaibleCurrency } from "../../livehacks";
 import { RiShoppingBag2Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
@@ -111,7 +110,7 @@ const Bikes = ({
           <label>Colors:</label>
           {bike.avaibleColors.map((color, index) => (
             <li style={{ listStyle: "none" }} key={index}>
-              <option
+              <div
                 onClick={() => {
                   selectColor(bike.avaibleColors[index], bike._id);
                 }}
@@ -120,7 +119,7 @@ const Bikes = ({
                 }`}
                 style={{ background: `${color}` }}
                 value={color[index]}
-              ></option>
+              ></div>
             </li>
           ))}
         </div>

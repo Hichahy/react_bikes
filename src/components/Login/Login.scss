@@ -1,3 +1,19 @@
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.login-containter {
+  height: 92vh;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+}
+
 .login-content {
   width: 60%;
   display: flex;
@@ -18,7 +34,7 @@
   backdrop-filter: blur(20px);
   justify-content: center;
   align-items: center;
-  animation: slide-left 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: slide-left 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 .link-login {
@@ -27,13 +43,6 @@
   color: #cdcdcdad;
   font-size: small;
   border-bottom: 1px solid;
-}
-
-.login-containter {
-  height: 92vh;
-  color: white;
-  display: flex;
-  justify-content: space-between;
 }
 
 .background-img-login {
@@ -50,4 +59,37 @@
 
 .link-login:hover {
   color: white;
+}
+
+@media screen and (max-width: 765px) {
+  .login-content {
+    display: none;
+  }
+
+  .login-panel {
+    width: 100%;
+    animation: fade-in 2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+    background-color: rgba(0, 0, 0, 0.673);
+    backdrop-filter: blur(0px);
+  }
+
+  .login-containter {
+    background: #000000 url("./login-background.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    label {
+      color: white;
+    }
+    input {
+      color: white;
+      width: 98%;
+      font-size: 3vh;
+    }
+    .link-login {
+      color: white;
+      font-size: x-small;
+    }
+  }
 }

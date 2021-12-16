@@ -1,6 +1,7 @@
 import React from "react";
 import { FaReact, FaSass } from "react-icons/fa";
 import { SiRedux, SiFirebase, SiGithub } from "react-icons/si";
+// import { FiChevronsDown } from "react-icons/fi";
 import { GiResize } from "react-icons/gi";
 
 import "./Home.scss";
@@ -14,6 +15,10 @@ const Home = () => {
           <h1 className="tittle-h1">IN MY</h1>
           <h1 className="tittle-h1">APP!</h1>
         </div>
+        {/* <div className="more-inf">
+            <FiChevronsDown />
+            <label>MORE INFO</label>
+          </div> */}
       </section>
       <section className="info-section">
         <div className="box-info">
@@ -40,16 +45,18 @@ const Home = () => {
             to clutter.
           </p>
         </div>
-        <img
-          className="info-img1"
-          src="Images/homeInfo1.jpeg"
-          alt="information"
-        />
-        <img
-          className="info-img1"
-          src="Images/homeInfo2.png"
-          alt="information"
-        />
+        <div className="box-imgHome">
+          <img
+            className="info-img1"
+            src="Images/homeInfo1.jpeg"
+            alt="information"
+          />
+          <img
+            className="info-img1"
+            src="Images/homeInfo2.png"
+            alt="information"
+          />
+        </div>
       </section>
       <section className="technology-section">
         <h2>Technologies used</h2>
@@ -80,8 +87,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="appInfo-section">
-      </section>
+      <section className="appInfo-section"></section>
     </div>
   );
 };

@@ -46,3 +46,22 @@
   padding: 10px;
   overflow-y: scroll;
 }
+
+@media screen and (max-width: 765px) {
+  .content-bikes {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border: none;
+    padding: 0;
+    align-items: center;
+    background: #000000 url("./background-bikeCart.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  .sidebar {
+    display: none;
+  }
+}

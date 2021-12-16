@@ -20,7 +20,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   animation: slide-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   h6 {
     margin: 0;
@@ -38,7 +38,7 @@
   left: 0;
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 1000;
-  animation: fadeIn .4s ease-out forwards;
+  animation: fadeIn 0.4s ease-out forwards;
 }
 
 .modal_image {
@@ -101,15 +101,18 @@
 .summary-box {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .color-select-modal {
-  background: salmon;
   margin: 0 0 0 10px;
   width: 15px;
+  height: 15px;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
     rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   border-radius: 50%;
+  display: flex;
+  align-items: center;
 }
 
 .x-modal {
@@ -147,5 +150,88 @@
   }
   li {
     margin: 15px 0 10px 0;
+  }
+}
+
+.succes-box {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media screen and (max-width: 765px) {
+  .modal {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    justify-content: space-evenly;
+    overflow-y: scroll;
+    justify-content: space-between;
+    display: grid;
+    p {
+      margin: 0 20px 0 20px;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+  }
+
+  .x-box {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px 0 10px 0;
+  }
+
+  .x-modal {
+    position: relative;
+    right: 0px;
+    top: 0px;
+    margin-right: 10px;
+  }
+
+  .info_container {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    margin: 10px 0 10px 0;
+  }
+
+  .label_container {
+    width: 90%;
+    margin: 10px 0 10px 0;
+    overflow: initial;
+    height: auto;
+  }
+
+  .summary-box {
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0 10px 0;
+  }
+  .info_tittle {
+    display: none;
+  }
+
+  .succes-box {
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    font-size: 4vh;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .contact_data_box {
+    width: 88%;
+    ul {
+      margin: 0;
+      font-size: 15px;
+      padding-inline-start: 0px;
+    }
+  }
+
+  .label_info div {
+    align-items: center;
   }
 }
