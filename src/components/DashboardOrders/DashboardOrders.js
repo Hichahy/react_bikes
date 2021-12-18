@@ -13,9 +13,6 @@ const DashboardOrders = ({ showOrdersHandler }) => {
   const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(false);
   const [isDeleted, setIsDeleted] = useState(false);
-  console.log(`isDeleted`, isDeleted);
-
-  console.log(`deletedOrder`, deletedOrder);
 
   const handleOpenModal = (id) => {
     setOpen(!open);
@@ -27,7 +24,8 @@ const DashboardOrders = ({ showOrdersHandler }) => {
   const handleRemoveOrder = () => {
     axios
       .delete(
-        `https://bikes-cbb5f-default-rtdb.firebaseio.com/orders/${deletedOrder[0].id}.json`
+        // `https://bikes-cbb5f-default-rtdb.firebaseio.com/orders/${deletedOrder[0].id}.json`
+        `https://bikeshop-2e62a-default-rtdb.firebaseio.com/orders/${deletedOrder[0].id}.json`
       )
       .then((res) => {
         console.log(res);
@@ -40,7 +38,8 @@ const DashboardOrders = ({ showOrdersHandler }) => {
   const isDeletedTrue = !isDeleted;
   useEffect(() => {
     axios
-      .get("https://bikes-cbb5f-default-rtdb.firebaseio.com/orders.json")
+      // .get("https://bikes-cbb5f-default-rtdb.firebaseio.com/orders.json")
+      .get("https://bikeshop-2e62a-default-rtdb.firebaseio.com/orders.json")
       .then((res) => {
         const fetchedOrders = [];
         for (let key in res.data) {
@@ -62,10 +61,8 @@ const DashboardOrders = ({ showOrdersHandler }) => {
 
   return (
     <div className="command-box">
-  
-        <AiOutlineClose className="x-dash" onClick={showOrdersHandler} />
-      
-      
+      <AiOutlineClose className="x-dash" onClick={showOrdersHandler} />
+
       {loading ? (
         <div className="spinner-box">
           <CircularProgress

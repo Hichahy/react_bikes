@@ -1,9 +1,7 @@
 import React from "react";
 import { FaReact, FaSass } from "react-icons/fa";
 import { SiRedux, SiFirebase, SiGithub } from "react-icons/si";
-// import { FiChevronsDown } from "react-icons/fi";
 import { GiResize } from "react-icons/gi";
-
 import "./Home.scss";
 
 const Home = () => {
@@ -15,11 +13,10 @@ const Home = () => {
           <h1 className="tittle-h1">IN MY</h1>
           <h1 className="tittle-h1">APP!</h1>
         </div>
-        {/* <div className="more-inf">
-            <FiChevronsDown />
-            <label>MORE INFO</label>
-          </div> */}
       </section>
+      <div className="connector">
+        <p>MORE...</p>
+      </div>
       <section className="info-section">
         <div className="box-info">
           <h2>About the application </h2>
@@ -44,6 +41,7 @@ const Home = () => {
             I wanted to this data to disappear after refreshing the page and not
             to clutter.
           </p>
+          <p>You can choise size your bike and colors. Have fun! 👨‍💻</p>
         </div>
         <div className="box-imgHome">
           <img

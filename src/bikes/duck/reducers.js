@@ -15,6 +15,7 @@ import {
   FLY_UP_MY_SITE,
   DELETE_CART,
   MOBILE_MODE,
+  POST_FIREBASE
 } from "./types";
 
 const INITIAL_STATE = {
@@ -166,6 +167,16 @@ const bikesReducer = (state = INITIAL_STATE, action) => {
         return {
           ...state,
           mobileMode: action.payload.mobileMode,
+        };
+
+      case POST_FIREBASE:
+        return {
+          ...state,
+          name: action.payload.name,
+          email: action.payload.email,
+          adress: action.payload.adress,
+          city: action.payload.city,
+          checkout: action.payload.checkout,
         };
 
     default:

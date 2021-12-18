@@ -21,7 +21,6 @@ const Dashboard = ({ currentUser, logged, isLogged, logOut }) => {
     isLogged(false);
     history.push("/home");
   };
-  
 
   const showOrdersHandler = () => {
     setCommandCenter(!commandCenter);

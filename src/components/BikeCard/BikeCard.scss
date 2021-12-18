@@ -9,11 +9,31 @@
   }
 }
 
+@keyframes rollIt {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 .product-containter {
   display: flex;
   padding: 10px;
   min-height: 90vh;
   display: grid;
+
+  background: #000000 url("./sky.jpg");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-size: 150%;
+  animation: rollIt 40s ease infinite;
 }
 
 .bike-cart-box {
@@ -47,7 +67,7 @@
   box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px,
     rgba(0, 0, 0, 0.05) 0px 5px 10px;
   position: absolute;
-  z-index: -1;
+  z-index: 1;
 }
 
 .blump-box {
@@ -77,6 +97,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  z-index: 2;
 
   img {
     width: 50%;

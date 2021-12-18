@@ -15,6 +15,7 @@ export {
   FLY_UP_MY_SITE,
   DELETE_CART,
   MOBILE_MODE,
+  POST_FIREBASE
 } from "./types";
 export {
   loadBike,
@@ -32,6 +33,7 @@ export {
   cleanBasket,
   goUp,
   deleteCart,
-  toggleMobileMode
+  toggleMobileMode,
+  sendOrder
 } from "./actions";
 export default bikeReducer;

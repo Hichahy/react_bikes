@@ -35,8 +35,6 @@
   }
 }
 
-//styles
-
 .dashboard_container {
   height: 92vh;
   display: flex;
@@ -97,7 +95,7 @@
   animation: slide-in-left 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-evenly;
   h1 {
     margin: 2% 0% 2% 3%;
   }

@@ -4,18 +4,11 @@ import "./Bloop.scss";
 const Bloop = () => {
   return (
     <div className="blob">
-      {/* <!-- This SVG is from https://codepen.io/Ali_Farooq_/pen/gKOJqx --> */}
       <svg
-        // xmlns:xlink="http://www.w3.org/1999/xlink"
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 310 350"
       >
-        {/* <linearGradient id="MyGradient">
-          <stop offset="5%" stop-color="#40204c" />
-          <stop offset="40%" stop-color="#a3225c" />
-          <stop offset="100%" stop-color="#e24926" />
-        </linearGradient> */}
         <defs>
           <linearGradient id="grad1" x1="0%" y1="0%" x2="60%" y2="0%">
             <stop
