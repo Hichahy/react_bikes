@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import ReactDom from "react-dom";
 import "./Modal.scss";
-import { toggleOpenModal, cleanBasket } from "../../bikes/duck/index";
+import {
+  toggleOpenModal,
+  cleanBasket,
+  sendOrder,
+} from "../../bikes/duck/index";
 import { connect } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { AiOutlineClose } from "react-icons/ai";
 import Bloop from "../../layout/Bloop/Bloop";
 import ButtonPurchase from "../../layout/ButtonPurchase/ButtonPurchase";
-import firebaseAxios from "../../firebaseAxios";
 
 const Modal = ({
   checkout,
@@ -17,26 +20,13 @@ const Modal = ({
   cartItems,
   cleanBasket,
   idOrderClient,
+  sendOrder,
 }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const postData = () => {
     setIsSubmitting(true);
-    const Data = {
-      bikes: {
-        checkout,
-      },
-      contact: {
-        name: value.name,
-        city: value.city,
-        street: value.adress,
-        email: value.email,
-        orderId: idOrderClient,
-      },
-    };
-    firebaseAxios.post("/orders.json", Data).then((response) => {
-      console.log(response);
-    });
+    sendOrder(idOrderClient);
     cleanBasket();
   };
 
@@ -142,5 +132,5 @@ export default connect(
     cartItems: state.products.cartItems,
     checkout: state.products.checkout,
   }),
-  { toggleOpenModal, cleanBasket }
+  { toggleOpenModal, cleanBasket, sendOrder }
 )(Modal);

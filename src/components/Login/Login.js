@@ -8,7 +8,7 @@ import {
   errorsHandlerLogin,
   submitLogin,
   currentUserLogin,
-  isLogged
+  isLogged,
 } from "../../accounts/duck/index";
 
 const Login = ({
@@ -20,9 +20,8 @@ const Login = ({
   usersData,
   loginSubmit,
   isLogged,
-  currentUserLogin
+  currentUserLogin,
 }) => {
-
   const findUser = usersData.filter((i) => i.email === valueLogin.email);
   const history = useHistory();
 
@@ -55,7 +54,7 @@ const Login = ({
       loginErrors.bike = "inccorenct bike name";
     } else if (
       findUser.length > 0 &&
-      valueLogin.bike !== findUser[0].bikeName  
+      valueLogin.bike !== findUser[0].bikeName
     ) {
       loginErrors.bike = "inccorenct bike name";
     }
@@ -66,23 +65,28 @@ const Login = ({
   const handleInput = (e) => {
     loginForm({ ...valueLogin, [e.target.name]: e.target.value });
   };
-  
+
   const clearInput = () => {
     valueLogin.email = "";
     valueLogin.bike = "";
   };
 
-
   useEffect(() => {
     if (Object.keys(loginErrors).length === 0 && loginSubmit) {
-      currentUserLogin()
+      currentUserLogin();
       submitLogin(false);
-      isLogged(true)
+      isLogged(true);
       history.push("/dashboard");
-      clearInput()
+      clearInput();
     }
-  }, [submitLogin, currentUserLogin, isLogged, loginErrors, loginSubmit, history]);
-
+  }, [
+    submitLogin,
+    currentUserLogin,
+    isLogged,
+    loginErrors,
+    loginSubmit,
+    history,
+  ]);
 
   return (
     <div className="login-containter">
@@ -135,7 +139,6 @@ export default connect(
     loginSubmit: state.accounts.loginSubmit,
     loginErrors: state.accounts.loginErrors,
     usersData: state.accounts.usersData,
-   
   }),
-  { loginForm, errorsHandlerLogin, submitLogin, currentUserLogin , isLogged}
+  { loginForm, errorsHandlerLogin, submitLogin, currentUserLogin, isLogged }
 )(Login);

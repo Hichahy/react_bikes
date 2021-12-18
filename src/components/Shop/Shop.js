@@ -6,9 +6,8 @@ import { connect } from "react-redux";
 import { deleteCart, loadBike } from "../../bikes/duck/index";
 import ModalBikeDeleteCart from "../../layout/ModalBikeDeleteCart/ModalBikeDeleteCart";
 import "./Shop.scss";
-import { bikes } from "../../data.json";
 
-const Shop = ({ deleteCart,loadBike, mobileMode }) => {
+const Shop = ({ deleteCart, loadBike, mobileMode }) => {
   const [open, setOpen] = useState(false);
   const [idDel, setIdDel] = useState();
 
@@ -19,11 +18,9 @@ const Shop = ({ deleteCart,loadBike, mobileMode }) => {
 
   const handleDelCart = () => {
     deleteCart(idDel);
-    loadBike()
+    loadBike();
     setOpen(!open);
-    console.log(`bikes`, bikes);
   };
-  console.log(`bikes`, bikes);
 
   return (
     <main className="main">
@@ -43,11 +40,11 @@ const Shop = ({ deleteCart,loadBike, mobileMode }) => {
           handleDelCart={handleDelCart}
         />
       </div>
-      
     </main>
   );
 };
 
 export default connect((state) => ({}), {
-  deleteCart, loadBike
+  deleteCart,
+  loadBike,
 })(Shop);

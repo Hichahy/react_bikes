@@ -15,7 +15,15 @@ import {
 import Modal from "../Modal/Modal";
 import { NavLink } from "react-router-dom";
 
-const Basket = (props) => {
+const Basket = ({
+  cartItems,
+  openForm,
+  toggleCheckOut,
+  basketForm,
+  value,
+  toggleOpenModal,
+  removeBike,
+}) => {
   const [idOrderClient, setIdOrderClient] = useState();
 
   const delay = 0.5;
@@ -26,10 +34,6 @@ const Basket = (props) => {
   };
 
   //bo po usunieciu zostawał formularz
-  const cartItems = props.cartItems;
-  const openForm = props.openForm;
-  const toggleCheckOut = props.toggleCheckOut;
-
   useEffect(() => {
     if (cartItems.length === 0 && openForm === true) {
       let timer1 = setTimeout(() => toggleCheckOut(!openForm), delay * 1000);
@@ -39,17 +43,17 @@ const Basket = (props) => {
   }, [cartItems, openForm, toggleCheckOut]);
 
   const handleInput = (e) => {
-    props.basketForm({ ...props.value, [e.target.name]: e.target.value }); //name nazwa inputa nie stanu name
+    basketForm({ ...value, [e.target.name]: e.target.value }); //name nazwa inputa nie stanu name
   };
 
   const finalizeOrder = (e) => {
     e.preventDefault();
-    props.toggleOpenModal();
+    toggleOpenModal();
     setIdOrderClient(uuidv4());
   };
 
   //funkcja akumulująca
-  const totalCount = props.cartItems.reduce((accumulator, currentValue) => {
+  const totalCount = cartItems.reduce((accumulator, currentValue) => {
     return accumulator + currentValue.count;
   }, 0);
 
@@ -64,17 +68,17 @@ const Basket = (props) => {
         </Breadcrumbs>
       </div>
       <div className="basket-header">
-        {props.cartItems.length === 0 ? (
-          <div style={{ padding: "10px" }} className="cart-header">
+        {cartItems.length === 0 ? (
+          <label style={{ padding: "10px" }} className="cart-header">
             You don't have any items.{" "}
-          </div>
+          </label>
         ) : (
-          <div className="cart-header">Your basket {totalCount}.</div>
+          <label className="cart-header">Your basket {totalCount}.</label>
         )}
       </div>
       <div className="basket">
         <ul className="basket-item">
-          {props.cartItems.map((i) => (
+          {cartItems.map((i) => (
             <li key={i._id}>
               <div className="bike-box animate__animated animate__bounceIn">
                 <div className="title-box">
@@ -82,7 +86,7 @@ const Basket = (props) => {
                   <div>
                     <IoIosClose
                       className="close-btn"
-                      onClick={() => props.removeBike(i)}
+                      onClick={() => removeBike(i)}
                     />
                   </div>
                 </div>
@@ -99,20 +103,18 @@ const Basket = (props) => {
           ))}
         </ul>
       </div>
-      {props.cartItems.length !== 0 && (
+      {cartItems.length !== 0 && (
         <div className="basket-total">
           <p>
             Total: $
-            {props.cartItems
-              .reduce((a, c) => a + c.price * c.count, 0)
-              .toFixed(2)}
+            {cartItems.reduce((a, c) => a + c.price * c.count, 0).toFixed(2)}
           </p>
           <div className="basket-btn-box">
-            {props.openForm === false && <ButtonSidebar />}
+            {openForm === false && <ButtonSidebar />}
           </div>
         </div>
       )}
-      {props.openForm && (
+      {openForm && (
         //Form
         <div
           id="basketForm"

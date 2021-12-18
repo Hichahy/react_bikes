@@ -19,7 +19,7 @@ const BikeCard = ({ assortment }) => {
 
   return (
     <div className="product-containter ">
-      <div style={{ position: "sticky", top: "10%" }}>
+      <div style={{ position: "sticky", top: "10%", zIndex: "3" }}>
         <Breadcrumbs aria-label="breadcrumb">
           <NavLink className="breadcrumbs_link" to="/shop">
             Shop
@@ -38,7 +38,7 @@ const BikeCard = ({ assortment }) => {
           ></img>
         </div>
         <div className="blump" />
-        <div style={{ width: "100%" }}>
+        <div style={{ width: "100%", zIndex: "2" }}>
           <h2>{bike.description}.</h2>
           <p>
             Sizes:
@@ -46,8 +46,8 @@ const BikeCard = ({ assortment }) => {
               <span key={uuidv4()}> {x}, </span>
             ))}
           </p>
-          <p className="color-box">
-            Colors:
+          <div className="color-box">
+            <p>Colors:</p>
             {bike.avaibleColors.map((x) => (
               <div
                 key={uuidv4()}
@@ -55,8 +55,7 @@ const BikeCard = ({ assortment }) => {
                 style={{ background: `${x}` }}
               ></div>
             ))}
-          </p>
-
+          </div>
           <h4>${bike.price}</h4>
         </div>
       </div>

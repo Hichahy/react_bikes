@@ -1,25 +1,3 @@
-@keyframes slide-right {
-  0% {
-    -webkit-transform: translateX(-800px);
-    transform: translateX(-800px);
-  }
-  100% {
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
-  }
-}
-
-@keyframes slide-left {
-  0% {
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
-  }
-  100% {
-    -webkit-transform: translateX(-800px);
-    transform: translateX(-800px);
-  }
-}
-
 @-webkit-keyframes shake-vertical {
   0%,
   100% {
@@ -97,10 +75,6 @@ textarea {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-.app-container {
-  // height: 100%;
-}
-
 body::-webkit-scrollbar {
   display: none;
 }
@@ -110,13 +84,20 @@ body::-webkit-scrollbar {
   color: rgb(0, 0, 0);
   display: flex;
   align-items: center;
-  // padding: 10px;
   height: 60px;
   position: sticky;
   z-index: 5;
   position: -webkit-sticky;
   top: 0; /* required */
   box-shadow: 0 4px 16px -1px grey;
+  transition-timing-function: ease-in;
+  transition: 0.5s;
+}
+
+.main-nav__hide {
+  top: -100px;
+  transition-timing-function: ease-out;
+  transition: 0.5s;
 }
 
 .main-nav a {
@@ -166,9 +147,17 @@ a:hover {
     flex-direction: column;
     background: #c9c9c9;
     top: 59px;
-    left: 0;
+    left: -100%;
+    transition: 850ms;
     background-color: #ffcc00;
-    animation: slide-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+  .navlink-box.active {
+    left: 0;
+    transition: 350ms;
+  }
+
+  .hide {
+    transform: translateY(-50px);
   }
 
   .main-nav {

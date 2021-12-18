@@ -15,8 +15,10 @@ import {
   FLY_UP_MY_SITE,
   DELETE_CART,
   MOBILE_MODE,
+  POST_FIREBASE,
 } from "./types";
 import { bikes } from "../../data.json";
+import firebaseAxios from "../../firebaseAxios";
 
 export const loadBike = () => (dispatch) => {
   dispatch({
@@ -228,7 +230,40 @@ export const toggleMobileMode = (mobileMode) => (dispatch) => {
   try {
     dispatch({
       type: MOBILE_MODE,
-      payload: { mobileMode: !mobileMode },
+      payload: { mobileMode},
+    });
+  } catch (err) {
+    console.log(`err`, err);
+  }
+};
+
+export const sendOrder = (idOrderClient) => (dispatch, getState) => {
+  // setIsSubmitting(true);
+  const name = getState().products.value.name;
+  const city = getState().products.value.city;
+  const adress = getState().products.value.adress;
+  const email = getState().products.value.email;
+  const checkout = getState().products.checkout;
+  
+  const Data = {
+    bikes: {
+      checkout: checkout,
+    },
+    contact: {
+      name: name,
+      city: city,
+      street: adress,
+      email: email,
+      orderId: idOrderClient,
+    },
+  };
+  firebaseAxios.post("/orders.json", Data).then((response) => {
+    console.log(response);
+  });
+  try {
+    dispatch({
+      type: POST_FIREBASE,
+      payload: { name, city, adress, email },
     });
   } catch (err) {
     console.log(`err`, err);

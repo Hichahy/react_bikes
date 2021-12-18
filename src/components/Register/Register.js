@@ -120,64 +120,60 @@ const Register = ({
           className="input-box"
         >
           <h1 className="title-register">Sign up</h1>
-            <label>User Name</label>{" "}
-            {registerErrors.userName && (
-              <label className="error_register">
-                {registerErrors.userName}
-              </label>
-            )}
+          <label>User Name</label>{" "}
+          {registerErrors.userName && (
+            <label className="error_register">{registerErrors.userName}</label>
+          )}
+          <input
+            type="text"
+            name="userName"
+            value={valueRegister.userName}
+            onChange={handleInput}
+          />
+          <label>E-mail</label>
+          {registerErrors.email && (
+            <label className="error_register">{registerErrors.email}</label>
+          )}
+          <input
+            type="email"
+            name="email"
+            value={valueRegister.email}
+            onChange={handleInput}
+          />
+          <label>Name your bike</label>
+          {registerErrors.bike && (
+            <label className="error_register">{registerErrors.bike}</label>
+          )}
+          <input
+            type="text"
+            name="bike"
+            value={valueRegister.bike}
+            onChange={handleInput}
+          />
+          <label>Confirm name your bike </label>
+          {registerErrors.confirmBike && (
+            <label className="error_register">
+              {registerErrors.confirmBike}
+            </label>
+          )}
+          <input
+            type="text"
+            name="confirmBike"
+            value={valueRegister.confirmBike}
+            onChange={handleInput}
+          />
+          <div className="checkbox-box">
             <input
-              type="text"
-              name="userName"
-              value={valueRegister.userName}
-              onChange={handleInput}
+              type="checkbox"
+              checked={agreement === false ? false : true}
+              className="checkbox-register"
+              onChange={() => agreementRegister(!agreement)}
             />
-            <label>E-mail</label>
-            {registerErrors.email && (
-              <label className="error_register">{registerErrors.email}</label>
-            )}
-            <input
-              type="email"
-              name="email"
-              value={valueRegister.email}
-              onChange={handleInput}
-            />
-            <label>Name your bike</label>
-            {registerErrors.bike && (
-              <label className="error_register">{registerErrors.bike}</label>
-            )}
-            <input
-              type="text"
-              name="bike"
-              value={valueRegister.bike}
-              onChange={handleInput}
-            />
-            <label>Confirm name your bike </label>
-            {registerErrors.confirmBike && (
-              <label className="error_register">
-                {registerErrors.confirmBike}
-              </label>
-            )}
-            <input
-              type="text"
-              name="confirmBike"
-              value={valueRegister.confirmBike}
-              onChange={handleInput}
-            />
-            <div className="checkbox-box">
-              <input
-                type="checkbox"
-                checked={agreement === false ? false : true}
-                className="checkbox-register"
-                onChange={() => agreementRegister(!agreement)}
-              />
-              <label>I agree for all</label>
-            </div>
-            {registerErrors.agreement && (
-              <label className="error_register">
-                {registerErrors.agreement}
-              </label>
-            )}
+            <label>I agree for all</label>
+          </div>
+          {registerErrors.agreement && (
+            <label className="error_register">{registerErrors.agreement}</label>
+          )}
           <div className="button-box">
             <button type="submit">
               Sign up <AiOutlineRight />
