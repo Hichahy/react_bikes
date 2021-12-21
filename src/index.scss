@@ -1,56 +1,62 @@
-@-webkit-keyframes shake-vertical {
-  0%,
-  100% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
-  10%,
-  30%,
-  50%,
-  70% {
-    -webkit-transform: translateY(-8px);
-    transform: translateY(-8px);
-  }
-  20%,
-  40%,
-  60% {
-    -webkit-transform: translateY(8px);
-    transform: translateY(8px);
-  }
-  80% {
-    -webkit-transform: translateY(6.4px);
-    transform: translateY(6.4px);
-  }
-  90% {
-    -webkit-transform: translateY(-6.4px);
-    transform: translateY(-6.4px);
-  }
-}
+$grey: rgb(120, 120, 120);
+$yellow: rgb(255, 204, 0);
+$black: rgb(0, 0, 0);
+$overlay: rgba(0, 0, 0, 0.7);
+$white: rgb(255, 255, 255);
+$aActive: #f0f8ff42;
+
 @keyframes shake-vertical {
   0%,
   100% {
-    -webkit-transform: translateY(0);
     transform: translateY(0);
   }
+
   10%,
   30%,
   50%,
   70% {
-    -webkit-transform: translateY(-8px);
     transform: translateY(-8px);
   }
+
   20%,
   40%,
   60% {
-    -webkit-transform: translateY(8px);
     transform: translateY(8px);
   }
+
   80% {
-    -webkit-transform: translateY(6.4px);
     transform: translateY(6.4px);
   }
+
   90% {
-    -webkit-transform: translateY(-6.4px);
+    transform: translateY(-6.4px);
+  }
+}
+
+@keyframes shake-vertical {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  10%,
+  30%,
+  50%,
+  70% {
+    transform: translateY(-8px);
+  }
+
+  20%,
+  40%,
+  60% {
+    transform: translateY(8px);
+  }
+
+  80% {
+    transform: translateY(6.4px);
+  }
+
+  90% {
     transform: translateY(-6.4px);
   }
 }
@@ -80,38 +86,35 @@ body::-webkit-scrollbar {
 }
 
 .main-nav {
-  background-color: rgb(255, 204, 0);
-  color: rgb(0, 0, 0);
+  background-color: $yellow;
+  color: $black;
   display: flex;
   align-items: center;
   height: 60px;
   position: sticky;
   z-index: 5;
-  position: -webkit-sticky;
-  top: 0; /* required */
-  box-shadow: 0 4px 16px -1px grey;
-  transition-timing-function: ease-in;
-  transition: 0.5s;
+  top: 0;
+  box-shadow: 0 4px 16px -1px $grey;
+  transition: ease-in 0.5s;
+
+  a {
+    color: $grey;
+    margin: 30px;
+    text-decoration: none;
+  }
+
+  :hover {
+    color: $black;
+  }
 }
 
-.main-nav__hide {
+.main-nav-hide {
   top: -100px;
-  transition-timing-function: ease-out;
-  transition: 0.5s;
+  transition: ease-out 0.5s;
 }
 
-.main-nav a {
-  color: rgb(91, 91, 91);
-  text-decoration: none;
-  margin: 30px;
-}
-.NavLink.active {
-  color: rgb(0, 0, 0);
-  text-decoration: underline;
-}
-
-a:hover {
-  color: rgb(0, 0, 0);
+.nav-link.active {
+  color: $black;
 }
 
 .burger-menu {
@@ -126,7 +129,7 @@ a:hover {
   display: none;
 }
 
-.basket-navLink {
+.basket-nav-link {
   display: none;
 }
 
@@ -139,18 +142,17 @@ a:hover {
 
   .navlink-box {
     position: absolute;
-    height: 50%;
-    width: 40%;
-    height: 93vh;
+    width: 50%;
+    height: 100vh;
     z-index: 100;
     display: flex;
     flex-direction: column;
-    background: #c9c9c9;
     top: 59px;
     left: -100%;
     transition: 850ms;
-    background-color: #ffcc00;
+    background-color: $yellow;
   }
+
   .navlink-box.active {
     left: 0;
     transition: 350ms;
@@ -162,21 +164,22 @@ a:hover {
 
   .main-nav {
     justify-content: space-between;
+
+    a {
+      color: $grey;
+      text-decoration: none;
+      height: 15%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+    }
   }
 
-  .main-nav a {
-    color: #5b5b5b;
+  .nav-link.active {
+    color: $black;
     text-decoration: none;
-    height: 15%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
-  }
-
-  .NavLink.active {
-    color: rgb(0, 0, 0);
-    text-decoration: none;
+    background: $aActive;
   }
 
   .overlay-burger {
@@ -188,7 +191,7 @@ a:hover {
     bottom: 0;
     right: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: $overlay;
     z-index: 5;
     animation: fadeIn 0.4s ease-out forwards;
   }
@@ -197,14 +200,15 @@ a:hover {
     cursor: pointer;
     display: block;
     margin-right: 10px;
-    -webkit-animation: shake-vertical 0.8s
+    animation:
+      shake-vertical 0.8s
       cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
     animation: shake-vertical 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
   }
 
   .amount-basket {
-    background: white;
-    border: 3px solid #ffcc00;
+    background: $white;
+    border: 3px solid $yellow;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -216,8 +220,9 @@ a:hover {
     position: absolute;
     top: 3px;
     right: 3px;
-    color: black;
-    -webkit-animation: shake-vertical 0.8s
+    color: $black;
+    animation:
+      shake-vertical 0.8s
       cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
     animation: shake-vertical 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
   }

@@ -66,12 +66,16 @@ const Login = ({
     loginForm({ ...valueLogin, [e.target.name]: e.target.value });
   };
 
-  const clearInput = () => {
-    valueLogin.email = "";
-    valueLogin.bike = "";
-  };
+  // const clearInput = () => {
+  //   valueLogin.email = "";
+  //   valueLogin.bike = "";
+  // };
 
   useEffect(() => {
+    const clearInput = () => {
+      valueLogin.email = "";
+      valueLogin.bike = "";
+    };
     if (Object.keys(loginErrors).length === 0 && loginSubmit) {
       currentUserLogin();
       submitLogin(false);
@@ -86,15 +90,11 @@ const Login = ({
     loginErrors,
     loginSubmit,
     history,
+    valueLogin,
   ]);
 
   return (
     <div className="login-containter">
-      <img
-        className="background-img-login"
-        src="Images/login-background.jpg"
-        alt="cyclist"
-      />
       <div className="login-content">
         <div>
           <h1>Great to see You!</h1>
@@ -111,12 +111,12 @@ const Login = ({
           <h1 className="title-login">Login</h1>
           <label>E-mail</label>
           {loginErrors.email && (
-            <label className="error_login">{loginErrors.email}</label>
+            <label className="error-login">{loginErrors.email}</label>
           )}
           <input type="email" name="email" onChange={handleInput} />
           <label>Bike name</label>
           {loginErrors.bike && (
-            <label className="error_login">{loginErrors.bike}</label>
+            <label className="error-login">{loginErrors.bike}</label>
           )}
           <input type="text" name="bike" onChange={handleInput} />
           <div className="button-box">

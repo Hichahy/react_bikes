@@ -1,11 +1,10 @@
 @keyframes fade-in-fwd {
   0% {
-    -webkit-transform: translateZ(-80px);
     transform: translateZ(-80px);
     opacity: 0;
   }
+
   100% {
-    -webkit-transform: translateZ(0);
     transform: translateZ(0);
     opacity: 1;
   }
@@ -13,12 +12,11 @@
 
 @keyframes slide-in-left {
   0% {
-    -webkit-transform: translateX(-1000px);
     transform: translateX(-1000px);
     opacity: 0.8;
   }
+
   100% {
-    -webkit-transform: translateX(0);
     transform: translateX(0);
     opacity: 1;
   }
@@ -26,16 +24,15 @@
 
 @keyframes slide-left {
   0% {
-    -webkit-transform: translateX(1000px);
-    transform: translateX(1000px);
+    transform: translateX(100%);
   }
+
   100% {
-    -webkit-transform: translateX(0);
     transform: translateX(0);
   }
 }
 
-.dashboard_container {
+.dashboard-container {
   height: 92vh;
   display: flex;
   justify-content: flex-end;
@@ -52,7 +49,6 @@
   display: flex;
   background-color: rgba(0, 0, 0, 0.249);
   width: 35%;
-  -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   justify-content: center;
   align-items: center;
@@ -60,13 +56,16 @@
   height: 100%;
   color: white;
   animation: slide-left 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+
   h2 {
-    margin: 0 25px 0 25px;
+    margin: 0 25px;
   }
+
   p {
     margin: 25px;
   }
 }
+
 .dash-btn {
   padding: 10px;
   height: 50px;
@@ -90,12 +89,12 @@
 .command-box {
   width: 65%;
   background-color: rgba(255, 255, 255, 0.267);
-  -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   animation: slide-in-left 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
+
   h1 {
     margin: 2% 0% 2% 3%;
   }
@@ -107,96 +106,6 @@
   top: 20px;
   cursor: pointer;
 }
-.order-container {
-  height: 80%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow: scroll;
-}
-
-.order {
-  width: 80%;
-  margin: 10px 0 10px;
-  background-color: rgba(0, 0, 0, 0.749);
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);
-  color: white;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  animation: fade-in-fwd 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-}
-
-.contact-table {
-  font-size: 60%;
-  height: 42%;
-  width: 50%;
-  td {
-    border: rgba(255, 255, 255, 0.071) solid 1px;
-  }
-}
-
-.order-box {
-  height: 100%;
-  width: 50%;
-  td {
-    border: rgba(255, 255, 255, 0.071) solid 1px;
-  }
-  table {
-    width: 100%;
-    font-size: 60%;
-    overflow: scroll;
-  }
-}
-::-webkit-scrollbar {
-  display: none;
-}
-
-.order-color {
-  border: 1px white solid;
-  border-radius: 50%;
-  height: 10px;
-  width: 10px;
-}
-
-.title-order {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  font-size: 66%;
-}
-
-.table-box {
-  display: flex;
-  width: 100%;
-  overflow: scroll;
-}
-
-.order-nav {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-  align-items: center;
-}
-
-.arrows-down {
-  top: 48px;
-  position: relative;
-  left: 94%;
-}
-
-.id-order {
-  color: grey;
-  font-size: small;
-}
-
-.delete-order:hover {
-  color: red;
-  cursor: pointer;
-}
 
 .icons-box {
   display: flex;
@@ -206,24 +115,24 @@
 @media screen and (max-width: 765px) {
   .dashboard-box {
     width: 100%;
-    backdrop-filter: blur(0px);
+    backdrop-filter: blur(0);
     animation: fade-in 2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   }
 
-  .dashboard_container {
-    background: #000000 url("./dashboard-backgroun.jpg");
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
+  .dashboard-container {
+    background: #000 url("./dashboard-backgroun.jpg");
     background-size: cover;
+
     h1 {
       font-size: 35px;
     }
+
     .dash-btn {
       background-color: rgba(255, 255, 255, 0.68);
       color: black;
     }
   }
+
   .command-box {
     position: absolute;
     z-index: 1;
@@ -232,35 +141,43 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
+
     h1 {
       font-size: 100%;
       margin: 10px 0 20px 20px;
     }
+
     .order-container {
       overflow: scroll;
     }
+
     .order {
       display: grid;
     }
   }
+
   .table-box {
     flex-direction: column;
   }
+
   .contact-table {
     width: 100%;
   }
+
   .div-close {
     width: 100%;
     display: flex;
     justify-content: flex-end;
   }
+
   .x-dash {
     position: absolute;
-    top: 0px;
-    right: 0px;
+    top: 0;
+    right: 0;
     margin: 10px 10px 10px 0;
   }
+
   .order-box {
-    width: 100%;
+    width: auto;
   }
 }

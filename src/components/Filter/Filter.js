@@ -11,7 +11,6 @@ import {
 
 const Filter = (props) => {
   const [mobileFilter, setMobileFilter] = useState(false);
-  console.log(`mobilefilter`, mobileFilter);
 
   useEffect(() => {
     if (!props.mobileMode) {
@@ -48,7 +47,7 @@ const Filter = (props) => {
         <div className="filter-search">
           <BiSearchAlt />
           <input
-            className="input_search"
+            className="input-search"
             value={props.letters}
             type="text"
             placeholder="Find bike..."
@@ -57,7 +56,7 @@ const Filter = (props) => {
           />
         </div>
         <div className="filter-sort">
-          <span>Sort by:</span>
+          <span>Sort:</span>
           <select
             className="sort-select"
             value={props.sort}

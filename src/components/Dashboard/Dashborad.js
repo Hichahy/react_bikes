@@ -33,7 +33,7 @@ const Dashboard = ({ currentUser, logged, isLogged, logOut }) => {
 
   return (
     logged && (
-      <div className="dashboard_container">
+      <div className="dashboard-container">
         <img
           className="background-img"
           src="Images/dashboard-background.jpg"

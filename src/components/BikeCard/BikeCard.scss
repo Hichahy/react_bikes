@@ -1,39 +1,37 @@
 @keyframes slide-right-cart {
   0% {
-    -webkit-transform: translateX(-2000px);
+    transform: translateX(-2000px);
     transform: translateX(-2000px);
   }
+
   100% {
-    -webkit-transform: translateX(0);
+    transform: translateX(0);
     transform: translateX(0);
   }
 }
 
-@keyframes rollIt {
+@keyframes roll-it {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
 }
 
 .product-containter {
-  display: flex;
   padding: 10px;
   min-height: 90vh;
   display: grid;
-
-  background: #000000 url("./sky.jpg");
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
+  background: #000 url("./sky.jpg");
   background-size: cover;
   background-size: 150%;
-  animation: rollIt 40s ease infinite;
+  animation: roll-it 40s ease infinite;
 }
 
 .bike-cart-box {
@@ -53,19 +51,21 @@
 .blump {
   border-radius: 30% 70% 46% 54% / 30% 30% 70% 70%;
   background: rgb(255, 0, 230);
-  background: linear-gradient(
-    295deg,
-    rgba(255, 0, 230, 1) 7%,
-    rgb(255, 204, 1) 57%
-  );
+  background:
+    linear-gradient(
+      295deg,
+      rgba(255, 0, 230, 1) 7%,
+      rgb(255, 204, 1) 57%
+    );
   height: 70%;
   width: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   justify-content: space-between;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px,
-    rgba(0, 0, 0, 0.05) 0px 5px 10px;
+  box-shadow:
+    rgba(0, 0, 0, 0.15) 0 15px 25px,
+    rgba(0, 0, 0, 0.05) 0 5px 10px;
   position: absolute;
   z-index: 1;
 }
@@ -106,8 +106,9 @@
 }
 
 .colors-select-cart {
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
-    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  box-shadow:
+    rgba(0, 0, 0, 0.4) 0 2px 4px,
+    rgba(0, 0, 0, 0.3) 0 7px 13px -3px rgba(0, 0, 0, 0.2) 0 -3px 0 inset;
   height: 27px;
   width: 27px;
   border-radius: 50%;
@@ -116,8 +117,9 @@
 
 .breadcrumbs_link {
   text-decoration: none;
-  color: rgba(0, 0, 0, 0.87);
+  color: black;
 }
+
 .breadcrumbs_link:hover {
   text-decoration: underline;
 }
@@ -128,29 +130,32 @@
 
 @media screen and (max-width: 765px) {
   .product-containter {
-    background: #000000 url("./background-bikeCart.jpg");
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
+    background: #000 url("./background-bikeCart.jpg");
     background-size: cover;
     color: rgba(255, 255, 255, 0.838);
+
     h2 {
       font-size: 100%;
     }
   }
+
   .content-header {
     flex-direction: column;
+
     h1 {
       font-size: 100%;
       color: rgba(0, 0, 0, 0.664);
     }
+
     img {
       width: 90%;
     }
   }
+
   .product-content {
     justify-content: space-around;
   }
+
   .blump {
     display: none;
   }

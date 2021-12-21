@@ -132,12 +132,12 @@ const DashboardAddBike = ({ showAddBikeHandler, assortment }) => {
 
   return (
     <>
-      <div className="AddBike-dashboard">
+      <div className="add-bike-dashboard">
         <AiOutlineClose className="x-dash" onClick={showAddBikeHandler} />
-        <h1>Add bike to your shop</h1>
-        <div className="box-addBike">
-          <div className="bikeCart-dashboard">
-            <form onSubmit={handleOpenModal} className="addBike-form">
+        <h1>Add bike to shop</h1>
+        <div className="box-add-bike">
+          <div className="bike-cart-dashboard">
+            <form onSubmit={handleOpenModal} className="add-bike-form">
               <label>Title</label>
               {errorsAddBike.tittle && (
                 <label className="error_register">{errorsAddBike.tittle}</label>
@@ -178,7 +178,7 @@ const DashboardAddBike = ({ showAddBikeHandler, assortment }) => {
               {errorsAddBike.sizes && (
                 <label className="error_register">{errorsAddBike.sizes}</label>
               )}
-              <div className="addBike-siezes">
+              <div className="add-bike-siezes">
                 <label>
                   XL
                   <input
@@ -228,7 +228,7 @@ const DashboardAddBike = ({ showAddBikeHandler, assortment }) => {
               {errorsAddBike.colors && (
                 <label className="error_register">{errorsAddBike.colors}</label>
               )}
-              <div className="addBike-siezes">
+              <div className="add-bike-siezes">
                 <input
                   className="color-input"
                   type="color"
@@ -266,7 +266,7 @@ const DashboardAddBike = ({ showAddBikeHandler, assortment }) => {
                 value={addBikeForm.price}
                 onChange={handleInput}
               ></input>
-              <button type="submit" className="addBike-btn">
+              <button type="submit" className="add-bike-btn">
                 Add
               </button>
             </form>

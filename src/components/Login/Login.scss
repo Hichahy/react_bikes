@@ -1,7 +1,11 @@
+$warning: rgb(250, 7, 7);
+$formColor: #d5d5d5ad;
+
 @keyframes fade-in {
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
@@ -12,16 +16,23 @@
   color: white;
   display: flex;
   justify-content: space-between;
+  background: #000 url("./login-background.jpg");
+  background-size: cover;
 }
 
 .login-content {
   width: 60%;
   display: flex;
   align-items: flex-end;
-  margin-bottom: 7%;
+  margin-bottom: 2rem;
+
+  p {
+    margin: 0;
+  }
+
   div {
     width: 75%;
-    margin-left: 10%;
+    margin-left: 2rem;
     height: fit-content;
   }
 }
@@ -30,7 +41,6 @@
   display: flex;
   background-color: rgba(0, 0, 0, 0.468);
   width: 35%;
-  -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   justify-content: center;
   align-items: center;
@@ -40,7 +50,7 @@
 .link-login {
   list-style: none;
   text-decoration: none;
-  color: #cdcdcdad;
+  color: $formColor;
   font-size: small;
   border-bottom: 1px solid;
 }
@@ -52,9 +62,9 @@
   z-index: -1;
 }
 
-.error_login {
+.error-login {
   font-size: small !important;
-  color: red !important;
+  color: $warning !important;
 }
 
 .link-login:hover {
@@ -70,23 +80,23 @@
     width: 100%;
     animation: fade-in 2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
     background-color: rgba(0, 0, 0, 0.673);
-    backdrop-filter: blur(0px);
+    backdrop-filter: blur(0);
   }
 
   .login-containter {
-    background: #000000 url("./login-background.jpg");
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
+    background: #000 url("./login-background_mobile.jpg");
     background-size: cover;
+
     label {
       color: white;
     }
+
     input {
       color: white;
       width: 98%;
       font-size: 3vh;
     }
+
     .link-login {
       color: white;
       font-size: x-small;

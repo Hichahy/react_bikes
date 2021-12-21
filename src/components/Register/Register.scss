@@ -1,7 +1,11 @@
+$warning: rgb(250, 7, 7);
+$formColor: #d5d5d5ad;
+
 @keyframes fade-in {
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
@@ -12,6 +16,12 @@
   color: white;
   display: flex;
   justify-content: space-between;
+  background: #000 url("./register-background.jpeg");
+  background-size: cover;
+
+  p {
+    margin: 0;
+  }
 }
 
 .background-img {
@@ -25,10 +35,11 @@
   width: 60%;
   display: flex;
   align-items: flex-end;
-  margin-bottom: 7%;
+  margin-bottom: 2rem;
+
   div {
     width: 75%;
-    margin-left: 10%;
+    margin-left: 2rem;
     height: fit-content;
   }
 }
@@ -37,7 +48,6 @@
   display: flex;
   background-color: rgba(0, 0, 0, 0.468);
   width: 35%;
-  -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   justify-content: center;
   align-items: center;
@@ -55,17 +65,26 @@
     outline: none;
     background: none;
     border: none;
-    border-bottom: 1px solid #cdcdcdad;
+    border-bottom: 1px solid $formColor;
     width: 100%;
     color: white;
     margin-bottom: 10px;
     height: 30px;
     border-radius: 0;
   }
+
+  .button-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 30px;
+    flex-direction: column;
+  }
+
   button {
     padding: 10px;
     height: 50px;
-    width: 40%;
+    width: 100%;
     background: #f1f1ef33;
     outline: none;
     border: none;
@@ -73,114 +92,111 @@
     cursor: pointer;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
     font-size: large;
+    margin-bottom: 20px;
   }
 
   button:hover {
-    background-color: #cdcdcdad;
+    background-color: $formColor;
   }
 
   label {
     font-size: medium;
-    color: #cdcdcdc4;
+    color: $formColor;
   }
+
   h1 {
     color: white;
-    margin: 0px 0 30px -2px;
+    margin: 0 0 30px -2px;
   }
+
   .checkbox-box {
     display: flex;
     align-items: center;
     height: 30px;
   }
+
   .checkbox-register {
     width: 15px;
     height: 15px;
     cursor: pointer;
     background: rgba(40, 40, 40, 0.2);
     color: black;
-    -webkit-appearance: none;
-    -moz-appearance: none;
     appearance: none;
     border: none;
-    border: 1px solid #cdcdcdc4;
+    border: 1px solid $formColor;
     position: relative;
-    margin: 0px 18px 0px 0px;
+    margin: 0 18px 0 0;
   }
 
   .checkbox-register:checked {
-    background: #cdcdcdc4;
+    background: $formColor;
     transform-origin: bottom left;
-    border: 1px solid #cdcdcdc4;
+    border: 1px solid $formColor;
     clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
   }
-}
-
-.button-box {
-  display: flex;
-  margin-top: 10px;
-  display: flex;
-  margin-top: 10px;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 30px;
 }
 
 .link-register {
   list-style: none;
   text-decoration: none;
-  color: #cdcdcdad;
+  color: $formColor;
   font-size: small;
   border-bottom: 1px solid;
 }
+
 .link-register:hover {
   color: white;
 }
 
-.error_register {
+.error-register {
   font-size: small !important;
-  color: red !important;
+  color: $warning !important;
 }
 
 @media screen and (max-width: 765px) {
   .register-content {
     display: none;
   }
+
   .register-panel {
     width: 100%;
     height: auto;
-    backdrop-filter: blur(0px);
+    backdrop-filter: blur(0);
     animation: fade-in 2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
     background-color: rgba(0, 0, 0, 0.673);
-    padding: 30px 0 30px 0;
+    padding: 30px 0;
+
     label {
       color: white;
     }
+
     input {
       color: white;
     }
+
     .link-register {
       color: white;
       font-size: x-small;
     }
   }
+
   .background-img {
     height: 90%;
   }
 
   .register-containter {
-    background: #000000 url("./register-background.jpg");
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
+    background: #000 url("./register-background.jpg");
     background-size: cover;
     min-height: 92vh;
   }
+
   .input-box {
     height: 100%;
     width: 70%;
     overflow: hidden;
+
     button {
       background-color: rgba(255, 255, 255, 0.68);
       color: black;
