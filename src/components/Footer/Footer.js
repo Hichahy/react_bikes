@@ -57,27 +57,27 @@ const footer = ({ logged, goUp }) => {
 
       <div className="navigation-footer-box">
         <h4 className="h4-fotter">Navigation</h4>
-        <NavLink className="NavLink-fotter" to="/home">
+        <NavLink className="nav-link-fotter" to="/home">
           Home{" "}
           <RiArrowDropRightLine className="arrow animate__animated animate__heartBeat  animate__infinite" />
         </NavLink>
-        <NavLink className="NavLink-fotter" to="/shop">
+        <NavLink className="nav-link-fotter" to="/shop">
           Shop{" "}
           <RiArrowDropRightLine className="arrow animate__animated animate__heartBeat  animate__infinite" />
         </NavLink>
         {logged ? (
-          <NavLink className="NavLink-fotter" to="/dashboard">
+          <NavLink className="nav-link-fotter" to="/dashboard">
             Dashboard{" "}
             <RiArrowDropRightLine className="arrow animate__animated animate__heartBeat  animate__infinite" />
           </NavLink>
         ) : null}
 
-        <NavLink className="NavLink-fotter" to="/register">
+        <NavLink className="nav-link-fotter" to="/register">
           Register{" "}
           <RiArrowDropRightLine className="arrow animate__animated animate__heartBeat  animate__infinite" />
         </NavLink>
 
-        <NavLink className="NavLink-fotter" to="/login">
+        <NavLink className="nav-link-fotter" to="/login">
           Login{" "}
           <RiArrowDropRightLine className="arrow animate__animated animate__heartBeat  animate__infinite" />
         </NavLink>

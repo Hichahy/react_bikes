@@ -43,14 +43,12 @@ const Home = () => {
           </p>
           <p>You can choise size your bike and colors. Have fun! 👨‍💻</p>
         </div>
-        <div className="box-imgHome">
+        <div className="box-img-home">
           <img
-            className="info-img1"
             src="Images/homeInfo1.jpeg"
             alt="information"
           />
           <img
-            className="info-img1"
             src="Images/homeInfo2.png"
             alt="information"
           />
@@ -85,7 +83,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="appInfo-section"></section>
+      <div className="color-box-home"></div>
     </div>
   );
 };

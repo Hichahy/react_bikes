@@ -2,12 +2,8 @@
   display: flex;
   justify-content: space-between;
   background: black;
-  display: flex;
   min-height: 92vh;
   background-image: url("./canyon.jpg");
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
   background-size: cover;
 }
 
@@ -16,6 +12,7 @@
   display: flex;
   flex-direction: column;
   padding: 10px;
+  align-items: center;
 }
 
 .main {
@@ -25,15 +22,10 @@
 .main-content {
   width: 100%;
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: flex-start;
-}
-
-.content {
-  display: flex;
-  justify-content: space-between;
+  margin-bottom: 2rem;
 }
 
 .not-found {
@@ -46,7 +38,6 @@
   overflow-y: scroll;
   animation: slide-left 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   background-color: rgba(0, 0, 0, 0.468);
-  -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
 }
 
@@ -58,12 +49,10 @@
     border: none;
     padding: 0;
     align-items: center;
-    background: #000000 url("./background-bikeCart.jpg");
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
+    background: #000 url("./background-bikeCart.jpg");
     background-size: cover;
   }
+
   .sidebar {
     display: none;
   }

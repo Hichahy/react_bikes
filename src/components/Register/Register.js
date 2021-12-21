@@ -29,8 +29,6 @@ const Register = ({
 }) => {
   const history = useHistory();
 
-  console.log(`usersData.lenght`, usersData.length);
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -39,6 +37,14 @@ const Register = ({
   };
 
   useEffect(() => {
+    const clearInput = () => {
+      valueRegister.email = "";
+      valueRegister.bike = "";
+      valueRegister.confirmBike = "";
+      valueRegister.userName = "";
+      agreementRegister(false);
+    };
+
     if (Object.keys(registerErrors).length === 0 && registerSubmit) {
       addUser();
       submitRegister(false);
@@ -47,15 +53,25 @@ const Register = ({
       history.push("/dashboard");
       currentUser();
     }
-  }, [registerSubmit, registerErrors, addUser, submitRegister]);
+  }, [
+    registerSubmit,
+    registerErrors,
+    agreementRegister,
+    addUser,
+    submitRegister,
+    history,
+    currentUser,
+    isLogged,
+    valueRegister,
+  ]);
 
-  const clearInput = () => {
-    valueRegister.email = "";
-    valueRegister.bike = "";
-    valueRegister.confirmBike = "";
-    valueRegister.userName = "";
-    agreementRegister(false);
-  };
+  // const clearInput = () => {
+  //   valueRegister.email = "";
+  //   valueRegister.bike = "";
+  //   valueRegister.confirmBike = "";
+  //   valueRegister.userName = "";
+  //   agreementRegister(false);
+  // };
 
   const validateInfo = () => {
     let errors = {};
@@ -98,11 +114,11 @@ const Register = ({
 
   return (
     <div className="register-containter">
-      <img
+      {/* <img
         className="background-img"
         src="Images/register-background.jpeg"
         alt="cyclist"
-      />
+      /> */}
       <div className="register-content">
         <div>
           <h1>Don't have an account?</h1>
@@ -122,7 +138,7 @@ const Register = ({
           <h1 className="title-register">Sign up</h1>
           <label>User Name</label>{" "}
           {registerErrors.userName && (
-            <label className="error_register">{registerErrors.userName}</label>
+            <label className="error-register">{registerErrors.userName}</label>
           )}
           <input
             type="text"
@@ -132,7 +148,7 @@ const Register = ({
           />
           <label>E-mail</label>
           {registerErrors.email && (
-            <label className="error_register">{registerErrors.email}</label>
+            <label className="error-register">{registerErrors.email}</label>
           )}
           <input
             type="email"
@@ -142,7 +158,7 @@ const Register = ({
           />
           <label>Name your bike</label>
           {registerErrors.bike && (
-            <label className="error_register">{registerErrors.bike}</label>
+            <label className="error-register">{registerErrors.bike}</label>
           )}
           <input
             type="text"
@@ -152,7 +168,7 @@ const Register = ({
           />
           <label>Confirm name your bike </label>
           {registerErrors.confirmBike && (
-            <label className="error_register">
+            <label className="error-register">
               {registerErrors.confirmBike}
             </label>
           )}
@@ -172,7 +188,7 @@ const Register = ({
             <label>I agree for all</label>
           </div>
           {registerErrors.agreement && (
-            <label className="error_register">{registerErrors.agreement}</label>
+            <label className="error-register">{registerErrors.agreement}</label>
           )}
           <div className="button-box">
             <button type="submit">

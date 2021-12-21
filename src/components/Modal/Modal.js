@@ -59,21 +59,21 @@ const Modal = ({
         ) : (
           <>
             <p>Great! {value.name}, now you must checkout your order ...</p>
-            <div className="info_tittle">
+            <div className="info-tittle">
               <h6>Your order:</h6>
               <h6>Contact data:</h6>
             </div>
-            <div className="info_container">
-              <ol className="label_container">
+            <div className="info-container">
+              <ol className="label-container">
                 {checkout.map((i) => (
-                  <div key={uuidv4()} className="label_box">
-                    <div className="label_info">
+                  <div key={uuidv4()} className="label-box">
+                    <div className="label-info">
                       <li style={{ fontWeight: "600" }}>
                         <label>{i.tittle} </label>
                       </li>
                       <div>
                         <label>Size: </label>
-                        <p className="siezeP">{i.selectedSize}</p>
+                        <p className="sieze-p">{i.selectedSize}</p>
                       </div>
                       <div>
                         <label>Color: </label>
@@ -82,12 +82,12 @@ const Modal = ({
                           style={{ background: `${i.selectedColor}` }}
                         ></div>
                       </div>
-                      <label className="siezeP">${i.price}</label>
+                      <label className="sieze-p">${i.price}</label>
                     </div>
                   </div>
                 ))}
               </ol>
-              <div className="contact_data_box">
+              <div className="contact-data-box">
                 <ul>
                   <li>
                     <label>Name: </label>
@@ -109,7 +109,7 @@ const Modal = ({
               </div>
             </div>
             <div className="summary-box">
-              <p className="totalP">
+              <p className="total-p">
                 Total: ${" "}
                 {cartItems
                   .reduce((a, c) => a + c.price * c.count, 0)

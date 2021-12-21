@@ -5,7 +5,6 @@
 
 .basket-item {
   list-style: none;
-  margin: 6% 0 0 0;
   padding: 0;
 }
 
@@ -25,20 +24,20 @@
 
 .bike-box {
   background: rgba(255, 255, 255, 0.541);
-  -webkit-backdrop-filter: blur(30px);
-  backdrop-filter: blur(20px);
-  display: flex;
-  flex-direction: column;
+  backdrop-filter: blur(30px);
   display: flex;
   flex-direction: column;
   border: none;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px, rgba(0, 0, 0, 0.23) 0 3px 6px;
   margin: 20px 20px 20px 10px;
   padding: 10px;
   min-height: 90px;
+
   --animate-duration: 700ms;
   --animate-delay: 3s;
+
   border-radius: 25px;
+  justify-content: center;
 }
 
 .basket-content {
@@ -69,25 +68,33 @@
 
 .form-container {
   width: 100%;
+
   --animate-duration: 600ms;
 }
 
 .form-box {
   list-style: none;
   padding: 0;
-  list-style: none;
   margin: 0;
 }
 
-.form__group {
+.form-group {
   position: relative;
   padding: 15px 0 0;
-  margin-top: 10px;
   width: 90%;
   margin: 0 20px 10px 10px;
 }
 
-.form__field {
+.form-label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: white;
+}
+
+.form-field {
   font-family: inherit;
   width: 100%;
   border: 0;
@@ -103,43 +110,33 @@
     color: transparent;
   }
 
-  &:placeholder-shown ~ .form__label {
+  &:placeholder-shown ~ .form-label {
     font-size: 15px;
     cursor: text;
     top: 20px;
   }
+
+  &:required,
+  &:invalid {
+    box-shadow: none;
+  }
 }
 
-.form__label {
-  position: absolute;
-  top: 0;
-  display: block;
-  transition: 0.2s;
-  font-size: 1rem;
-  color: rgb(255, 255, 255);
-}
-
-.form__field:focus {
-  ~ .form__label {
+.form-field:focus {
+  ~ .form-label {
     position: absolute;
     top: 0;
     display: block;
     transition: 0.2s;
     font-size: 1rem;
-    color: #ffcc00;
+    color: #fc0;
     font-weight: 700;
   }
+
   padding-bottom: 6px;
   font-weight: 700;
   border-width: 3px;
   border-image-slice: 1;
-}
-/* reset input */
-.form__field {
-  &:required,
-  &:invalid {
-    box-shadow: none;
-  }
 }
 
 /* Change the white to any color */
@@ -147,7 +144,7 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  box-shadow: 0 0 0 30px rgba(255, 255, 255, 0%) inset !important;
 }
 
 .empy-bag {
@@ -158,7 +155,7 @@ input:-webkit-autofill:active {
 }
 
 .empy-icon {
-  color: rgba(128, 128, 128, 0.199);
+  color: rgba(128, 128, 128, 19.9%);
 }
 
 .cart-header {
@@ -175,30 +172,31 @@ input:-webkit-autofill:active {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: linear-gradient(
-      0deg,
-      rgb(114, 114, 114) 0%,
-      rgb(177, 177, 177) 28%,
-      rgb(255, 255, 255) 100%
-    );
+    background:
+      linear-gradient(
+        0deg,
+        rgb(114, 114, 114) 0%,
+        rgb(177, 177, 177) 28%,
+        rgb(255, 255, 255) 100%
+      );
   }
 
   .bike-box {
-    margin: 20px 20px 20px 20px;
+    margin: 20px;
   }
 
-  .form__label {
+  .form-label {
     color: black;
   }
 
-  .form__field {
+  .form-field {
     border-bottom: solid 1px black;
     color: black;
     border-radius: 0;
   }
 
-  .form__group {
-    margin: 0 20px 10px 20px;
+  .form-group {
+    margin: 0 20px 10px;
   }
 
   .basket-total {

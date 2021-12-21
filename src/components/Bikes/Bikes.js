@@ -90,7 +90,7 @@ const Bikes = ({
 
       <div className="description-box">
         <p>{bike.description}</p>
-        <div className="size_box">
+        <div className="size-box">
           <label>Sizes:</label>
           {bike.avaibleSizesz.map((size, index) => (
             <div key={index} className="option">
@@ -131,7 +131,7 @@ const Bikes = ({
           className={`btn-3 animate__animated animate__pulse animate__infinite ${
             animationAdd ? "btn-3 animate__animated animate__tada" : ""
           }
-          ${excessiveBikes ? "btnDisabled" : ""}`}
+          ${excessiveBikes ? "btn-disabled" : ""}`}
           onClick={() => {
             if (excessiveBikes === false) {
               animationAddFlag();

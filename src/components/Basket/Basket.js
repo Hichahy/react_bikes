@@ -122,59 +122,59 @@ const Basket = ({
         >
           <form onSubmit={finalizeOrder}>
             <ul className="form-box">
-              <div className="form__group field">
+              <div className="form-group field">
                 <input
                   type="email"
-                  className="form__field"
+                  className="form-field"
                   placeholder="eamail"
                   name="email"
                   id="email"
                   required
                   onChange={handleInput}
                 />
-                <label htmlFor="email" className="form__label">
+                <label htmlFor="email" className="form-label">
                   Email
                 </label>
               </div>
-              <div className="form__group field">
+              <div className="form-group field">
                 <input
                   type="text"
-                  className="form__field"
+                  className="form-field"
                   placeholder="name"
                   name="name"
                   id="name"
                   required
                   onChange={handleInput}
                 />
-                <label htmlFor="name" className="form__label">
+                <label htmlFor="name" className="form-label">
                   Name
                 </label>
               </div>
-              <div className="form__group field">
+              <div className="form-group field">
                 <input
                   type="text"
-                  className="form__field"
+                  className="form-field"
                   placeholder="adress"
                   name="adress"
                   id="adress"
                   required
                   onChange={handleInput}
                 />
-                <label htmlFor="adress" className="form__label">
+                <label htmlFor="adress" className="form-label">
                   Adress
                 </label>
               </div>
-              <div className="form__group field">
+              <div className="form-group field">
                 <input
                   type="text"
-                  className="form__field"
+                  className="form-field"
                   placeholder="city"
                   name="city"
                   id="city"
                   required
                   onChange={handleInput}
                 />
-                <label htmlFor="city" className="form__label">
+                <label htmlFor="city" className="form-label">
                   City
                 </label>
               </div>

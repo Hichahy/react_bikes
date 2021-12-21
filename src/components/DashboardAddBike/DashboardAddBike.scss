@@ -1,40 +1,38 @@
-.AddBike-dashboard {
+.add-bike-dashboard {
   width: 65%;
   background-color: rgba(255, 255, 255, 0.267);
-  -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   animation: slide-in-left 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
+
   h1 {
     margin: 2% 0% 2% 3%;
   }
 }
 
-.bikeCart-dashboard {
+.bike-cart-dashboard {
   flex-direction: column;
   height: 100%;
-  padding: 10px 0 0 0;
-  width: 37%;
+  width: 90%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.694);
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
-.box-addBike {
-  padding: 10px 0 20px 0;
+.box-add-bike {
   width: 100%;
+  min-height: 80%;
   display: flex;
   overflow: scroll;
   justify-content: space-around;
+  margin: 2rem 0;
+
   label {
     font-size: medium;
-    color: #cdcdcdc4;
+    color: #000;
+    margin-right: 15px;
   }
 }
 
@@ -42,17 +40,19 @@
   outline: none;
   background: none;
   border: none;
-  border-bottom: 1px solid #cdcdcdad;
+  border-bottom: 1px solid #000;
   color: white;
   margin-bottom: 10px;
   border-radius: 0%;
 }
 
-.addBike-siezes {
+.add-bike-siezes {
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  margin: 20px 0 20px 0;
+  justify-content: space-between;
+  margin: 20px 0;
+  width: 30%;
+
   label {
     display: flex;
     align-items: center;
@@ -60,14 +60,14 @@
   }
 }
 
-.addBike-form {
+.add-bike-form {
   display: flex;
   flex-direction: column;
   width: 85%;
   overflow: scroll;
 }
 
-.addBike-btn {
+.add-bike-btn {
   padding: 10px;
   height: 50px;
   background: #f1f1ef33;
@@ -91,25 +91,26 @@
 }
 
 @media screen and (max-width: 765px) {
-  .AddBike-dashboard {
+  .add-bike-dashboard {
     position: absolute;
     z-index: 2;
     width: 100%;
     height: 92vh;
     display: flex;
+
     h1 {
       font-size: 100%;
-      margin: 10px 0 20px 20px;
     }
   }
-  .bikeCart-dashboard {
+
+  .bike-cart-dashboard {
     width: 90%;
   }
 
   .x-dash {
     position: absolute;
-    top: 0px;
-    right: 0px;
+    top: 0;
+    right: 0;
     margin: 10px 10px 10px 0;
   }
 
