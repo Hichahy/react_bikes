@@ -1,66 +1,79 @@
-import React, { useState, useEffect } from "react";
-import "./Filter.scss";
-import { BiSearchAlt } from "react-icons/bi";
-import { connect } from "react-redux";
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+/* eslint-disable react/prop-types */
+import './Filter.scss'
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
+import React, { useEffect, useState } from 'react'
 import {
+  filterBySearch,
   filterBySize,
+  filterByVarious
+} from '../../bikes/duck/index'
+import { BiSearchAlt } from 'react-icons/bi'
+import { connect } from 'react-redux'
+
+const Filter = ({
+  mobileMode,
+  assortment,
+  filteredItems,
+  letters,
   filterByVarious,
   filterBySearch,
-} from "../../bikes/duck/index";
-
-const Filter = (props) => {
-  const [mobileFilter, setMobileFilter] = useState(false);
+  filterBySize,
+  size,
+  sort
+}) => {
+  const [mobileFilter, setMobileFilter] = useState(false)
 
   useEffect(() => {
-    if (!props.mobileMode) {
-      setMobileFilter(false);
+    if (!mobileMode) {
+      setMobileFilter(false)
     } else {
-      setMobileFilter(true);
+      setMobileFilter(true)
     }
-  }, [props.mobileMode]);
-
-  const assortment = props.assortment;
+  }, [mobileMode])
 
   const toggleMobileFilter = () => {
-    setMobileFilter((prev) => !prev);
-  };
+    setMobileFilter((prev) => !prev)
+  }
 
   return (
     <section className="filter-container">
       <div className="filter-count">
-        <span>Available bikes: {props.filteredItems.length}</span>
+        <span>Available bikes: {filteredItems.length}</span>
       </div>
-      {props.mobileMode ? (
-        mobileFilter ? (
+      {mobileMode
+        ? (
+            mobileFilter
+              ? (
           <button className="btn-filter" onClick={toggleMobileFilter}>
-            <AiOutlineEye style={{ marginRight: "10px" }} /> Show filters
+            <AiOutlineEye style={{ marginRight: '10px' }} /> Show filters
           </button>
-        ) : (
+                )
+              : (
           <button className="btn-filter" onClick={toggleMobileFilter}>
-            <AiOutlineEyeInvisible style={{ marginRight: "10px" }} /> Hide
+            <AiOutlineEyeInvisible style={{ marginRight: '10px' }} /> Hide
             filters
           </button>
-        )
-      ) : null}
-      <div className={mobileFilter ? "filter-box-active" : "filter-box"}>
+                )
+          )
+        : null}
+      <div className={mobileFilter ? 'filter-box-active' : 'filter-box'}>
         <div className="filter-search">
           <BiSearchAlt />
           <input
             className="input-search"
-            value={props.letters}
+            value={letters}
             type="text"
             placeholder="Find bike..."
             autoComplete="off"
-            onChange={(e) => props.filterBySearch(assortment, e.target.value)}
+            onChange={(e) => filterBySearch(assortment, e.target.value)}
           />
         </div>
         <div className="filter-sort">
           <span>Sort:</span>
           <select
             className="sort-select"
-            value={props.sort}
-            onChange={(e) => props.filterByVarious(assortment, e.target.value)}
+            value={sort}
+            onChange={(e) => filterByVarious(assortment, e.target.value)}
           >
             <option value="none">--</option>
             <option>Latest</option>
@@ -73,8 +86,8 @@ const Filter = (props) => {
           <span>Filter:</span>
           <select
             className="size-select"
-            value={props.size}
-            onChange={(e) => props.filterBySize(assortment, e.target.value)}
+            value={size}
+            onChange={(e) => filterBySize(assortment, e.target.value)}
           >
             <option value="">All bikes</option>
             <option value="S">S</option>
@@ -85,8 +98,8 @@ const Filter = (props) => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
 export default connect(
   (state) => ({
@@ -96,11 +109,11 @@ export default connect(
     assortment: state.products.assortment,
     filtered: state.products.filtered,
     filteredItems: state.products.filteredItems,
-    mobileMode: state.products.mobileMode,
+    mobileMode: state.products.mobileMode
   }),
   {
     filterBySize,
     filterByVarious,
-    filterBySearch,
+    filterBySearch
   }
-)(Filter);
+)(Filter)

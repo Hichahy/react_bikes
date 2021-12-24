@@ -1,7 +1,8 @@
-import React from "react";
-import "./ButtonSidebar.scss";
-import { connect } from "react-redux";
-import { toggleCheckOut } from "../../bikes/duck/index";
+/* eslint-disable react/prop-types */
+import './ButtonSidebar.scss'
+import React from 'react'
+import { connect } from 'react-redux'
+import { toggleCheckOut } from '../../bikes/duck/index'
 
 const ButtonSidebar = (props) => {
   return (
@@ -46,12 +47,12 @@ const ButtonSidebar = (props) => {
         </span>
       </button>
     </div>
-  );
-};
+  )
+}
 
 export default connect(
   (state) => ({
-    openForm: state.products.openForm,
+    openForm: state.products.openForm
   }),
   { toggleCheckOut }
-)(ButtonSidebar);
+)(ButtonSidebar)

@@ -1,25 +1,26 @@
-import React, { useState, useEffect } from "react";
-import { v4 as uuidv4 } from "uuid";
-import { AiOutlineClose } from "react-icons/ai";
-import { MdDelete } from "react-icons/md";
-import { CircularProgress } from "@mui/material";
-import axios from "axios";
-import "./DashboardOrders.scss";
-import ModalDashboard from "../../layout/ModalDashboard/ModalDashboard";
+/* eslint-disable react/prop-types */
+import './DashboardOrders.scss'
+import React, { useEffect, useState } from 'react'
+import { AiOutlineClose } from 'react-icons/ai'
+import { CircularProgress } from '@mui/material'
+import { MdDelete } from 'react-icons/md'
+import ModalDashboard from '../../layout/ModalDashboard/ModalDashboard'
+import axios from 'axios'
+import { v4 as uuidv4 } from 'uuid'
 
 const DashboardOrders = ({ showOrdersHandler }) => {
-  const [orders, setOrders] = useState([]);
-  const [deletedOrder, setDeletedOrder] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [open, setOpen] = useState(false);
-  const [isDeleted, setIsDeleted] = useState(false);
+  const [orders, setOrders] = useState([])
+  const [deletedOrder, setDeletedOrder] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [open, setOpen] = useState(false)
+  const [isDeleted, setIsDeleted] = useState(false)
 
   const handleOpenModal = (id) => {
-    setOpen(!open);
+    setOpen(!open)
 
-    const findOrder = orders.filter((item) => item.id === id);
-    setDeletedOrder(findOrder);
-  };
+    const findOrder = orders.filter((item) => item.id === id)
+    setDeletedOrder(findOrder)
+  }
 
   const handleRemoveOrder = () => {
     axios
@@ -28,49 +29,51 @@ const DashboardOrders = ({ showOrdersHandler }) => {
         `https://bikeshop-2e62a-default-rtdb.firebaseio.com/orders/${deletedOrder[0].id}.json`
       )
       .then((res) => {
-        console.log(res);
-        console.log(res.data);
-      });
-    setIsDeleted(true);
-    handleOpenModal();
-  };
+        console.log(res)
+        console.log(res.data)
+      })
+    setIsDeleted(true)
+    handleOpenModal()
+  }
 
-  const isDeletedTrue = !isDeleted;
+  const isDeletedTrue = !isDeleted
   useEffect(() => {
     axios
       // .get("https://bikes-cbb5f-default-rtdb.firebaseio.com/orders.json")
-      .get("https://bikeshop-2e62a-default-rtdb.firebaseio.com/orders.json")
+      .get('https://bikeshop-2e62a-default-rtdb.firebaseio.com/orders.json')
       .then((res) => {
-        const fetchedOrders = [];
-        for (let key in res.data) {
+        const fetchedOrders = []
+        for (const key in res.data) {
           fetchedOrders.push({
             ...res.data[key],
-            id: key,
-          });
+            id: key
+          })
         }
-        setLoading(false);
-        setIsDeleted(false);
+        setLoading(false)
+        setIsDeleted(false)
 
-        setOrders(fetchedOrders);
+        setOrders(fetchedOrders)
       })
-      .catch((err) => {
-        setLoading(false);
-        setIsDeleted(false);
-      });
-  }, [isDeletedTrue]);
+      .catch(() => {
+        setLoading(false)
+        setIsDeleted(false)
+      })
+  }, [isDeletedTrue])
 
   return (
     <div className="command-box">
       <AiOutlineClose className="x-dash" onClick={showOrdersHandler} />
 
-      {loading ? (
+      {loading
+        ? (
         <div className="spinner-box">
           <CircularProgress
-            style={{ color: "black", width: "100px", height: "100px" }}
+            style={{ color: 'black', width: '100px', height: '100px' }}
           />
           <p>loading...</p>
         </div>
-      ) : (
+          )
+        : (
         <>
           <h1>You have {orders.length} orders</h1>
           <div className="order-container">
@@ -116,13 +119,13 @@ const DashboardOrders = ({ showOrdersHandler }) => {
                         {i.bikes.checkout.map((o) => (
                           <tr key={uuidv4()}>
                             <td>{o.tittle}</td>
-                            <td style={{ width: "10px" }}>
+                            <td style={{ width: '10px' }}>
                               <div
                                 className="order-color"
                                 style={{ background: `${o.selectedColor}` }}
                               />
                             </td>
-                            <td style={{ width: "30px" }}>{o.selectedSize}</td>
+                            <td style={{ width: '30px' }}>{o.selectedSize}</td>
                           </tr>
                         ))}
                       </tbody>
@@ -133,7 +136,7 @@ const DashboardOrders = ({ showOrdersHandler }) => {
             ))}
           </div>
         </>
-      )}
+          )}
 
       <ModalDashboard
         open={open}
@@ -144,7 +147,7 @@ const DashboardOrders = ({ showOrdersHandler }) => {
         deletedOrder={deletedOrder}
       />
     </div>
-  );
-};
+  )
+}
 
-export default DashboardOrders;
+export default DashboardOrders

@@ -87,9 +87,6 @@
   }
 }
 
-.size-select {
-  width: 100%;
-}
 
 .total-p {
   font-weight: 600;
@@ -169,6 +166,7 @@
     padding: 0;
     overflow-y: scroll;
     justify-content: space-between;
+    justify-content: center;
     display: grid;
 
     p {

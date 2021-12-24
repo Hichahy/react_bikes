@@ -1,5 +1,6 @@
-import React from "react";
-import "./ButtonPurchase.scss";
+/* eslint-disable react/prop-types */
+import './ButtonPurchase.scss'
+import React from 'react'
 
 const ButtonPurchase = ({ postData }) => {
   return (
@@ -41,7 +42,7 @@ const ButtonPurchase = ({ postData }) => {
         </span>
       </button>
     </div>
-  );
-};
+  )
+}
 
-export default ButtonPurchase;
+export default ButtonPurchase

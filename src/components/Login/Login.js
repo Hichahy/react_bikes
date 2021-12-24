@@ -1,15 +1,16 @@
-import React, { useEffect } from "react";
-import { NavLink, useHistory } from "react-router-dom";
-import { AiOutlineRight } from "react-icons/ai";
-import { connect } from "react-redux";
-import "./Login.scss";
+/* eslint-disable react/prop-types */
+import './Login.scss'
+import { NavLink, useHistory } from 'react-router-dom'
+import React, { useEffect } from 'react'
 import {
-  loginForm,
-  errorsHandlerLogin,
-  submitLogin,
   currentUserLogin,
+  errorsHandlerLogin,
   isLogged,
-} from "../../accounts/duck/index";
+  loginForm,
+  submitLogin
+} from '../../accounts/duck/index'
+import { AiOutlineRight } from 'react-icons/ai'
+import { connect } from 'react-redux'
 
 const Login = ({
   valueLogin,
@@ -20,51 +21,51 @@ const Login = ({
   usersData,
   loginSubmit,
   isLogged,
-  currentUserLogin,
+  currentUserLogin
 }) => {
-  const findUser = usersData.filter((i) => i.email === valueLogin.email);
-  const history = useHistory();
+  const findUser = usersData.filter((i) => i.email === valueLogin.email)
+  const history = useHistory()
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    errorsHandlerLogin(validateInfo(valueLogin));
-    submitLogin(true);
-  };
+    e.preventDefault()
+    errorsHandlerLogin(validateInfo(valueLogin))
+    submitLogin(true)
+  }
 
   const validateInfo = () => {
-    let loginErrors = {};
+    const loginErrors = {}
 
     if (!valueLogin.email) {
-      loginErrors.email = "Email required";
+      loginErrors.email = 'Email required'
     } else if (!/\S+@\S+\.\S+/.test(valueLogin.email)) {
-      loginErrors.email = "Email address is invalid";
+      loginErrors.email = 'Email address is invalid'
     } else if (
       usersData.find((i) => i.email === valueLogin.email) === undefined
     ) {
-      loginErrors.email = "There is no that user";
+      loginErrors.email = 'There is no that user'
     }
 
     if (!valueLogin.bike) {
-      loginErrors.bike = "Bike name is required";
+      loginErrors.bike = 'Bike name is required'
     } else if (valueLogin.bike.length < 6) {
-      loginErrors.bike = "Bike needs to be 6 characters or more";
+      loginErrors.bike = 'Bike needs to be 6 characters or more'
     } else if (
       usersData.find((i) => i.bikeName === valueLogin.bike) === undefined
     ) {
-      loginErrors.bike = "inccorenct bike name";
+      loginErrors.bike = 'inccorenct bike name'
     } else if (
       findUser.length > 0 &&
       valueLogin.bike !== findUser[0].bikeName
     ) {
-      loginErrors.bike = "inccorenct bike name";
+      loginErrors.bike = 'inccorenct bike name'
     }
 
-    return loginErrors;
-  };
+    return loginErrors
+  }
 
   const handleInput = (e) => {
-    loginForm({ ...valueLogin, [e.target.name]: e.target.value });
-  };
+    loginForm({ ...valueLogin, [e.target.name]: e.target.value })
+  }
 
   // const clearInput = () => {
   //   valueLogin.email = "";
@@ -73,15 +74,15 @@ const Login = ({
 
   useEffect(() => {
     const clearInput = () => {
-      valueLogin.email = "";
-      valueLogin.bike = "";
-    };
+      valueLogin.email = ''
+      valueLogin.bike = ''
+    }
     if (Object.keys(loginErrors).length === 0 && loginSubmit) {
-      currentUserLogin();
-      submitLogin(false);
-      isLogged(true);
-      history.push("/dashboard");
-      clearInput();
+      currentUserLogin()
+      submitLogin(false)
+      isLogged(true)
+      history.push('/dashboard')
+      clearInput()
     }
   }, [
     submitLogin,
@@ -90,8 +91,8 @@ const Login = ({
     loginErrors,
     loginSubmit,
     history,
-    valueLogin,
-  ]);
+    valueLogin
+  ])
 
   return (
     <div className="login-containter">
@@ -124,21 +125,21 @@ const Login = ({
               Sign up <AiOutlineRight />
             </button>
             <NavLink className="link-login" to="/register">
-              Don't have an account?
+              Don&apos;t have an account?
             </NavLink>
           </div>
         </form>
       </div>
     </div>
-  );
-};
+  )
+}
 
 export default connect(
   (state) => ({
     valueLogin: state.accounts.valueLogin,
     loginSubmit: state.accounts.loginSubmit,
     loginErrors: state.accounts.loginErrors,
-    usersData: state.accounts.usersData,
+    usersData: state.accounts.usersData
   }),
   { loginForm, errorsHandlerLogin, submitLogin, currentUserLogin, isLogged }
-)(Login);
+)(Login)

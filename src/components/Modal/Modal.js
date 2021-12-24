@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import ReactDom from "react-dom";
-import "./Modal.scss";
+import './Modal.scss'
+import React, { useState } from 'react'
 import {
-  toggleOpenModal,
   cleanBasket,
   sendOrder,
-} from "../../bikes/duck/index";
-import { connect } from "react-redux";
-import { v4 as uuidv4 } from "uuid";
-import { AiOutlineClose } from "react-icons/ai";
-import Bloop from "../../layout/Bloop/Bloop";
-import ButtonPurchase from "../../layout/ButtonPurchase/ButtonPurchase";
+  toggleOpenModal
+} from '../../bikes/duck/index'
+import { AiOutlineClose } from 'react-icons/ai'
+import Bloop from '../../layout/Bloop/Bloop'
+import ButtonPurchase from '../../layout/ButtonPurchase/ButtonPurchase'
+import ReactDom from 'react-dom'
+import { connect } from 'react-redux'
+import { v4 as uuidv4 } from 'uuid'
 
 const Modal = ({
   checkout,
@@ -20,25 +20,25 @@ const Modal = ({
   cartItems,
   cleanBasket,
   idOrderClient,
-  sendOrder,
+  sendOrder
 }) => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const postData = () => {
-    setIsSubmitting(true);
-    sendOrder(idOrderClient);
-    cleanBasket();
-  };
+    setIsSubmitting(true)
+    sendOrder(idOrderClient)
+    cleanBasket()
+  }
 
-  if (!openModal) return null;
+  if (!openModal) return null
 
   return ReactDom.createPortal(
     <>
       <div
         className="overlay"
         onClick={() => {
-          toggleOpenModal(openModal);
-          setIsSubmitting(false);
+          toggleOpenModal(openModal)
+          setIsSubmitting(false)
         }}
       />
       <div className="modal">
@@ -46,17 +46,19 @@ const Modal = ({
           <AiOutlineClose
             className="x-modal"
             onClick={() => {
-              toggleOpenModal(openModal);
-              setIsSubmitting(false);
+              toggleOpenModal(openModal)
+              setIsSubmitting(false)
             }}
           />
         </div>
-        {isSubmitting ? (
+        {isSubmitting
+          ? (
           <div className="succes-box">
             <h1>Excellently! your order is now ready to be shipped.</h1>
             <h4>Your order Id: {idOrderClient}</h4>
           </div>
-        ) : (
+            )
+          : (
           <>
             <p>Great! {value.name}, now you must checkout your order ...</p>
             <div className="info-tittle">
@@ -68,7 +70,7 @@ const Modal = ({
                 {checkout.map((i) => (
                   <div key={uuidv4()} className="label-box">
                     <div className="label-info">
-                      <li style={{ fontWeight: "600" }}>
+                      <li style={{ fontWeight: '600' }}>
                         <label>{i.tittle} </label>
                       </li>
                       <div>
@@ -110,7 +112,7 @@ const Modal = ({
             </div>
             <div className="summary-box">
               <p className="total-p">
-                Total: ${" "}
+                Total: ${' '}
                 {cartItems
                   .reduce((a, c) => a + c.price * c.count, 0)
                   .toFixed(2)}
@@ -118,19 +120,19 @@ const Modal = ({
               <ButtonPurchase postData={postData}>Purhase</ButtonPurchase>
             </div>
           </>
-        )}
+            )}
         <Bloop />
       </div>
     </>,
-    document.getElementById("portal")
-  );
-};
+    document.getElementById('portal')
+  )
+}
 export default connect(
   (state) => ({
     openModal: state.products.openModal,
     value: state.products.value,
     cartItems: state.products.cartItems,
-    checkout: state.products.checkout,
+    checkout: state.products.checkout
   }),
   { toggleOpenModal, cleanBasket, sendOrder }
-)(Modal);
+)(Modal)

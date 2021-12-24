@@ -1,19 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { CircularProgress } from "@mui/material";
-import { RiShoppingBag2Line } from "react-icons/ri";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import { MdDelete } from "react-icons/md";
+/* eslint-disable react/prop-types */
+import './Bikes.scss'
+import React, { useEffect, useState } from 'react'
 import {
   addBike,
-  loadBike,
-  selectSize,
   addToCheckout,
-  selectColor,
-  goUp,
   deleteCart,
-} from "../../bikes/duck/index";
-import "./Bikes.scss";
+  goUp,
+  loadBike,
+  selectColor,
+  selectSize
+} from '../../bikes/duck/index'
+import { CircularProgress } from '@mui/material'
+import { Link } from 'react-router-dom'
+import { MdDelete } from 'react-icons/md'
+import { RiShoppingBag2Line } from 'react-icons/ri'
+import { connect } from 'react-redux'
 
 const Bikes = ({
   addBike,
@@ -26,59 +27,61 @@ const Bikes = ({
   currentUser,
   selectColor,
   letters,
-  handleOpenModal,
+  handleOpenModal
 }) => {
-  const [animationAdd, setAnimationAdd] = useState(false);
-  const [excessiveBikes, setExcessiveBikes] = useState(false);
+  const [animationAdd, setAnimationAdd] = useState(false)
+  const [excessiveBikes, setExcessiveBikes] = useState(false)
 
-  //blocking an excessive number of bikes - max 10 bikes in basket
+  // blocking an excessive number of bikes - max 10 bikes in basket
   if (checkout.length > 9 && excessiveBikes === false) {
-    setExcessiveBikes(true);
+    setExcessiveBikes(true)
   } else if (checkout.length < 9 && excessiveBikes === true) {
-    setExcessiveBikes(false);
+    setExcessiveBikes(false)
   }
 
-  const loadingBikes = loadBike;
+  const loadingBikes = loadBike
 
   useEffect(() => {
-    loadingBikes();
-  }, [loadingBikes]);
+    loadingBikes()
+  }, [loadingBikes])
 
-  //animation add-btn
+  // animation add-btn
   const animationAddFlag = () => {
-    setAnimationAdd(true);
-  };
+    setAnimationAdd(true)
+  }
   useEffect(() => {
     if (animationAdd === true) {
-      let timer = setTimeout(() => setAnimationAdd(false), 1000);
-      setAnimationAdd(timer);
+      const timer = setTimeout(() => setAnimationAdd(false), 1000)
+      setAnimationAdd(timer)
     }
-  }, [addBike, animationAdd]);
+  }, [addBike, animationAdd])
 
-  //loading data
+  // loading data
   if (assortment.length < 1) {
     return (
       <div className="loading">
         <CircularProgress
-          style={{ color: "black", width: "100px", height: "100px" }}
+          style={{ color: 'black', width: '100px', height: '100px' }}
         />
         <p>loading...</p>
       </div>
-    );
+    )
   }
 
-  //no found for search
+  // no found for search
   if (filteredItems.length < 1) {
-    return <p className="p-not-found">sorry, not found {letters} </p>;
+    return <p className="p-not-found">sorry, not found {letters} </p>
   }
   return filteredItems.map((bike) => (
     <div key={bike._id} className="card">
-      {currentUser.currentUserEmail === "admin@admin.com" ? (
+      {currentUser.currentUserEmail === 'admin@admin.com'
+        ? (
         <MdDelete
           className="delete-cart"
           onClick={() => handleOpenModal(bike)}
         />
-      ) : null}
+          )
+        : null}
       <div className="tittle-box">
         <h4 className="tittle">{bike.tittle}</h4>
       </div>
@@ -109,13 +112,13 @@ const Bikes = ({
         <div className="color-box">
           <label>Colors:</label>
           {bike.avaibleColors.map((color, index) => (
-            <li style={{ listStyle: "none" }} key={index}>
+            <li style={{ listStyle: 'none' }} key={index}>
               <div
                 onClick={() => {
-                  selectColor(bike.avaibleColors[index], bike._id);
+                  selectColor(bike.avaibleColors[index], bike._id)
                 }}
                 className={`colors-select ${
-                  color === bike.selectedColor ? "c-selected" : ""
+                  color === bike.selectedColor ? 'c-selected' : ''
                 }`}
                 style={{ background: `${color}` }}
                 value={color[index]}
@@ -129,14 +132,14 @@ const Bikes = ({
         <h4>${bike.price}</h4>
         <button
           className={`btn-3 animate__animated animate__pulse animate__infinite ${
-            animationAdd ? "btn-3 animate__animated animate__tada" : ""
+            animationAdd ? 'btn-3 animate__animated animate__tada' : ''
           }
-          ${excessiveBikes ? "btn-disabled" : ""}`}
+          ${excessiveBikes ? 'btn-disabled' : ''}`}
           onClick={() => {
             if (excessiveBikes === false) {
-              animationAddFlag();
-              addBike(bike);
-              addToCheckout(bike);
+              animationAddFlag()
+              addBike(bike)
+              addToCheckout(bike)
             }
           }}
         >
@@ -151,8 +154,8 @@ const Bikes = ({
         </p>
       )}
     </div>
-  ));
-};
+  ))
+}
 
 export default connect(
   (state) => ({
@@ -161,7 +164,7 @@ export default connect(
     letters: state.products.letters,
     checkout: state.products.checkout,
     cartItems: state.products.cartItems,
-    currentUser: state.accounts.currentUser,
+    currentUser: state.accounts.currentUser
   }),
   {
     addBike,
@@ -170,6 +173,6 @@ export default connect(
     selectColor,
     addToCheckout,
     goUp,
-    deleteCart,
+    deleteCart
   }
-)(Bikes);
+)(Bikes)

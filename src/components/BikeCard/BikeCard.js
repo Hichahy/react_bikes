@@ -1,25 +1,25 @@
-import React, { useState } from "react";
-import { useParams } from "react-router-dom";
-import { connect } from "react-redux";
-import { Breadcrumbs, Typography } from "@mui/material";
-import { v4 as uuidv4 } from "uuid";
-import { NavLink } from "react-router-dom";
-import data from "../../data.json";
-import "./BikeCard.scss";
+/* eslint-disable react/prop-types */
+import './BikeCard.scss'
+import { Breadcrumbs, Typography } from '@mui/material'
+import { NavLink, useParams } from 'react-router-dom'
+import React, { useState } from 'react'
+import { connect } from 'react-redux'
+import data from '../../data.json'
+import { v4 as uuidv4 } from 'uuid'
 
 const BikeCard = ({ assortment }) => {
-  const [bikes, setBikes] = useState(data.bikes);
+  const [bikes] = useState(data.bikes)
 
-  const { id } = useParams();
+  const { id } = useParams()
 
   const find = () => {
-    return bikes.find((x) => x._id === id);
-  };
-  let bike = find(id);
+    return bikes.find((x) => x._id === id)
+  }
+  const bike = find(id)
 
   return (
     <div className="product-containter ">
-      <div style={{ position: "sticky", top: "10%", zIndex: "3" }}>
+      <div style={{ position: 'sticky', top: '10%', zIndex: '3' }}>
         <Breadcrumbs aria-label="breadcrumb">
           <NavLink className="breadcrumbs_link" to="/shop">
             Shop
@@ -38,7 +38,7 @@ const BikeCard = ({ assortment }) => {
           ></img>
         </div>
         <div className="blump" />
-        <div style={{ width: "100%", zIndex: "2" }}>
+        <div style={{ width: '100%', zIndex: '2' }}>
           <h2>{bike.description}.</h2>
           <p>
             Sizes:
@@ -60,12 +60,12 @@ const BikeCard = ({ assortment }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 export default connect(
   (state) => ({
-    assortment: state.products.assortment,
+    assortment: state.products.assortment
   }),
   {}
-)(BikeCard);
+)(BikeCard)

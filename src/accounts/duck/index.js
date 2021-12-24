@@ -1,4 +1,4 @@
-import registerReducer from "./reducers";
+import registerReducer from './reducers'
 export {
   SUBMIT_REGISTER,
   SIGNUP_FORM,
@@ -12,7 +12,7 @@ export {
   CURRENT_USER,
   LOG_OUT,
   CURRENT_USER_LOGIN
-} from "./types";
+} from './types'
 export {
   submitRegister,
   signUpForm,
@@ -26,5 +26,5 @@ export {
   currentUser,
   logOut,
   currentUserLogin
-} from "./actions";
-export default registerReducer;
+} from './actions'
+export default registerReducer

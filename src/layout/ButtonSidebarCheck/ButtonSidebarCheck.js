@@ -1,5 +1,5 @@
-import React from "react";
-import "./ButtonSidebar.scss";
+import './ButtonSidebar.scss'
+import React from 'react'
 
 const ButtonSidebar = () => {
   return (
@@ -41,7 +41,7 @@ const ButtonSidebar = () => {
         </span>
       </button>
     </div>
-  );
-};
+  )
+}
 
-export default ButtonSidebar;
+export default ButtonSidebar

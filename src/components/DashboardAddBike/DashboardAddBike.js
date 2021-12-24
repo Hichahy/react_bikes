@@ -1,134 +1,135 @@
-import React, { useState, useEffect } from "react";
-import "./DashboardAddBike.scss";
-import { AiOutlineClose } from "react-icons/ai";
-import { connect } from "react-redux";
-import { bikes } from "../../data.json";
-import { useHistory } from "react-router-dom";
-import { v4 as uuidv4 } from "uuid";
-import AddBikeDashboardModal from "../../layout/AddBikeDashboardModal/AddBikeDashboardModal";
+/* eslint-disable react/prop-types */
+import './DashboardAddBike.scss'
+import React, { useEffect, useState } from 'react'
+import AddBikeDashboardModal from '../../layout/AddBikeDashboardModal/AddBikeDashboardModal'
+import { AiOutlineClose } from 'react-icons/ai'
+import { bikes } from '../../data.json'
+import { connect } from 'react-redux'
+import { useHistory } from 'react-router-dom'
+import { v4 as uuidv4 } from 'uuid'
 
 const DashboardAddBike = ({ showAddBikeHandler, assortment }) => {
-  const [errorsAddBike, setErrorsAddBike] = useState({});
-  const [succesAdd, setSuccesAdd] = useState(false);
-  const [open, setOpen] = useState(false);
-  const [avaibleColors, setAvaibleColors] = useState([]);
-  const [avaibleSizesz, setAvaibleSizesz] = useState([]);
+  const [errorsAddBike, setErrorsAddBike] = useState({})
+  const [succesAdd, setSuccesAdd] = useState(false)
+  const [open, setOpen] = useState(false)
+  const [avaibleColors, setAvaibleColors] = useState([])
+  const [avaibleSizesz, setAvaibleSizesz] = useState([])
   const [addBikeForm, setAddBikeForm] = useState({
-    tittle: "",
-    image: "",
-    description: "",
+    tittle: '',
+    image: '',
+    description: '',
     avaibleColors: [],
     avaibleSizesz: [],
     count: 0,
-    selectedSize: "",
-    selectedColor: "",
+    selectedSize: '',
+    selectedColor: '',
     _id: uuidv4(),
-    price: 0,
-  });
+    price: 0
+  })
 
   const [sizes, setSizes] = useState({
-    size1: "",
-    size2: "",
-    size3: "",
-    size4: "",
-  });
+    size1: '',
+    size2: '',
+    size3: '',
+    size4: ''
+  })
 
   const [colors, setColors] = useState({
-    color1: "",
-    color2: "",
-    color3: "",
-  });
+    color1: '',
+    color2: '',
+    color3: ''
+  })
 
-  const [size1, setSize1] = useState(false);
-  const [size2, setSize2] = useState(false);
-  const [size3, setSize3] = useState(false);
-  const [size4, setSize4] = useState(false);
+  const [size1, setSize1] = useState(false)
+  const [size2, setSize2] = useState(false)
+  const [size3, setSize3] = useState(false)
+  const [size4, setSize4] = useState(false)
 
-  const [submitAddBike, setSubmitAddBike] = useState(false);
+  const [submitAddBike, setSubmitAddBike] = useState(false)
 
-  const history = useHistory();
+  const history = useHistory()
 
-  //validate
+  // validate
   const validateInfo = () => {
-    let errors = {};
+    const errors = {}
     if (!addBikeForm.tittle.trim()) {
-      errors.tittle = "Title required";
+      errors.tittle = 'Title required'
     } else if (!/^[A-Za-z]+/.test(addBikeForm.tittle.trim())) {
-      errors.tittle = "Enter a valid tittle";
+      errors.tittle = 'Enter a valid tittle'
     } else if (addBikeForm.tittle.length > 30) {
-      errors.tittle = "Title is to long";
+      errors.tittle = 'Title is to long'
     }
 
-    if (addBikeForm.image.substring(0, 8) !== "https://") {
-      errors.image = "Image Invalid";
+    if (addBikeForm.image.substring(0, 8) !== 'https://') {
+      errors.image = 'Image Invalid'
     }
 
     if (!addBikeForm.description.trim()) {
-      errors.description = "Description required";
+      errors.description = 'Description required'
     } else if (!/^[A-Za-z]+/.test(addBikeForm.description.trim())) {
-      errors.description = "Enter a valid Description";
+      errors.description = 'Enter a valid Description'
     } else if (addBikeForm.description.length > 100) {
-      errors.description = "Description is to long";
+      errors.description = 'Description is to long'
     }
 
     if (!size1 && !size2 && !size3 && !size4) {
-      errors.sizes = "Add least one size";
+      errors.sizes = 'Add least one size'
     }
 
     if (!colors.color1 && !colors.color2 && !colors.color3) {
-      errors.colors = "Add least one color";
-    } else if (colors.color1.charAt(0) !== "#" && colors.color1 !== "") {
-      errors.colors = "Invalid color";
-    } else if (colors.color2.charAt(0) !== "#" && colors.color2 !== "") {
-      errors.colors = "Invalid color";
-    } else if (colors.color3.charAt(0) !== "#" && colors.color3 !== "") {
-      errors.colors = "Invalid color";
+      errors.colors = 'Add least one color'
+    } else if (colors.color1.charAt(0) !== '#' && colors.color1 !== '') {
+      errors.colors = 'Invalid color'
+    } else if (colors.color2.charAt(0) !== '#' && colors.color2 !== '') {
+      errors.colors = 'Invalid color'
+    } else if (colors.color3.charAt(0) !== '#' && colors.color3 !== '') {
+      errors.colors = 'Invalid color'
     }
 
     if (addBikeForm.price === 0 || addBikeForm.price < 0) {
-      errors.price = "Invalid price";
+      errors.price = 'Invalid price'
     }
 
-    return errors;
-  };
+    return errors
+  }
 
   const handleAddBike = () => {
-    addBikeForm.avaibleColors.push(...avaibleColors);
-    addBikeForm.avaibleSizesz.push(...avaibleSizesz);
-    bikes.push(addBikeForm);
-    setSuccesAdd(true);
-    history.push(`bike/${addBikeForm._id}`);
-  };
+    addBikeForm.avaibleColors.push(...avaibleColors)
+    addBikeForm.avaibleSizesz.push(...avaibleSizesz)
+    bikes.push(addBikeForm)
+    setSuccesAdd(true)
+    history.push(`bike/${addBikeForm._id}`)
+  }
 
   const handleOpenModal = (e) => {
-    e.preventDefault();
-    setSuccesAdd(false);
+    e.preventDefault()
+    setSuccesAdd(false)
     setAvaibleColors(
       [colors.color1, colors.color2, colors.color3].filter((i) => i)
-    );
+    )
     setAvaibleSizesz(
       [sizes.size1, sizes.size2, sizes.size3, sizes.size4].filter((i) => i)
-    );
-    setErrorsAddBike(validateInfo(addBikeForm));
-    setSubmitAddBike(true);
-  };
+    )
+    setErrorsAddBike(validateInfo(addBikeForm))
+    setSubmitAddBike(true)
+  }
 
   const closeModal = () => {
-    setOpen(false);
-    setSubmitAddBike(false);
-  };
+    setOpen(false)
+    setSubmitAddBike(false)
+  }
 
   useEffect(() => {
     if (Object.keys(errorsAddBike).length === 0 && submitAddBike) {
-      setOpen(true);
+      setOpen(true)
     }
-  }, [submitAddBike, errorsAddBike]);
+  }, [submitAddBike, errorsAddBike])
 
   const handleInput = (e) => {
-    setAddBikeForm({ ...addBikeForm, [e.target.name]: e.target.value });
-    setSizes({ ...sizes, [e.target.name]: e.target.value });
-    setColors({ ...colors, [e.target.name]: e.target.value });
-  };
+    setAddBikeForm({ ...addBikeForm, [e.target.name]: e.target.value })
+    setSizes({ ...sizes, [e.target.name]: e.target.value })
+    setColors({ ...colors, [e.target.name]: e.target.value })
+  }
 
   return (
     <>
@@ -185,7 +186,7 @@ const DashboardAddBike = ({ showAddBikeHandler, assortment }) => {
                     name="size1"
                     type="checkbox"
                     checked={size1}
-                    value={`${size1 === false ? "XL" : null}`}
+                    value={`${size1 === false ? 'XL' : null}`}
                     onChange={handleInput}
                     onClick={() => setSize1(!size1)}
                   />
@@ -196,7 +197,7 @@ const DashboardAddBike = ({ showAddBikeHandler, assortment }) => {
                   <input
                     name="size2"
                     type="checkbox"
-                    value={`${size2 === false ? "L" : null}`}
+                    value={`${size2 === false ? 'L' : null}`}
                     onChange={handleInput}
                     onClick={() => setSize2(!size2)}
                   />
@@ -207,7 +208,7 @@ const DashboardAddBike = ({ showAddBikeHandler, assortment }) => {
                   <input
                     name="size3"
                     type="checkbox"
-                    value={`${size3 === false ? "M" : null}`}
+                    value={`${size3 === false ? 'M' : null}`}
                     onChange={handleInput}
                     onClick={() => setSize3(!size3)}
                   />
@@ -218,7 +219,7 @@ const DashboardAddBike = ({ showAddBikeHandler, assortment }) => {
                   <input
                     name="size4"
                     type="checkbox"
-                    value={`${size4 === false ? "S" : null}`}
+                    value={`${size4 === false ? 'S' : null}`}
                     onChange={handleInput}
                     onClick={() => setSize4(!size4)}
                   />
@@ -283,11 +284,11 @@ const DashboardAddBike = ({ showAddBikeHandler, assortment }) => {
         />
       </div>
     </>
-  );
-};
+  )
+}
 export default connect(
   (state) => ({
-    assortment: state.products.assortment,
+    assortment: state.products.assortment
   }),
   {}
-)(DashboardAddBike);
+)(DashboardAddBike)

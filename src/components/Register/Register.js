@@ -1,17 +1,18 @@
-import React, { useEffect } from "react";
-import { NavLink, useHistory } from "react-router-dom";
-import { AiOutlineRight } from "react-icons/ai";
-import { connect } from "react-redux";
+/* eslint-disable react/prop-types */
+import './Register.scss'
+import { NavLink, useHistory } from 'react-router-dom'
+import React, { useEffect } from 'react'
 import {
-  signUpForm,
-  agreementRegister,
-  submitRegister,
-  errorsHandlerRegister,
   addUser,
-  isLogged,
+  agreementRegister,
   currentUser,
-} from "../../accounts/duck/index";
-import "./Register.scss";
+  errorsHandlerRegister,
+  isLogged,
+  signUpForm,
+  submitRegister
+} from '../../accounts/duck/index'
+import { AiOutlineRight } from 'react-icons/ai'
+import { connect } from 'react-redux'
 
 const Register = ({
   signUpForm,
@@ -25,33 +26,33 @@ const Register = ({
   addUser,
   usersData,
   isLogged,
-  currentUser,
+  currentUser
 }) => {
-  const history = useHistory();
+  const history = useHistory()
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    errorsHandlerRegister(validateInfo(valueRegister));
-    submitRegister(true);
-  };
+    errorsHandlerRegister(validateInfo(valueRegister))
+    submitRegister(true)
+  }
 
   useEffect(() => {
     const clearInput = () => {
-      valueRegister.email = "";
-      valueRegister.bike = "";
-      valueRegister.confirmBike = "";
-      valueRegister.userName = "";
-      agreementRegister(false);
-    };
+      valueRegister.email = ''
+      valueRegister.bike = ''
+      valueRegister.confirmBike = ''
+      valueRegister.userName = ''
+      agreementRegister(false)
+    }
 
     if (Object.keys(registerErrors).length === 0 && registerSubmit) {
-      addUser();
-      submitRegister(false);
-      clearInput();
-      isLogged(true);
-      history.push("/dashboard");
-      currentUser();
+      addUser()
+      submitRegister(false)
+      clearInput()
+      isLogged(true)
+      history.push('/dashboard')
+      currentUser()
     }
   }, [
     registerSubmit,
@@ -62,8 +63,8 @@ const Register = ({
     history,
     currentUser,
     isLogged,
-    valueRegister,
-  ]);
+    valueRegister
+  ])
 
   // const clearInput = () => {
   //   valueRegister.email = "";
@@ -74,43 +75,43 @@ const Register = ({
   // };
 
   const validateInfo = () => {
-    let errors = {};
+    const errors = {}
 
     if (!valueRegister.userName.trim()) {
-      errors.userName = "Username required";
+      errors.userName = 'Username required'
     } else if (!/^[A-Za-z]+/.test(valueRegister.userName.trim())) {
-      errors.name = "Enter a valid name";
+      errors.name = 'Enter a valid name'
     }
 
     if (!valueRegister.email) {
-      errors.email = "Email required";
+      errors.email = 'Email required'
     } else if (!/\S+@\S+\.\S+/.test(valueRegister.email)) {
-      errors.email = "Email address is invalid";
+      errors.email = 'Email address is invalid'
     } else if (usersData.find((i) => i.email === valueRegister.email)) {
-      errors.email = "sorry such user already exists";
+      errors.email = 'sorry such user already exists'
     }
 
     if (!valueRegister.bike) {
-      errors.bike = "Name bike is required";
+      errors.bike = 'Name bike is required'
     } else if (valueRegister.bike.length < 6) {
-      errors.bike = "Name bike needs to be 6 characters or more";
+      errors.bike = 'Name bike needs to be 6 characters or more'
     }
 
     if (!valueRegister.confirmBike) {
-      errors.confirmBike = "Confirm bike is required";
+      errors.confirmBike = 'Confirm bike is required'
     } else if (valueRegister.confirmBike !== valueRegister.bike) {
-      errors.confirmBike = "Name bike do not match";
+      errors.confirmBike = 'Name bike do not match'
     }
 
     if (agreement === false) {
-      errors.agreement = "Accept the rules";
+      errors.agreement = 'Accept the rules'
     }
-    return errors;
-  };
+    return errors
+  }
 
   const handleInput = (e) => {
-    signUpForm({ ...valueRegister, [e.target.name]: e.target.value });
-  };
+    signUpForm({ ...valueRegister, [e.target.name]: e.target.value })
+  }
 
   return (
     <div className="register-containter">
@@ -121,7 +122,7 @@ const Register = ({
       /> */}
       <div className="register-content">
         <div>
-          <h1>Don't have an account?</h1>
+          <h1>Don&apos;t have an account?</h1>
           <p>
             Sign up and enjoy all the benefits. Join us! Buy, borrow, fulfill
             your passion.
@@ -136,7 +137,7 @@ const Register = ({
           className="input-box"
         >
           <h1 className="title-register">Sign up</h1>
-          <label>User Name</label>{" "}
+          <label>User Name</label>{' '}
           {registerErrors.userName && (
             <label className="error-register">{registerErrors.userName}</label>
           )}
@@ -181,7 +182,7 @@ const Register = ({
           <div className="checkbox-box">
             <input
               type="checkbox"
-              checked={agreement === false ? false : true}
+              checked={agreement !== false}
               className="checkbox-register"
               onChange={() => agreementRegister(!agreement)}
             />
@@ -201,8 +202,8 @@ const Register = ({
         </form>
       </div>
     </div>
-  );
-};
+  )
+}
 
 export default connect(
   (state) => ({
@@ -211,7 +212,7 @@ export default connect(
     registerSubmit: state.accounts.registerSubmit,
     registerErrors: state.accounts.registerErrors,
     usersData: state.accounts.usersData,
-    logged: state.accounts.logged,
+    logged: state.accounts.logged
   }),
   {
     signUpForm,
@@ -220,6 +221,6 @@ export default connect(
     errorsHandlerRegister,
     addUser,
     isLogged,
-    currentUser,
+    currentUser
   }
-)(Register);
+)(Register)

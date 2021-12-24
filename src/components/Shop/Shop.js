@@ -1,26 +1,27 @@
-import React, { useState } from "react";
-import Bikes from "../Bikes/Bikes";
-import Filter from "../Filter/Filter";
-import Basket from "../Basket/Basket";
-import { connect } from "react-redux";
-import { deleteCart, loadBike } from "../../bikes/duck/index";
-import ModalBikeDeleteCart from "../../layout/ModalBikeDeleteCart/ModalBikeDeleteCart";
-import "./Shop.scss";
+/* eslint-disable react/prop-types */
+import './Shop.scss'
+import React, { useState } from 'react'
+import { deleteCart, loadBike } from '../../bikes/duck/index'
+import Basket from '../Basket/Basket'
+import Bikes from '../Bikes/Bikes'
+import Filter from '../Filter/Filter'
+import ModalBikeDeleteCart from '../../layout/ModalBikeDeleteCart/ModalBikeDeleteCart'
+import { connect } from 'react-redux'
 
 const Shop = ({ deleteCart, loadBike, mobileMode }) => {
-  const [open, setOpen] = useState(false);
-  const [idDel, setIdDel] = useState();
+  const [open, setOpen] = useState(false)
+  const [idDel, setIdDel] = useState()
 
   const handleOpenModal = (bike) => {
-    setOpen(!open);
-    setIdDel(bike);
-  };
+    setOpen(!open)
+    setIdDel(bike)
+  }
 
   const handleDelCart = () => {
-    deleteCart(idDel);
-    loadBike();
-    setOpen(!open);
-  };
+    deleteCart(idDel)
+    loadBike()
+    setOpen(!open)
+  }
 
   return (
     <main className="main">
@@ -41,10 +42,10 @@ const Shop = ({ deleteCart, loadBike, mobileMode }) => {
         />
       </div>
     </main>
-  );
-};
+  )
+}
 
 export default connect((state) => ({}), {
   deleteCart,
-  loadBike,
-})(Shop);
+  loadBike
+})(Shop)

@@ -1,5 +1,5 @@
-import React from "react";
-import "./Bloop.scss";
+import './Bloop.scss'
+import React from 'react'
 
 const Bloop = () => {
   return (
@@ -13,11 +13,11 @@ const Bloop = () => {
           <linearGradient id="grad1" x1="0%" y1="0%" x2="60%" y2="0%">
             <stop
               offset="0%"
-              style={{ stopColor: "rgb(255,0,230)", stopOpacity: "1" }}
+              style={{ stopColor: 'rgb(255,0,230)', stopOpacity: '1' }}
             />
             <stop
               offset="100%"
-              style={{ stopColor: "rgb(255,204,1)", stopOpacity: "1" }}
+              style={{ stopColor: 'rgb(255,204,1)', stopOpacity: '1' }}
             />
           </linearGradient>
         </defs>
@@ -28,7 +28,7 @@ const Bloop = () => {
         />
       </svg>
     </div>
-  );
-};
+  )
+}
 
-export default Bloop;
+export default Bloop

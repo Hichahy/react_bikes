@@ -1,85 +1,91 @@
-import React, { useEffect, useState } from "react";
+/* eslint-disable react/prop-types */
+import 'animate.css'
 import {
   NavLink,
-  Switch,
-  Route,
-  useLocation,
   Redirect,
-} from "react-router-dom";
-import { connect } from "react-redux";
-import { AiOutlineMenu } from "react-icons/ai";
-import { RiShoppingCart2Line } from "react-icons/ri";
-import { goUp, toggleMobileMode, toggleOpenModal } from "./bikes/duck/index";
-import Home from "./components/Home/Home";
-import "animate.css";
-import Shop from "./components/Shop/Shop";
-import BikeCard from "./components/BikeCard/BikeCard";
-import Footer from "./components/Footer/Footer";
-import Register from "./components/Register/Register";
-import Login from "./components/Login/Login";
-import Dashboard from "./components/Dashboard/Dashborad";
-import Basket from "./components/Basket/Basket";
+  Route,
+  Switch,
+  useLocation
+} from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { goUp, toggleMobileMode, toggleOpenModal } from './bikes/duck/index'
+import { AiOutlineMenu } from 'react-icons/ai'
+import Basket from './components/Basket/Basket'
+import BikeCard from './components/BikeCard/BikeCard'
+import Dashboard from './components/Dashboard/Dashborad'
+import Footer from './components/Footer/Footer'
+import Home from './components/Home/Home'
+import Login from './components/Login/Login'
+import Register from './components/Register/Register'
+import { RiShoppingCart2Line } from 'react-icons/ri'
+import Shop from './components/Shop/Shop'
+import { connect } from 'react-redux'
 
 const App = ({ logged, goUp, toggleMobileMode, mobileMode, checkout }) => {
-  const [width, setWidth] = useState(window.innerWidth);
-  const [burger, setBurger] = useState(false);
-  const [show, setShow] = useState(true);
+  const [width, setWidth] = useState(window.innerWidth)
+  const [burger, setBurger] = useState(false)
+  const [show, setShow] = useState(true)
 
-  //burger menu handle
-  window.addEventListener("resize", () => setWidth(window.innerWidth));
+  // burger menu handle
+  window.addEventListener('resize', () => setWidth(window.innerWidth))
   useEffect(() => {
     if (width < 765) {
-      toggleMobileMode(true);
-      setBurger(false);
+      toggleMobileMode(true)
+      setBurger(false)
     } else {
-      toggleMobileMode(false);
+      toggleMobileMode(false)
     }
-  }, [toggleMobileMode, width]);
+  }, [toggleMobileMode, width])
 
   const burgerHandle = () => {
-    setBurger((prev) => !prev);
-  };
+    setBurger((prev) => !prev)
+  }
 
-  //onChange path goUp site
-  let location = useLocation();
+  // onChange path goUp site
+  const location = useLocation()
   useEffect(() => {
     if (location) {
-      goUp();
-      setBurger(false);
+      goUp()
+      setBurger(false)
     }
-  }, [goUp, location]);
+  }, [goUp, location])
 
   useEffect(() => {
     const controlNavbar = () => {
       if (window.scrollY >= 100 && !mobileMode) {
-        setShow(false);
+        setShow(false)
       } else {
-        setShow(true);
+        setShow(true)
       }
-    };
+    }
 
-    window.addEventListener("scroll", controlNavbar);
+    window.addEventListener('scroll', controlNavbar)
     return () => {
-      window.removeEventListener("scroll", controlNavbar);
-    };
-  }, [mobileMode]);
+      window.removeEventListener('scroll', controlNavbar)
+    }
+  }, [mobileMode])
 
   return (
     <div className="app-container">
-      {burger ? (
+      {
+      burger
+        ? (
         <div className="overlay-burger" onClick={burgerHandle} />
-      ) : null}
-      <nav className={`main-nav ${!show && "main-nav-hide"} `}>
+          )
+        : null}
+      <nav className={`main-nav ${!show && 'main-nav-hide'} `}>
         <AiOutlineMenu onClick={burgerHandle} className="burger-menu" />
-        {checkout.length > 0 ? (
+        {checkout.length > 0
+          ? (
           <NavLink className="basket-nav-link" to="/basket">
             <div>
               <RiShoppingCart2Line type="button" className="basket-icon" />
               <div className="amount-basket">{checkout.length}</div>
             </div>
           </NavLink>
-        ) : null}
-        <nav className={burger ? "navlink-box active" : "navlink-box"}>
+            )
+          : null}
+        <nav className={burger ? 'navlink-box active' : 'navlink-box'}>
           <NavLink className="nav-link" exact to="/home">
             Home
           </NavLink>
@@ -92,11 +98,13 @@ const App = ({ logged, goUp, toggleMobileMode, mobileMode, checkout }) => {
             Login
           </NavLink>
 
-          {logged ? (
+          {logged
+            ? (
             <NavLink className="nav-link" to="/dashboard">
               Dashboard
             </NavLink>
-          ) : null}
+              )
+            : null}
           <NavLink className="nav-link" to="/shop">
             Shop
           </NavLink>
@@ -114,15 +122,15 @@ const App = ({ logged, goUp, toggleMobileMode, mobileMode, checkout }) => {
       </Switch>
       <Footer />
     </div>
-  );
-};
+  )
+}
 
 export default connect(
   (state) => ({
     logged: state.accounts.logged,
     mobileMode: state.products.mobileMode,
     checkout: state.products.checkout,
-    openModal: state.products.openModal,
+    openModal: state.products.openModal
   }),
   { goUp, toggleMobileMode, toggleOpenModal }
-)(App);
+)(App)
