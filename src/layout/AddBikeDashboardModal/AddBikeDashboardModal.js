@@ -1,6 +1,7 @@
-import React from "react";
-import { Modal, Box, Button } from "@mui/material";
-import "./AddBikeDashboardModal.scss";
+/* eslint-disable react/prop-types */
+import './AddBikeDashboardModal.scss'
+import { Box, Button, Modal } from '@mui/material'
+import React from 'react'
 // import { AiOutlineClose } from "react-icons/ai";
 
 const AddBikeDashboardModal = ({
@@ -10,27 +11,27 @@ const AddBikeDashboardModal = ({
   addBikeForm,
   succesAdd,
   avaibleColors,
-  avaibleSizesz,
+  avaibleSizesz
 }) => {
   const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    bgcolor: "background.paper",
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    bgcolor: 'background.paper',
     boxShadow: 24,
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    p: 3,
-  };
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    p: 3
+  }
 
   const box = {
-    display: "flex",
-    width: "100%",
-    justifyContent: "space-evenly",
-    marginTop: "10px",
-  };
+    display: 'flex',
+    width: '100%',
+    justifyContent: 'space-evenly',
+    marginTop: '10px'
+  }
 
   return (
     <Modal
@@ -65,7 +66,7 @@ const AddBikeDashboardModal = ({
               <div className="color-box">
                 <label>Colors:</label>
                 {avaibleColors.map((color, index) => (
-                  <li style={{ listStyle: "none" }} key={index}>
+                  <li style={{ listStyle: 'none' }} key={index}>
                     <div
                       className="colors-select"
                       style={{ background: `${color}` }}
@@ -97,7 +98,7 @@ const AddBikeDashboardModal = ({
         </Box>
       </Box>
     </Modal>
-  );
-};
+  )
+}
 
-export default AddBikeDashboardModal;
+export default AddBikeDashboardModal

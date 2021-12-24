@@ -1,25 +1,26 @@
-import React from "react";
-import { Modal, Box, Typography, Button } from "@mui/material";
+/* eslint-disable react/prop-types */
+import { Box, Button, Modal, Typography } from '@mui/material'
+import React from 'react'
 
 const ModalBikeDeleteCart = ({ open, handleOpenModal, handleDelCart }) => {
   const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    bgcolor: "background.paper",
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    bgcolor: 'background.paper',
     boxShadow: 24,
-    p: 4,
-  };
+    p: 4
+  }
   const box = {
-    display: "flex",
-    width: "100%",
-    justifyContent: "space-evenly",
-    marginTop: "10px",
-  };
+    display: 'flex',
+    width: '100%',
+    justifyContent: 'space-evenly',
+    marginTop: '10px'
+  }
   const btn = {
-    margin: "0px 10px 0px 10px",
-  };
+    margin: '0px 10px 0px 10px'
+  }
 
   return (
     <Modal
@@ -62,7 +63,7 @@ const ModalBikeDeleteCart = ({ open, handleOpenModal, handleDelCart }) => {
         </Box>
       </Box>
     </Modal>
-  );
-};
+  )
+}
 
-export default ModalBikeDeleteCart;
+export default ModalBikeDeleteCart

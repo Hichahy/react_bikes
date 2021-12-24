@@ -1,11 +1,10 @@
-
+import accountsReducer from './accounts/duck'
+import bikeReducer from './bikes/duck'
 import { combineReducers } from 'redux'
-import bikeReducer  from './bikes/duck'
-import accountsReducer  from "./accounts/duck"
 
 const rootReducer = combineReducers({
-products: bikeReducer,
-accounts: accountsReducer,
+  products: bikeReducer,
+  accounts: accountsReducer
 })
 
 export default rootReducer

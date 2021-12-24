@@ -1,16 +1,15 @@
-import React from "react";
-import { goUp } from "../../bikes/duck/index";
+import './Footer.scss'
 import {
-  AiOutlineInstagram,
   AiOutlineFacebook,
-  AiOutlineYoutube,
+  AiOutlineInstagram,
   AiOutlineRocket,
-} from "react-icons/ai";
-import { RiTwitterLine } from "react-icons/ri";
-import { connect } from "react-redux";
-import { RiArrowDropRightLine } from "react-icons/ri";
-import { NavLink } from "react-router-dom";
-import "./Footer.scss";
+  AiOutlineYoutube
+} from 'react-icons/ai'
+import { RiArrowDropRightLine, RiTwitterLine } from 'react-icons/ri'
+import { NavLink } from 'react-router-dom'
+import React from 'react'
+import { connect } from 'react-redux'
+import { goUp } from '../../bikes/duck/index'
 
 const footer = ({ logged, goUp }) => {
   return (
@@ -58,37 +57,39 @@ const footer = ({ logged, goUp }) => {
       <div className="navigation-footer-box">
         <h4 className="h4-fotter">Navigation</h4>
         <NavLink className="nav-link-fotter" to="/home">
-          Home{" "}
+          Home{' '}
           <RiArrowDropRightLine className="arrow animate__animated animate__heartBeat  animate__infinite" />
         </NavLink>
         <NavLink className="nav-link-fotter" to="/shop">
-          Shop{" "}
+          Shop{' '}
           <RiArrowDropRightLine className="arrow animate__animated animate__heartBeat  animate__infinite" />
         </NavLink>
-        {logged ? (
+        {logged
+          ? (
           <NavLink className="nav-link-fotter" to="/dashboard">
-            Dashboard{" "}
+            Dashboard{' '}
             <RiArrowDropRightLine className="arrow animate__animated animate__heartBeat  animate__infinite" />
           </NavLink>
-        ) : null}
+            )
+          : null}
 
         <NavLink className="nav-link-fotter" to="/register">
-          Register{" "}
+          Register{' '}
           <RiArrowDropRightLine className="arrow animate__animated animate__heartBeat  animate__infinite" />
         </NavLink>
 
         <NavLink className="nav-link-fotter" to="/login">
-          Login{" "}
+          Login{' '}
           <RiArrowDropRightLine className="arrow animate__animated animate__heartBeat  animate__infinite" />
         </NavLink>
       </div>
     </footer>
-  );
-};
+  )
+}
 
 export default connect(
   (state) => ({
-    logged: state.accounts.logged,
+    logged: state.accounts.logged
   }),
   { goUp }
-)(footer);
+)(footer)

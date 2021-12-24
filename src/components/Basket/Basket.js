@@ -1,19 +1,20 @@
-import React, { useEffect, useState } from "react";
-import "./Basket.scss";
-import { IoIosClose } from "react-icons/io";
-import ButtonSidebar from "../../layout/ButtonSidebar/ButtonSidebar";
-import ButtonSidebarCheck from "../../layout/ButtonSidebarCheck/ButtonSidebarCheck";
-import { connect } from "react-redux";
-import { v4 as uuidv4 } from "uuid";
-import { Breadcrumbs, Typography } from "@mui/material";
+/* eslint-disable react/prop-types */
+import './Basket.scss'
+import { Breadcrumbs, Typography } from '@mui/material'
+import React, { useEffect, useState } from 'react'
 import {
-  removeBike,
-  toggleOpenModal,
-  toggleCheckOut,
   basketForm,
-} from "../../bikes/duck/index";
-import Modal from "../Modal/Modal";
-import { NavLink } from "react-router-dom";
+  removeBike,
+  toggleCheckOut,
+  toggleOpenModal
+} from '../../bikes/duck/index'
+import ButtonSidebar from '../../layout/ButtonSidebar/ButtonSidebar'
+import ButtonSidebarCheck from '../../layout/ButtonSidebarCheck/ButtonSidebarCheck'
+import { IoIosClose } from 'react-icons/io'
+import Modal from '../Modal/Modal'
+import { NavLink } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { v4 as uuidv4 } from 'uuid'
 
 const Basket = ({
   cartItems,
@@ -22,40 +23,40 @@ const Basket = ({
   basketForm,
   value,
   toggleOpenModal,
-  removeBike,
+  removeBike
 }) => {
-  const [idOrderClient, setIdOrderClient] = useState();
+  const [idOrderClient, setIdOrderClient] = useState()
 
-  const delay = 0.5;
+  const delay = 0.5
 
   const closeFormAnimation = () => {
-    document.getElementById("basketForm").className =
-      "form-container animate__animated animate__flipOutY";
-  };
+    document.getElementById('basketForm').className =
+      'form-container animate__animated animate__flipOutY'
+  }
 
-  //bo po usunieciu zostawał formularz
+  // bo po usunieciu zostawał formularz
   useEffect(() => {
     if (cartItems.length === 0 && openForm === true) {
-      let timer1 = setTimeout(() => toggleCheckOut(!openForm), delay * 1000);
-      toggleCheckOut(timer1);
-      closeFormAnimation();
+      const timer1 = setTimeout(() => toggleCheckOut(!openForm), delay * 1000)
+      toggleCheckOut(timer1)
+      closeFormAnimation()
     }
-  }, [cartItems, openForm, toggleCheckOut]);
+  }, [cartItems, openForm, toggleCheckOut])
 
   const handleInput = (e) => {
-    basketForm({ ...value, [e.target.name]: e.target.value }); //name nazwa inputa nie stanu name
-  };
+    basketForm({ ...value, [e.target.name]: e.target.value }) // name nazwa inputa nie stanu name
+  }
 
   const finalizeOrder = (e) => {
-    e.preventDefault();
-    toggleOpenModal();
-    setIdOrderClient(uuidv4());
-  };
+    e.preventDefault()
+    toggleOpenModal()
+    setIdOrderClient(uuidv4())
+  }
 
-  //funkcja akumulująca
+  // funkcja akumulująca
   const totalCount = cartItems.reduce((accumulator, currentValue) => {
-    return accumulator + currentValue.count;
-  }, 0);
+    return accumulator + currentValue.count
+  }, 0)
 
   return (
     <div className="basket-container">
@@ -68,13 +69,15 @@ const Basket = ({
         </Breadcrumbs>
       </div>
       <div className="basket-header">
-        {cartItems.length === 0 ? (
-          <label style={{ padding: "10px" }} className="cart-header">
-            You don't have any items.{" "}
+        {cartItems.length === 0
+          ? (
+          <label style={{ padding: '10px' }} className="cart-header">
+            You don&apos;t have any items.{' '}
           </label>
-        ) : (
+            )
+          : (
           <label className="cart-header">Your basket {totalCount}.</label>
-        )}
+            )}
       </div>
       <div className="basket">
         <ul className="basket-item">
@@ -115,7 +118,7 @@ const Basket = ({
         </div>
       )}
       {openForm && (
-        //Form
+        // Form
         <div
           id="basketForm"
           className="form-container animate__animated animate__flipInY"
@@ -185,8 +188,8 @@ const Basket = ({
       )}
       <Modal idOrderClient={idOrderClient} />
     </div>
-  );
-};
+  )
+}
 
 export default connect(
   (state) => ({
@@ -194,7 +197,7 @@ export default connect(
     openModal: state.products.openModal,
     openForm: state.products.openForm,
     value: state.products.value,
-    mobileMode: state.products.mobileMode,
+    mobileMode: state.products.mobileMode
   }),
   { removeBike, toggleOpenModal, toggleCheckOut, basketForm }
-)(Basket);
+)(Basket)

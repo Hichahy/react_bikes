@@ -1,4 +1,4 @@
-import bikeReducer from "./reducers";
+import bikeReducer from './reducers'
 export {
   LOAD_BIKES,
   ADD_BIKE,
@@ -16,7 +16,7 @@ export {
   DELETE_CART,
   MOBILE_MODE,
   POST_FIREBASE
-} from "./types";
+} from './types'
 export {
   loadBike,
   addBike,
@@ -35,5 +35,5 @@ export {
   deleteCart,
   toggleMobileMode,
   sendOrder
-} from "./actions";
-export default bikeReducer;
+} from './actions'
+export default bikeReducer

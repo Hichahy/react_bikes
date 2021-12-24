@@ -1,8 +1,8 @@
-import React from "react";
-import { FaReact, FaSass } from "react-icons/fa";
-import { SiRedux, SiFirebase, SiGithub } from "react-icons/si";
-import { GiResize } from "react-icons/gi";
-import "./Home.scss";
+import './Home.scss'
+import { FaReact, FaSass } from 'react-icons/fa'
+import { SiFirebase, SiGithub, SiRedux } from 'react-icons/si'
+import { GiResize } from 'react-icons/gi'
+import React from 'react'
 
 const Home = () => {
   return (
@@ -85,7 +85,7 @@ const Home = () => {
       </section>
       <div className="color-box-home"></div>
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
