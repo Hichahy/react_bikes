@@ -17,7 +17,8 @@ $formColor: #d5d5d5ad;
   display: flex;
   justify-content: space-between;
   background: #000 url("./login-background.jpg");
-  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 
 .login-content {
@@ -69,6 +70,12 @@ $formColor: #d5d5d5ad;
 
 .link-login:hover {
   color: white;
+}
+
+@media screen and (max-width: 1250px) {
+  .login-containter {
+    background-size: cover;
+  }
 }
 
 @media screen and (max-width: 765px) {
