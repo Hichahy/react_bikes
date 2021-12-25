@@ -17,7 +17,8 @@ $formColor: #d5d5d5ad;
   display: flex;
   justify-content: space-between;
   background: #000 url("./register-background.jpeg");
-  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 
   p {
     margin: 0;
@@ -153,6 +154,12 @@ $formColor: #d5d5d5ad;
 .error-register {
   font-size: small !important;
   color: $warning !important;
+}
+
+@media screen and (max-width: 1250px) {
+  .register-containter {
+    background-size: cover;
+  }
 }
 
 @media screen and (max-width: 765px) {

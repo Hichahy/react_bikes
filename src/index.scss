@@ -1,9 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap");
+
 $grey: rgb(120, 120, 120);
 $yellow: rgb(255, 204, 0);
 $black: rgb(0, 0, 0);
 $overlay: rgba(0, 0, 0, 0.7);
 $white: rgb(255, 255, 255);
-$aActive: #f0f8ff42;
+$aActive: white;
+$titleColor: #f90;
 
 @keyframes shake-vertical {
   0%,
@@ -86,7 +89,7 @@ body::-webkit-scrollbar {
 }
 
 .main-nav {
-  background-color: $yellow;
+  background-color: $black;
   color: $black;
   display: flex;
   align-items: center;
@@ -98,13 +101,14 @@ body::-webkit-scrollbar {
   transition: ease-in 0.5s;
 
   a {
-    color: $grey;
+    color: $white;
     margin: 30px;
     text-decoration: none;
+    animation: fadeIn 0.4s ease-out forwards;
   }
 
   :hover {
-    color: $black;
+    color: $titleColor;
   }
 }
 
@@ -114,7 +118,8 @@ body::-webkit-scrollbar {
 }
 
 .nav-link.active {
-  color: $black;
+  color: $titleColor;
+  animation: fadeIn 0.4s ease-out forwards;
 }
 
 .burger-menu {
@@ -138,6 +143,7 @@ body::-webkit-scrollbar {
     display: block;
     cursor: pointer;
     margin-left: 10px;
+    color: $white;
   }
 
   .navlink-box {
@@ -150,7 +156,7 @@ body::-webkit-scrollbar {
     top: 59px;
     left: -100%;
     transition: 850ms;
-    background-color: $yellow;
+    background-color: $black;
   }
 
   .navlink-box.active {
@@ -166,7 +172,7 @@ body::-webkit-scrollbar {
     justify-content: space-between;
 
     a {
-      color: $grey;
+      color: $white;
       text-decoration: none;
       height: 15%;
       display: flex;
@@ -174,12 +180,16 @@ body::-webkit-scrollbar {
       justify-content: center;
       margin: 0;
     }
+
+    :hover {
+      color: white;
+    }
   }
 
   .nav-link.active {
-    color: $black;
     text-decoration: none;
-    background: $aActive;
+    background: $titleColor;
+    color: white;
   }
 
   .overlay-burger {
@@ -208,7 +218,7 @@ body::-webkit-scrollbar {
 
   .amount-basket {
     background: $white;
-    border: 3px solid $yellow;
+    border: 3px solid $black;
     border-radius: 50%;
     display: flex;
     justify-content: center;

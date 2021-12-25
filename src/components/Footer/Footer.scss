@@ -1,10 +1,14 @@
+$black: #000;
+$white: #fff;
+$titleColor: #f90;
+
+
 .rocket {
   --animate-duration: none;
 }
 
 footer {
-
-  background-color: #fc0;
+  background-color: $black;
   display: flex;
   height: 100%;
   justify-content: space-around;
@@ -20,12 +24,8 @@ footer {
     padding: 5px;
     justify-content: space-around;
     cursor: pointer;
-    background: #00000021;
+    background: $white;
     border-radius: 50px;
-
-    &:hover {
-      background-color: #00000021;
-    }
 
     &:hover .rocket {
       --animate-duration: 2s;
@@ -39,7 +39,7 @@ footer {
 
   a {
     border-radius: 50%;
-    background-color: #00000021;
+    background-color: $white;
     height: 40px;
     width: 40px;
     display: flex;
@@ -56,11 +56,12 @@ footer {
 
   .h4-fotter {
     margin: 0;
+    color: $white;
   }
 
   .nav-link-fotter {
     text-decoration: none;
-    color: black;
+    color: $white;
     display: flex;
     align-items: center;
     font-size: 17px;
