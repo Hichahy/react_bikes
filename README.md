@@ -6,8 +6,9 @@ To run React Project :
 About the application
 This is a simulation of a bicycle shop.
 Admin can manage product cards.
-He can add and remove cards and check & deleted orders,
+He can add bikes, remove cards, check & deleted orders from dashboard level,
 but only after logging in as admin.
+Ewerything is responsive!
 
 admin@admin.com
 123456
