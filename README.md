@@ -13,6 +13,8 @@ Ewerything is responsive!
 admin@admin.com
 123456
 
+DEMO: https://priceless-stonebraker-336bc4.netlify.app
+
 In this app, order data is stored using the firebase.
 However, logging in, registering and adding cards is intentionally only simulated by me.
 I wanted to this data to disappear after refreshing the page and not to clutter.
