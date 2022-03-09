@@ -15,6 +15,9 @@ const DashboardOrders = ({ showOrdersHandler }) => {
   const [open, setOpen] = useState(false)
   const [isDeleted, setIsDeleted] = useState(false)
 
+  const urlGet = process.env.REACT_APP_FIREBASE_GET_DATA
+  const url = process.env.REACT_APP_FIREBASE_DATA
+
   const handleOpenModal = (id) => {
     setOpen(!open)
 
@@ -25,8 +28,7 @@ const DashboardOrders = ({ showOrdersHandler }) => {
   const handleRemoveOrder = () => {
     axios
       .delete(
-        // `https://bikes-cbb5f-default-rtdb.firebaseio.com/orders/${deletedOrder[0].id}.json`
-        `https://bikeshop-2e62a-default-rtdb.firebaseio.com/orders/${deletedOrder[0].id}.json`
+        url + `orders/${deletedOrder[0].id}.json`
       )
       .then((res) => {
         console.log(res)
@@ -37,10 +39,12 @@ const DashboardOrders = ({ showOrdersHandler }) => {
   }
 
   const isDeletedTrue = !isDeleted
+
   useEffect(() => {
     axios
-      // .get("https://bikes-cbb5f-default-rtdb.firebaseio.com/orders.json")
-      .get('https://bikeshop-2e62a-default-rtdb.firebaseio.com/orders.json')
+      .get(
+        urlGet
+      )
       .then((res) => {
         const fetchedOrders = []
         for (const key in res.data) {
